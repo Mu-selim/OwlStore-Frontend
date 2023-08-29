@@ -5,11 +5,14 @@ import {
   Outlet,
 } from "react-router-dom";
 
+import { Navbar } from "../components/navbar";
+
 const NavLayout = () => {
   return (
-    <>
+    <div className="h-screen w-full max-w-screen-2xl mx-auto">
+      <Navbar />
       <Outlet />
-    </>
+    </div>
   );
 };
 
