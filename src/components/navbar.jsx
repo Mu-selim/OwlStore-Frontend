@@ -31,15 +31,23 @@ const NavCart = ({ cart }) => {
               <span>{cart.total}$</span>
             </div>
           </div>
-          <ul className="w-full px-4 py-2 border-b-2 h-20"></ul>
-          <div className="w-full p-4 flex">
-            <Link
-              to="/checkout"
-              className="w-full px-4 py-2 text-center transition border border-primary rounded-md hover:bg-primary hover:text-secondary"
-            >
-              Checkout
-            </Link>
-          </div>
+          {cart.items.length > 0 ? (
+            <>
+              <ul className="w-full px-4 py-2 border-b-2 max-h-40"></ul>
+              <div className="w-full p-4 flex">
+                <Link
+                  to="/checkout"
+                  className="w-full px-4 py-2 text-center transition border border-primary rounded-md hover:bg-primary hover:text-secondary"
+                >
+                  Checkout
+                </Link>
+              </div>
+            </>
+          ) : (
+            <div className="w-full p-4 flex justify-center items-center">
+              <span className="text-sm">Cart is empty</span>
+            </div>
+          )}
         </div>
       )}
     </div>
