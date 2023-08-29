@@ -8,6 +8,9 @@ export default {
         secondary: "#f2f0ea",
         "yellow-light": "#edcf5d",
       },
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+      },
     },
   },
   plugins: [],
