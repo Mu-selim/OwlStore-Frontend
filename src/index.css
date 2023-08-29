@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .nav-link {
+    @apply py-1 relative after:absolute after:left-0 after:bottom-0 after:h-1 after:w-0 hover:after:w-full after:bg-primary after:transition-all after:duration-200 after:ease-cubic after:rounded-3xl;
+  }
+
+  .transition {
+    @apply transition-all duration-200 ease-cubic;
+  }
+}
