@@ -8,6 +8,7 @@ import {
 import { Navbar } from "../components/navbar";
 import { JoinPage } from "../pages/join";
 import { JoinContextProvider } from "../contexts/joinContext";
+import { SigninPage } from "../pages/signin";
 
 const NavLayout = () => {
   return (
@@ -34,6 +35,7 @@ export const MainRouter = () => {
             </JoinContextProvider>
           }
         />
+        <Route path="signin" element={<SigninPage />} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </Router>
