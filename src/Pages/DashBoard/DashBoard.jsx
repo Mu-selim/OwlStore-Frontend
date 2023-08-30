@@ -1,6 +1,5 @@
-import { Component, useState } from "react";
-import { itemsArr } from "./data";
-import { item } from "./data";
+import { Component } from "react";
+import { itemsArr } from "../../data/data";
 import { ItemsList } from "./ListComponent";
 import { AddComponent } from "./AddComponent";
 import "../../assets/dashBoard.css";

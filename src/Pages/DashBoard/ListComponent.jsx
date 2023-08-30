@@ -1,16 +1,36 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-undef */
 import { useState } from "react";
 export let ItemsList=(props)=>{
   var sort = [
     { name: "name", dsc: 0 },
-    { name: "age", dsc: 0 },
-    { name: "salary", dsc: 0 },
-    { name: "department", dsc: 0 },
+    { name: "brand", dsc: 0 },
+    { name: "category", dsc: 0 },
+    { name: "price", dsc: 0 },
   ];
   let {itemsArrRef}=props;
   let [ShownArr, setShownArr] = useState(itemsArrRef);
-    console.log(ShownArr);
+  let sortByColumn=(prop, index) =>{
+    sort[index].dsc = !sort[index].dsc;
+    ShownArr.sort((a, b) => {
+      var propA = a[prop],
+        propB = b[prop];
+      if (typeof propA === "number") {
+        return sort[index].dsc ? propA - propB : propB - propA;
+      }
+      var stringA = a[prop].toLowerCase();
+      var stringB = b[prop].toLowerCase();
+      if (sort[index].dsc) {
+        if (stringA < stringB) return -1;
+        if (stringA > stringB) return 1;
+      } else {
+        if (stringA > stringB) return -1;
+        if (stringA < stringB) return 1;
+      }
+    });
+    setShownArr(ShownArr);
+  }
     let Searchfun=()=>{
       let searchbar=document.getElementById("search").value;
         let filteredArr=itemsArrRef.filter((item)=>{
@@ -38,9 +58,9 @@ export let ItemsList=(props)=>{
       setShownArr(filteredArr);
     }
     let clearfilters=()=>{
-      var _brand = document.getElementById("Brand-filter").value="";
-      var category = document.getElementById("Category-filter").value="";
-      var price = document.getElementById("Price-filter").value="";
+      document.getElementById("Brand-filter").value="";
+      document.getElementById("Category-filter").value="";
+      document.getElementById("Price-filter").value="";
       setShownArr(itemsArrRef);
     }
     return(
@@ -93,14 +113,36 @@ export let ItemsList=(props)=>{
         </div>
         <table className="table table-hover">
   <thead className="table-dark align-middle">
-    <tr>
+    <tr >
       <th scope="col" >Barcode
      </th>
       <th scope="col">Image</th>
-      <th scope="col">Name</th>
-      <th scope="col">Brand</th>
-      <th scope="col">Category</th>
-      <th scope="col">Price</th>
+      <th scope="col" onClick={()=>sortByColumn("name",0)}> 
+      <div className="d-inline-flex  flex-row justify-content-between ">
+      <span className="mt-1.5">Name</span>
+      <span className="cursor-pointer d-flex flex-col text-xs">
+                    <span className="translate-y-1">▴</span>
+                    <span className="-translate-y-1">▾</span>
+                  </span>
+        </div> </th>
+      <th scope="col"   onClick={()=>sortByColumn("brand",1)}>
+      <div className="d-inline-flex  flex-row justify-content-between "><span className="mt-1.5">Brand</span>
+      <span className="cursor-pointer d-flex flex-col text-xs">
+                    <span className="translate-y-1">▴</span>
+                    <span className="-translate-y-1">▾</span>
+                  </span></div></th>
+      <th scope="col"  onClick={()=>sortByColumn("category",2)}>
+       <div className="d-inline-flex  flex-row justify-content-between "> <span className="mt-1.5">Category</span>
+      <span className="cursor-pointer d-flex flex-col text-xs">
+                    <span className="translate-y-1">▴</span>
+                    <span className="-translate-y-1">▾</span>
+                  </span></div></th>
+      <th scope="col"  onClick={()=>sortByColumn("price",3)}>
+      <div className="d-inline-flex flex-row justify-content-between "> <span className="mt-1.5">Price</span>
+      <span className="cursor-pointer d-flex flex-col text-xs">
+                    <span className="translate-y-1">▴</span>
+                    <span className="-translate-y-1">▾</span>
+                  </span></div> </th>
     </tr>
   </thead>
   <tbody>

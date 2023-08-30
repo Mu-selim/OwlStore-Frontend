@@ -4,6 +4,14 @@
     font-weight: bold;
     width: 20vw;
 }
+td{
+    
+}
+#icon{
+    width: 60px;
+    height: 60px;
+    align-self: center;
+}
 #addhead{
     font-size: 20px;
 }

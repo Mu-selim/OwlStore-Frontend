@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { item } from "./data";
+import { item } from "../../data/data";
+import {OwlIcon} from "../../components/icons/owlIcon"
+import { Link } from "react-router-dom";
 
 export let AddComponent=(props)=>{
     let [AddObjectTxt, setAddObjectTxts] = useState({
@@ -98,6 +100,9 @@ export let AddComponent=(props)=>{
     }
 return (
     <div  id="addcomp" className=" p-3 d-flex flex-column gap-3">
+        <Link id="icon" to="/">
+            <OwlIcon />
+          </Link>
         <h1 id="addhead"className="">Add Item: </h1>
         <div className="form-group">
             <label >Barcode</label>
@@ -136,8 +141,8 @@ return (
              value={AddObjectTxt.Price} id="txtPrice" name="Price" onChange={changeinputvlaue} />
              <span className="text-danger" id="pricewarn"style={{display:"none"}}>Price must be a number and not empty</span>
         </div>
-        <button type="submit" id="additembtn"className="mt-3 Regular shadow btn bg-yellow-light p-2 font-bold w-75 align-self-center" onClick={SavingAdd}>ADD Item</button>
-        <button  id="resetbtn" className="mt-3 Regular shadow btn bg-secondary p-2 font-bold w-75 align-self-center" onClick={Resetinput}>Reset</button>
+        <button type="submit" id="additembtn"className="mt-2 Regular shadow btn bg-yellow-light p-2 font-bold w-75 align-self-center" onClick={SavingAdd}>ADD Item</button>
+        <button  id="resetbtn" className="mt-2 mb-2 Regular shadow btn bg-secondary p-2 font-bold w-75 align-self-center" onClick={Resetinput}>Reset</button>
     </div>
 )
 }
