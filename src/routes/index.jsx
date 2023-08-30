@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import { Navbar } from "../components/navbar";
+import { Dashboard } from "../Pages/DashBoard/DashBoard";
 
 const NavLayout = () => {
   return (
@@ -25,6 +26,7 @@ export const MainRouter = () => {
           <Route path="about" element={<h1>About</h1>} />
         </Route>
         <Route path="*" element={<h1>Not Found</h1>} />
+        <Route path="/DashBoard" element={<Dashboard />}/>
       </Routes>
     </Router>
   );
