@@ -52,24 +52,11 @@ export const Navbar = () => {
             </Link>
             <Link
               to="/join"
-              className="px-3 py-1 border border-primary rounded-md transition-custom hover:bg-primary hover:text-secondary"
+              className="px-3 py-1 border border-primary rounded-md transition hover:bg-primary hover:text-secondary"
             >
               Join
             </Link>
-          </li>
-        </ul>
-        <NavCart cart={cart} />
-        <div className="flex justify-center items-center gap-4 font-bold">
-          <Link to="/signin" className="">
-            Sign In
-          </Link>
-          <Link
-            to="/join"
-            className="px-3 py-1 border border-primary rounded-md transition hover:bg-primary hover:text-secondary"
-          >
-            Join
-          </Link>
-        </div>
+          </div>
         </div>
       </nav>
     </SideMenuProvider>
