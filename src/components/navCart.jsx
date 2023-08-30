@@ -15,7 +15,7 @@ export const NavCart = ({ cart }) => {
         {cart.items.length}
       </span>
       {showCart && (
-        <div className="absolute top-10 right-0 w-80 rounded-md bg-purple-300 z-50">
+        <div className="absolute top-10 right-0 w-80 rounded-md bg-purple-300 z-40">
           <div className="w-full px-4 py-2 border-b-2 flex items-center justify-between">
             <div className="flex items-center">
               <div className="w-6">
