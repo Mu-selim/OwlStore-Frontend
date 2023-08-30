@@ -12,7 +12,7 @@ export const SideMenu = () => {
   return (
     <menu
       className={
-        "sm:hidden absolute top-0 h-screen pl-4 pr-16 flex flex-col justify-between bg-secondary transition-custom " +
+        "z-40 sm:hidden absolute top-0 h-screen pl-4 pr-16 flex flex-col justify-between bg-secondary transition-custom " +
         (showSideMenu ? "left-0" : "-left-80")
       }
     >
