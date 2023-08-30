@@ -8,7 +8,6 @@ import hero04 from "/images/hero05.png";
 import hero05 from "/images/hero06.png";
 
 const heroImages = [hero00, hero01, hero02, hero03, hero04, hero05];
-// generate colors for background for each image
 const heroBackgrounds = [
   "#19376D",
   "#1F6E8C",
@@ -31,10 +30,10 @@ export const HeroSection = () => {
   return (
     <section className="h-[calc(100vh-66px)]">
       <div
-        className="px-8 py-4 w-full h-full flex justify-between items-center transition-all duration-1000 ease-cubic"
+        className="px-8 lg:px-20 py-4 w-full h-full flex justify-between items-center transition-all duration-1000 ease-cubic"
         style={{ backgroundColor: heroBackgrounds[currentImage] }}
       >
-        <div className="basis-1/2 text-secondary pl-12">
+        <div className="hidden md:block md:basis-1/2 text-secondary">
           <h2 className="text-8xl font-bold mb-4">OwlStore</h2>
           <p className="text-xl">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
@@ -49,12 +48,12 @@ export const HeroSection = () => {
             </Link>
           </div>
         </div>
-        <div className="basis-1/2 h-full relative">
+        <div className="basis-full md:basis-1/2 h-full relative">
           {heroImages.map((image, index) => (
             <div
               key={index}
               className={
-                "absolute left-0 top-0 w-full h-full transition-opacity duration-1000 ease-cubic select-none " +
+                "absolute left-0 top-0 w-full h-full transition-opacity duration-700 ease-cubic select-none " +
                 (currentImage === index ? "opacity-100" : "opacity-0")
               }
             >
