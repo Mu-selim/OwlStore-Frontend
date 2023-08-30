@@ -9,6 +9,7 @@ import { Navbar } from "../components/navbar";
 import { JoinPage } from "../pages/join";
 import { JoinContextProvider } from "../contexts/joinContext";
 import { SigninPage } from "../pages/signin";
+import { HomePage } from "../pages/home";
 
 const NavLayout = () => {
   return (
@@ -24,7 +25,7 @@ export const MainRouter = () => {
     <Router>
       <Routes>
         <Route path="/" element={<NavLayout />}>
-          <Route index element={<h1>Home</h1>} />
+          <Route index element={<HomePage />} />
           <Route path="about" element={<h1>About</h1>} />
         </Route>
         <Route
