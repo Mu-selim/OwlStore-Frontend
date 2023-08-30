@@ -101,7 +101,7 @@ export const StepTwo = () => {
 
   return (
     <>
-      <h2 className="w-full text-center font-bold text-3xl">Join OwlStore</h2>
+      <h2 className="w-full text-center font-bold text-3xl">One last step</h2>
       <div className="pb-1">
         <Input
           text="Password"
@@ -121,14 +121,6 @@ export const StepTwo = () => {
         />
       </div>
       <JoinButton enabled={state.continue} />
-      <div className="w-full text-center mt-2">
-        <p className="text-gray-500">
-          Already have an account?{" "}
-          <Link to="/signin" className="text-gray-600 font-bold">
-            Sign in
-          </Link>
-        </p>
-      </div>
     </>
   );
 };
