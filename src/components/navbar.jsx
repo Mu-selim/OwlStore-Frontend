@@ -56,7 +56,20 @@ export const Navbar = () => {
             >
               Join
             </Link>
-          </div>
+          </li>
+        </ul>
+        <NavCart cart={cart} />
+        <div className="flex justify-center items-center gap-4 font-bold">
+          <Link to="/signin" className="">
+            Sign In
+          </Link>
+          <Link
+            to="/join"
+            className="px-3 py-1 border border-primary rounded-md transition hover:bg-primary hover:text-secondary"
+          >
+            Join
+          </Link>
+        </div>
         </div>
       </nav>
     </SideMenuProvider>
