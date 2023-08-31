@@ -2,18 +2,19 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-undef */
 import { useState } from "react";
+var sort = [
+  { name: "name", dsc: 0 },
+  { name: "brand", dsc: 0 },
+  { name: "category", dsc: 0 },
+  { name: "price", dsc: 0 },
+];
 export let ItemsList=(props)=>{
-  var sort = [
-    { name: "name", dsc: 0 },
-    { name: "brand", dsc: 0 },
-    { name: "category", dsc: 0 },
-    { name: "price", dsc: 0 },
-  ];
   let {itemsArrRef}=props;
   let [ShownArr, setShownArr] = useState(itemsArrRef);
   let sortByColumn=(prop, index) =>{
+    let newArr=[...ShownArr];
     sort[index].dsc = !sort[index].dsc;
-    ShownArr.sort((a, b) => {
+    newArr.sort((a, b) => {
       var propA = a[prop],
         propB = b[prop];
       if (typeof propA === "number") {
@@ -29,7 +30,7 @@ export let ItemsList=(props)=>{
         if (stringA < stringB) return 1;
       }
     });
-    setShownArr(ShownArr);
+    setShownArr(newArr);
   }
     let Searchfun=()=>{
       let searchbar=document.getElementById("search").value;
@@ -118,7 +119,7 @@ export let ItemsList=(props)=>{
      </th>
       <th scope="col">Image</th>
       <th scope="col" onClick={()=>sortByColumn("name",0)}> 
-      <div className="d-inline-flex  flex-row justify-content-between ">
+      <div role="button" className="d-flex  flex-row justify-content-between ">
       <span className="mt-1.5">Name</span>
       <span className="cursor-pointer d-flex flex-col text-xs">
                     <span className="translate-y-1">▴</span>
@@ -126,19 +127,22 @@ export let ItemsList=(props)=>{
                   </span>
         </div> </th>
       <th scope="col"   onClick={()=>sortByColumn("brand",1)}>
-      <div className="d-inline-flex  flex-row justify-content-between "><span className="mt-1.5">Brand</span>
+      <div role="button" className="d-flex  flex-row justify-content-between ">
+        <span className="mt-1.5">Brand</span>
       <span className="cursor-pointer d-flex flex-col text-xs">
                     <span className="translate-y-1">▴</span>
                     <span className="-translate-y-1">▾</span>
                   </span></div></th>
       <th scope="col"  onClick={()=>sortByColumn("category",2)}>
-       <div className="d-inline-flex  flex-row justify-content-between "> <span className="mt-1.5">Category</span>
+       <div role="button" className="d-flex  flex-row justify-content-between ">
+         <span className="mt-1.5">Category</span>
       <span className="cursor-pointer d-flex flex-col text-xs">
                     <span className="translate-y-1">▴</span>
                     <span className="-translate-y-1">▾</span>
                   </span></div></th>
       <th scope="col"  onClick={()=>sortByColumn("price",3)}>
-      <div className="d-inline-flex flex-row justify-content-between "> <span className="mt-1.5">Price</span>
+      <div role="button" className="d-flex flex-row justify-content-between "> 
+      <span className="mt-1.5">Price</span>
       <span className="cursor-pointer d-flex flex-col text-xs">
                     <span className="translate-y-1">▴</span>
                     <span className="-translate-y-1">▾</span>
