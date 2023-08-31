@@ -2,28 +2,19 @@ import { useState } from "react";
 import { HeartIcon } from "../components/icons/heartIcon";
 import { CartIcon } from "../components/icons/cartIcon";
 import { DollarIcon } from "../components/icons/dollarIcon";
+import { ProductArray } from "../data/ProductArray";
+
 
 export function ProductPage(){
 
-    const images = ["/images/sneaker/1.avif",
-                    "/images/sneaker/2.avif",
-                    "/images/sneaker/3.avif",
-                    "/images/sneaker/4.avif",
-                    "/images/sneaker/5.avif"
-                    ];
-    const product = {
-        name : "CAMPUS FOOTPATROL SHOES",
-        price : 199,
-        size : [40, 41, 42, 43, 44, 45],
-        color : ["black", "white", "orange"] 
-    }
-
+    const product = ProductArray[0];
+    
     const [productData, setProduct ] = useState({
-        colors : product.color,
-        sizes : product.size,
+        colors : product.colors,
+        sizes : product.sizes,
         name : product.name,
         price : product.price,
-        images : images,
+        images : product.images,
         imgIndex : 0,
         sizeIndex : 0,
         colorIndex: 0,
@@ -71,7 +62,7 @@ export function ProductPage(){
 
                 <div className="images-container float-right md:w-1/2 flex-col align-middle justify-center mb-3">
                     <div className="main-image flex justify-center mb-5">
-                        <img className="rounded-lg w-3/5" src={images[productData.imgIndex]}/>
+                        <img className="rounded-lg w-3/5" src={productData.images[productData.imgIndex]}/>
                     </div>
                     <div className="small-image flex justify-center px-1 mb-3">
                         {productData.images.map((img, index)=>{
