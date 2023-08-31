@@ -10,6 +10,7 @@ import { JoinPage } from "../pages/join";
 import { JoinContextProvider } from "../contexts/joinContext";
 import { SigninPage } from "../pages/signin";
 import { HomePage } from "../pages/home";
+import { ProductPage } from "../pages/ProductPage";
 
 const NavLayout = () => {
   return (
@@ -26,6 +27,7 @@ export const MainRouter = () => {
       <Routes>
         <Route path="/" element={<NavLayout />}>
           <Route index element={<HomePage />} />
+          <Route path="product/:id" element={<ProductPage/>}/>
           <Route path="about" element={<h1>About</h1>} />
         </Route>
         <Route
