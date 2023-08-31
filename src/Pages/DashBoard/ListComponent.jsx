@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-undef */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 var sort = [
   { name: "name", dsc: 0 },
   { name: "brand", dsc: 0 },
@@ -64,6 +64,9 @@ export let ItemsList=(props)=>{
       document.getElementById("Price-filter").value="";
       setShownArr(itemsArrRef);
     }
+    useEffect(()=>{
+      setShownArr(itemsArrRef);
+    })
     return(
       <div>
         <div className="w-100 ">
