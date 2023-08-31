@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { HeartIcon } from "../components/icons/heartIcon";
+import { CartIcon } from "../components/icons/cartIcon";
+import { DollarIcon } from "../components/icons/dollarIcon";
 
 export function ProductPage(){
 
-    const images = ["public/images/sneaker/1.avif",
-                    "public/images/sneaker/2.avif",
-                    "public/images/sneaker/3.avif",
-                    "public/images/sneaker/4.avif",
-                    "public/images/sneaker/5.avif"
+    const images = ["/images/sneaker/1.avif",
+                    "/images/sneaker/2.avif",
+                    "/images/sneaker/3.avif",
+                    "/images/sneaker/4.avif",
+                    "/images/sneaker/5.avif"
                     ];
     const product = {
         name : "CAMPUS FOOTPATROL SHOES",
@@ -108,7 +111,12 @@ export function ProductPage(){
                         </div>
                         <div className="price my-5">
                             
-                            <h1 className="md:text-6xl text-3xl font-bold tracking-tight"><i className="fa-solid fa-dollar-sign"></i>{productData.price}</h1>
+                            <h1 className="md:text-6xl text-3xl font-semibold tracking-tight flex items-center">
+                                <div className="w-16">
+                                    <DollarIcon />
+                                </div>
+                                {productData.price}
+                            </h1>
                         </div>
                         
                         <div className="quantity flex my-8 flex-col">
@@ -158,10 +166,19 @@ export function ProductPage(){
                             min={0} />
                         </div>
                         <div className="flex justify-start my-5">
-                            <button className="bg-primary text-secondary rounded-lg py-3 px-5 mr-3 font-normal w-2/3" onClick={addCart}>
-                                <i className="fa-solid fa-cart-shopping mr-2"></i>Add To Cart
+                            <button className="bg-primary text-secondary rounded-lg py-3 px-5 mr-3 font-normal w-2/3 flex justify-center items-center" onClick={addCart}>
+                                <div className="w-8 h-8 inline-block mr-2">
+                                    <CartIcon color={"#f2f0ea"}/>
+                                </div>
+                                
+                                Add To Cart
                             </button>
-                            <button className="bg-secondary text-primary rounded-lg  py-2 px-3 font-bold"><i className="fa-sharp fa-regular fa-heart text-3xl"></i></button>
+                            <button className="bg-secondary text-primary rounded-lg  py-2 px-3 font-bold">
+                                <div className="w-8 h-8">
+                                    <HeartIcon color={"#010101"}/>
+                                </div>
+
+                            </button>
                         </div>
                         <div className="my-5">
                             <h4 className="mb-2">Details </h4>

@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import { Navbar } from "../components/navbar";
+import { ProductPage } from "../pages/ProductPage";
 
 const NavLayout = () => {
   return (
@@ -22,6 +23,7 @@ export const MainRouter = () => {
       <Routes>
         <Route path="/" element={<NavLayout />}>
           <Route index element={<h1>Home</h1>} />
+          <Route path="product/:id" element={<ProductPage/>}/>
           <Route path="about" element={<h1>About</h1>} />
         </Route>
         <Route path="*" element={<h1>Not Found</h1>} />
