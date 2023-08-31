@@ -9,18 +9,15 @@ export class item{
         this.price=price;
     }
 }
-
+import "../../public/images/DashBoard/1.jpg"
 export let itemsArr=[
-    new item("10002332","","Red v-neck t-shirt","Gucci","Tops",90),
-    new item("10757452","","Yellow v-neck t-shirt","Gucci","Tops",80),
-    new item("10024254","","Slim fit blue jeans","Mavi","Bottoms",70),
-    new item("10554532","","Purple raincoat","Gant","Tops",100),
-    new item("10788532","","Brown cardigan","Blaker","Bottoms",150),
-    new item("10008765","","Brown jacket","Harley","Tops",300),
-    new item("10002332","","Red v-neck t-shirt","Gucci","Bottoms",200),
-    new item("10757452","","Yellow v-neck t-shirt","Gucci","Tops",210),
-    new item("10024254","","Slim fit blue jeans","Mavi","Bottoms",320),
-    new item("10554532","","Purple raincoat","Gant","Tops",900),
-    new item("10788532","","Brown cardigan","Blaker","Tops",600),
-    new item("10008765","","Brown jacket","Harley","Bottoms",450),
+    new item("10002332","../../public/images/DashBoard/1.jpg","Red v-neck t-shirt","Gucci","Tops",90),
+    new item("10757452","../../public/images/DashBoard/2.jpg","Yellow v-neck t-shirt","Gucci","Tops",80),
+    new item("10024254","../../public/images/DashBoard/3.jpg","Slim fit blue jeans","Mavi","Bottoms",70),
+    new item("10554532","../../public/images/DashBoard/4.jpg","Purple raincoat","Gant","Tops",100),
+    new item("10788532","../../public/images/DashBoard/5.jpg","Brown cardigan","Blaker","Bottoms",150),
+    new item("10008765","../../public/images/DashBoard/6.jpg","Brown jacket","Harley","Tops",300),
+    new item("10002332","../../public/images/DashBoard/1.jpg","Red v-neck t-shirt","Gucci","Bottoms",200),
+    new item("10757452","../../public/images/DashBoard/2.jpg","Yellow v-neck t-shirt","Gucci","Tops",210),
+    new item("10024254","../../public/images/DashBoard/3.jpg","Slim fit blue jeans","Mavi","Bottoms",320),
 ]

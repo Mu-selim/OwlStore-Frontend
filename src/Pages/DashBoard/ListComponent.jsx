@@ -73,9 +73,9 @@ export let ItemsList=(props)=>{
           </form>
         </nav>
         </div>
-        <div id="filtercontainer">
+        <div id="filtercontainer" className="d-flex  justify-content-end flex-column flex-md-row">
         <select
-            className="filters "
+            className="filters"
             name="Brand-filter"
             id="Brand-filter"
             onChange={filterEmployees}
@@ -154,7 +154,7 @@ export let ItemsList=(props)=>{
             return(
                 <tr>
                 <th scope="row">{item.barcode}</th>
-                <td>{item.image}</td>
+                <td><img style={{width:"40px", height:"40px"}}  src={item.image} alt="" /></td>
                 <td>{item.name}</td>
                 <td>{item.brand}</td>
                 <td>{item.category}</td>

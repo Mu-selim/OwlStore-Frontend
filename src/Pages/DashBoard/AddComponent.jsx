@@ -3,6 +3,7 @@ import { item } from "../../data/data";
 import {OwlIcon} from "../../components/icons/owlIcon"
 import { Link } from "react-router-dom";
 
+
 export let AddComponent=(props)=>{
     let [AddObjectTxt, setAddObjectTxts] = useState({
         Barcode: '',
@@ -18,6 +19,7 @@ export let AddComponent=(props)=>{
         let Brandwarn=document.getElementById("Brandwarn");
         let catwarn=document.getElementById("categorywarn");
         let pricewarn=document.getElementById("pricewarn");
+
         if (AddObjectTxt.Barcode.length==0 ||isNaN(parseFloat(AddObjectTxt.Barcode))|| !isFinite(AddObjectTxt.Barcode)) {
             warnbar.style.display="inline";
             return false;
@@ -68,25 +70,6 @@ export let AddComponent=(props)=>{
         })
     }
 
-
- let SavingAdd = () => {
-   if(validateForm())
-   {
-    let newObject = new item(AddObjectTxt.Barcode,AddObjectTxt.Image, AddObjectTxt.Name, AddObjectTxt.Brand
-        ,AddObjectTxt.Category,AddObjectTxt.Price);
-    // eslint-disable-next-line react/prop-types
-    props.SaveAddHRef(newObject);
-    setAddObjectTxts({
-        ...AddObjectTxt,
-        Barcode: '',
-        Image: '',
-        Name: '',
-        Brand: '',
-        Category:'',
-        Price:'',
-    })
-   }
-}
     let Resetinput=()=>{
         setAddObjectTxts({
             ...AddObjectTxt,
@@ -98,6 +81,17 @@ export let AddComponent=(props)=>{
             Price:'',
         })
     }
+ let SavingAdd = () => {
+   if(validateForm())
+   {
+    let newObject = new item(AddObjectTxt.Barcode,AddObjectTxt.Image, AddObjectTxt.Name, AddObjectTxt.Brand
+        ,AddObjectTxt.Category,AddObjectTxt.Price);
+    // eslint-disable-next-line react/prop-types
+    props.SaveAddHRef(newObject);
+    Resetinput();
+    }
+}
+    
 return (
     <div  id="addcomp" className=" p-3 d-flex flex-column gap-3">
         <Link id="icon" to="/">
@@ -106,7 +100,7 @@ return (
         <h1 id="addhead"className="">Add Item: </h1>
         <div className="form-group">
             <label >Barcode</label>
-            <input type="text" className="form-control Regular shadow" aria-describedby="emailHelp"
+            <input type="text" className="form-control Regular shadow"
                 placeholder="Barcode" id="txtBarcode" 
                 value={AddObjectTxt.Barcode} name="Barcode" onChange={changeinputvlaue}/>
             <span className="text-danger" id="Bardcodewarn" style={{display:"none"}}>Barcode must be a number</span>
