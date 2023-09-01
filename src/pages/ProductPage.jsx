@@ -35,6 +35,10 @@ export function ProductPage(){
             name : product.name,
             price : product.price,
             images : product.images,
+            imgIndex : 0,
+            sizeIndex : 0,
+            colorIndex: 0,
+            quantity : 0 
             
         })
         console.log(productData.imgIndex);
