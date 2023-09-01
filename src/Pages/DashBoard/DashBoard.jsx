@@ -1,4 +1,3 @@
-import { itemsArr } from "../../data/data";
 import { ItemsList } from "./ListComponent";
 import { AddComponent } from "./AddComponent";
 import "../../assets/dashBoard.css";
@@ -9,13 +8,14 @@ import { ProductArray } from "../../data/ProductArray";
     let saveAdd=(_Object)=>{
         setShownArr([...ShownArr,_Object]);             
        }
+    
         return(
-            <div className="container-fluid p-0 d-flex flex-column flex-md-row ">
-                <div className="col-12 col-md-2 ">
+            <div className="flex  flex-col-reverse md:flex-row">
+                <div className=" md:sticky md:top-0 md:h-screen md:w-1/6">
                     <AddComponent itemsArrRef={ShownArr} SaveAddHRef={saveAdd}/>
                 </div>
-                <div className="col-12 col-md-10 align-self-end">
-                <ItemsList itemsArrRef={ShownArr}/>
+                <div className="md:w-5/6">
+                <ItemsList itemsArrRef={ShownArr} />
                 </div>
             </div>
             

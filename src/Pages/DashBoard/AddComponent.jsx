@@ -1,9 +1,6 @@
 import { useState } from "react";
-import { item } from "../../data/data";
 import {OwlIcon} from "../../components/icons/owlIcon"
 import { Link } from "react-router-dom";
-
-
 export let AddComponent=(props)=>{
     let [AddObjectTxt, setAddObjectTxts] = useState({
         Barcode: '',
@@ -93,50 +90,37 @@ export let AddComponent=(props)=>{
 }
     
 return (
-    <div  id="addcomp" className=" p-3 d-flex flex-column gap-3">
+    <div  id="addcomp" className=" p-3 flex flex-col gap-2">
         <Link id="icon" to="/">
             <OwlIcon />
           </Link>
-        <h1 id="addhead"className="">Add Item: </h1>
-        <div className="form-group">
-            <label >Barcode</label>
-            <input type="text" className="form-control Regular shadow"
-                placeholder="Barcode" id="txtBarcode" 
-                value={AddObjectTxt.Barcode} name="Barcode" onChange={changeinputvlaue}/>
-            <span className="text-danger" id="Bardcodewarn" style={{display:"none"}}>Barcode must be a number</span>
-        </div>
-        <div className="form-group">
-            <label >Image</label>
-            <input type="text" className="form-control Regular shadow" placeholder="Image" id="txtImage"
-            value={AddObjectTxt.Image} name="Image" onChange={changeinputvlaue}/>
-            <span className="text-danger" style={{display:"none"}}></span>
-        </div>
-        <div className="form-group">
-            <label >Name</label>
-            <input type="text" className="form-control Regular shadow" placeholder="Name" id="txtName" 
+        <h1 id="addhead"className="">Item: </h1>
+        <div>
+            <label  htmlFor="txtName" >Name</label>
+            <input type="text" className="rounded p-1 w-full" placeholder="Name" id="txtName" 
              value={AddObjectTxt.Name} name="Name" onChange={changeinputvlaue}/>
-             <span className="text-danger" id="namewarn"style={{display:"none"}}>Name cannnot be a number or empty</span>
+             <span className="text-red-500" id="namewarn"style={{display:"none"}}>Name cannnot be a number or empty</span>
         </div>
-        <div className="form-group">
-            <label >Brand</label>
-            <input type="text" className="form-control Regular shadow" placeholder="Brand" 
+        <div>
+            <label  htmlFor="txtBrand">Brand</label>
+            <input type="text" className="rounded p-1 w-full" placeholder="Brand" 
              value={AddObjectTxt.Brand} id="txtBrand" name="Brand" onChange={changeinputvlaue}/>
-             <span className="text-danger" id="Brandwarn"style={{display:"none"}}>Brand cannot be a number or empty</span>
+             <span className="text-red-500" id="Brandwarn"style={{display:"none"}}>Brand cannot be a number or empty</span>
         </div>
-        <div className="form-group">
-            <label >Category</label>
-            <input type="text" className="form-control Regular shadow" placeholder="Category" 
+        <div>
+            <label htmlFor="txtCategory" >Category</label>
+            <input type="text" className="rounded p-1 w-full" placeholder="Category" 
             value={AddObjectTxt.Category} id="txtCategory" name="Category" onChange={changeinputvlaue}/>
-            <span className="text-danger" id="categorywarn" style={{display:"none"}}>Category cannot be a number or empty</span>
+            <span className="text-red-500" id="categorywarn" style={{display:"none"}}>Category cannot be a number or empty</span>
         </div>
-        <div className="form-group">
-            <label >Price</label>
-            <input type="text" className="form-control Regular shadow" placeholder="Price"
+        <div>
+            <label htmlFor="txtPrice">Price</label>
+            <input type="text" className="rounded p-1 w-full" placeholder="Price"
              value={AddObjectTxt.Price} id="txtPrice" name="Price" onChange={changeinputvlaue} />
-             <span className="text-danger" id="pricewarn"style={{display:"none"}}>Price must be a number and not empty</span>
+             <span className="text-red-500" id="pricewarn"style={{display:"none"}}>Price must be a number and not empty</span>
         </div>
-        <button type="submit" id="additembtn"className="mt-2 Regular shadow btn bg-yellow-light p-2 font-bold w-75 align-self-center" onClick={SavingAdd}>ADD Item</button>
-        <button  id="resetbtn" className="mt-2 mb-2 Regular shadow btn bg-secondary p-2 font-bold w-75 align-self-center" onClick={Resetinput}>Reset</button>
+        <button type="submit" id="additembtn"className="mt-2 bg-yellow-light p-2 font-bold w-3/4 self-center rounded-lg" onClick={SavingAdd}>ADD Item</button>
+        <button  id="resetbtn" className="mt-2 mb-2 bg-red-600 hover:bg-red-700 p-2 font-bold w-3/4  self-center rounded-lg" onClick={Resetinput}>Reset</button>
     </div>
 )
 }
