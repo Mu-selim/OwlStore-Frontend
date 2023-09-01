@@ -1,16 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HeartIcon } from "../components/icons/heartIcon";
 import { CartIcon } from "../components/icons/cartIcon";
 import { DollarIcon } from "../components/icons/dollarIcon";
 import { ProductArray } from "../data/ProductArray";
 import { ProductCard } from "../components/ProductCard";
 import { Footer } from "../components/Footer";
-
+import { useParams} from "react-router-dom";
 export function ProductPage(){
-
-    const product = ProductArray[0];
+    
+    let { id } = useParams();
+    const product = ProductArray.filter((product)=>{
+        if(parseInt(id)===product.id) return product;
+    })[0];
+    // console.log(product);
     
     const [productData, setProduct ] = useState({
+        
         colors : product.colors,
         sizes : product.sizes,
         name : product.name,
@@ -21,6 +26,19 @@ export function ProductPage(){
         colorIndex: 0,
         quantity : 0 
     })
+
+    useEffect(()=>{
+        setProduct({
+            ...productData,
+            colors : product.colors,
+            sizes : product.sizes,
+            name : product.name,
+            price : product.price,
+            images : product.images,
+            
+        })
+        console.log(productData.imgIndex);
+    },[product])
 
     const changeImg = (event, index)=>{
         setProduct({

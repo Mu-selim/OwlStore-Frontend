@@ -4,8 +4,8 @@ import { TwitterIcon  } from "./icons/twitterIcon";
 import { InstagramIcon } from "./icons/instgramIcon";
 
 
-export function Footer(){
-    const year = new Date().getFullYear;
+export function Footer(){ 
+    const year = new Date().getFullYear();
     return(
         <>
             <div className="footer  bg-secondary bottom-0  w-full p-2 ">

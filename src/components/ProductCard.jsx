@@ -1,13 +1,15 @@
 import { DollarIcon } from "./icons/dollarIcon";
 import { CartIcon } from "./icons/cartIcon";
 import { HeartIcon } from "./icons/heartIcon";
+import { Link } from "react-router-dom";
+
 
 export function ProductCard(props){
     const product = props.product;
     
     return(
         <>
-            <div className="card-container ">
+            <Link to={"/product/"+product.id} className="card-container ">
 
                 <div className="card-image w-48 h-40">
                     <img className=" object-cover object-top w-48 h-40 " src={product.images[0]}/>
@@ -37,7 +39,7 @@ export function ProductCard(props){
                         </button>
                     </div>
                 </div>
-            </div>
+            </Link>
         </>
     )
 }
