@@ -4,6 +4,7 @@ import { CartIcon } from "../components/icons/cartIcon";
 import { DollarIcon } from "../components/icons/dollarIcon";
 import { ProductArray } from "../data/ProductArray";
 import { ProductCard } from "../components/ProductCard";
+import { Footer } from "../components/Footer";
 
 export function ProductPage(){
 
@@ -192,7 +193,7 @@ export function ProductPage(){
                 
             </div>
         </div>
-        
+        <Footer/>
         </>
     )
 
