@@ -3,7 +3,7 @@ import { HeartIcon } from "../components/icons/heartIcon";
 import { CartIcon } from "../components/icons/cartIcon";
 import { DollarIcon } from "../components/icons/dollarIcon";
 import { ProductArray } from "../data/ProductArray";
-
+import { ProductCard } from "../components/ProductCard";
 
 export function ProductPage(){
 
@@ -181,6 +181,18 @@ export function ProductPage(){
 
             </div>
         </div>
+        <div className="my-6">
+            <div>
+                <p className="text-gray-400 ml-6 w-3/4">More Like </p>
+            </div>
+            <div className="more-like-container flex flex-row flex-wrap">
+                <ProductCard product = {ProductArray[1]}/>
+                <ProductCard product = {ProductArray[2]}/>
+                <ProductCard product = {ProductArray[3]}/>
+                
+            </div>
+        </div>
+        
         </>
     )
 

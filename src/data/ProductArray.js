@@ -61,7 +61,7 @@ export const ProductArray =[
     "/images/products/DAME 9 TEE3.avif"]
     , description, "T-shirt", clothesSize, ["pink", "black", "yellow"], 4,"Adidas" ),
 
-    new Product("DISNEY PRINCESS T-SHIRT1.jpg", 20, [
+    new Product("DISNEY PRINCESS T-SHIRT1", 20, [
     "/images/products/DISNEY PRINCESS T-SHIRT1.jpg",
     "/images/products/DISNEY PRINCESS T-SHIRT2.jpg",
     "/images/products/DISNEY PRINCESS T-SHIRT3.jpg"]
@@ -109,17 +109,6 @@ export const ProductArray =[
     "/images/products/STAND-UP COLLAR SHIRT3.jpg"]
     , description, "Shirt", clothesSize, ["gray", "green", "black"], 4,"Bershka" ),
 
-    new Product("STAND-UP COLLAR SHIRT", 60, [
-    "/images/products/STAND-UP COLLAR SHIRT1.jpg",
-    "/images/products/STAND-UP COLLAR SHIRT2.jpg",
-    "/images/products/STAND-UP COLLAR SHIRT3.jpg"]
-    , description, "Trouser", trouserWomen, ["green", "black","yellow"], 3,"Defacto" ),
-
-    new Product("RUBBERISED HIGH-TOP TRAINERS", 100, [
-    "/images/products/zaraBoot1.jpg",
-    "/images/products/zaraBoot2.jpg",
-    "/images/products/zaraBoot3.jpg"]
-    , description, "Shoes", showSize, ["white"], 4,"Zara" ),
 
     new Product("POLO SHIRT WITH MERCERISED FINISH", 30, [
     "/images/products/zaraPolo1.jpg",
