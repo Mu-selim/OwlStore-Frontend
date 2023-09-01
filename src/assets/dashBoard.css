@@ -3,9 +3,6 @@
     height: 100vh;
     font-weight: bold;
 }
-td{
-    
-}
 #icon{
     width: 60px;
     height: 60px;
@@ -17,10 +14,7 @@ td{
 #additembtn:hover{
     background-color: rgb(249, 222, 112);
 }
-#search{
-    width: 100%;
-    border:2px solid black
-}
+
 .filters{
     color: darkgoldenrod;
     border: none;
@@ -32,11 +26,6 @@ td{
     margin-right:20px;
     font-weight: bold;
     outline: 0px;
-}
-
-#filtercontainer{
-    width: 100%;
-    margin-bottom: 10px;
 }
 #Category-filter{
     width: 160px;

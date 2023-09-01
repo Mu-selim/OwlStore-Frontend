@@ -11,6 +11,16 @@ var sort = [
 export let ItemsList=(props)=>{
   let {itemsArrRef}=props;
   let [ShownArr, setShownArr] = useState(itemsArrRef);
+  let uniquebrands=[];
+  let uniquecategorys=[];
+   itemsArrRef.filter((item) =>{ 
+    if(!uniquebrands.includes(item.brand))
+    uniquebrands.push(item.brand);
+      });
+      itemsArrRef.filter((item) =>{ 
+        if(!uniquecategorys.includes(item.category))
+        uniquecategorys.push(item.category);
+          });
   let sortByColumn=(prop, index) =>{
     let newArr=[...ShownArr];
     sort[index].dsc = !sort[index].dsc;
@@ -64,19 +74,26 @@ export let ItemsList=(props)=>{
       document.getElementById("Price-filter").value="";
       setShownArr(itemsArrRef);
     }
-    useEffect(()=>{
-      setShownArr(itemsArrRef);
-    })
+     useEffect(()=>{
+      setShownArr(ShownArr);
+    }) 
     return(
-      <div>
-        <div className="w-100 ">
-        <nav className="navbar navbar-light bg-light w-100">
-          <form className="form-inline w-100 mx-3 p-1">
-            <input id="search" className="form-control Regular shadow" type="search" placeholder="Search By Name" aria-label="Search" onChange={Searchfun}/>
-          </form>
-        </nav>
+      
+       <div>
+        <div className="p-1 ">
+          <form>   
+    <div className="relative ">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <svg className="w-4 h-4 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
         </div>
-        <div id="filtercontainer" className="d-flex  justify-content-end flex-column flex-md-row">
+        <input style={{border:"2px solid black"}} type="text" id="search" className="w-full py-2.5 pl-7  text-sm border-3  rounded-2xl" placeholder="Search by Name"
+        onChange={Searchfun}/>
+    </div>
+</form>
+        </div>
+        <div  className="w-full flex mb-2 justify-end">
         <select
             className="filters"
             name="Brand-filter"
@@ -84,11 +101,9 @@ export let ItemsList=(props)=>{
             onChange={filterEmployees}
           >
             <option value="" selected>Filter by Brand</option>
-            <option value="Gucci">Gucci</option>
-            <option value="Mavi">Mavi</option>
-            <option value="Gant">Gant</option>
-            <option value="Blaker">Blaker</option>
-            <option value="Harley">	Harley</option>
+            {uniquebrands.map((item)=>{
+              return (<option value={item}>{item}</option>)
+            })}
           </select>
           <select
             className="filters  "
@@ -97,8 +112,9 @@ export let ItemsList=(props)=>{
             onChange={filterEmployees}
           >
             <option value="" selected>Filter by Category</option>
-            <option value="Tops">Tops</option>
-            <option value="Bottoms">Bottoms</option>
+            {uniquecategorys.map((item)=>{
+              return (<option value={item}>{item}</option>)
+            })}
           </select>
           <select
             className="filters "
@@ -107,69 +123,95 @@ export let ItemsList=(props)=>{
             onChange={filterEmployees}
           >
             <option value="" selected>Filter by Price</option>
-            <option value="0,100">0 - 100</option>
-            <option value="100,200">100 - 200</option>
-            <option value="200,300">200 - 300</option>
-            <option value="300,400">300 - 400</option>
-            <option value="400,90000">400 - &infin;</option>
+            <option value="0,50">0 - 50</option>
+            <option value="50,100">50 - 100</option>
+            <option value="100,150">100 - 150</option>
+            <option value="200,250">200 - 250</option>
+            <option value="250,90000">250 - &infin;</option>
           </select>
           <button id="clearfilters" className="btn " onClick={clearfilters}>Clear Filters </button>
         </div>
-        <table className="table table-hover">
-  <thead className="table-dark align-middle">
-    <tr >
-      <th scope="col" >Barcode
-     </th>
-      <th scope="col">Image</th>
-      <th scope="col" onClick={()=>sortByColumn("name",0)}> 
-      <div role="button" className="d-flex  flex-row justify-content-between ">
-      <span className="mt-1.5">Name</span>
-      <span className="cursor-pointer d-flex flex-col text-xs">
+        <div className="overflow-auto shadow hidden md:block">
+      <table className="w-full">
+        <thead className="bg-dark border-b-2 border-gray-200 rounded-lg text-white">
+        <tr >
+          <th className="w-2 p-3 text-sm font-semibold tracking-wide text-left">ID.</th>
+          <th className="w-20 text-sm font-semibold tracking-wide text-left">Image</th>
+          <th className="w-20 p-3 text-sm font-semibold tracking-wide text-left">Status</th>
+          <th className="p-3 text-sm font-semibold tracking-wide text-left cursor-pointer" 
+            onClick={()=>sortByColumn("name",0)}>
+              <div className="flex items-center justify-between">
+              <span>Name</span> 
+                  <span className=" flex flex-col text-xs">
                     <span className="translate-y-1">▴</span>
                     <span className="-translate-y-1">▾</span>
                   </span>
-        </div> </th>
-      <th scope="col"   onClick={()=>sortByColumn("brand",1)}>
-      <div role="button" className="d-flex  flex-row justify-content-between ">
-        <span className="mt-1.5">Brand</span>
-      <span className="cursor-pointer d-flex flex-col text-xs">
+              </div>
+            </th>
+          <th className="w-20 p-3 text-sm font-semibold tracking-wide text-left">Colors</th>
+          <th className="p-3 text-sm font-semibold  tracking-wide text-left cursor-pointer" 
+            onClick={()=>sortByColumn("brand",1)}>
+           <div className="flex items-center justify-between">
+              <span>Brand</span> 
+                  <span className=" flex flex-col text-xs">
                     <span className="translate-y-1">▴</span>
                     <span className="-translate-y-1">▾</span>
-                  </span></div></th>
-      <th scope="col"  onClick={()=>sortByColumn("category",2)}>
-       <div role="button" className="d-flex  flex-row justify-content-between ">
-         <span className="mt-1.5">Category</span>
-      <span className="cursor-pointer d-flex flex-col text-xs">
+                  </span>
+              </div></th>
+                  <th className="p-3 text-sm font-semibold  tracking-wide text-left cursor-pointer" 
+            onClick={()=>sortByColumn("category",2)}>
+            <div className="flex items-center justify-between">
+              <span>Category</span> 
+                  <span className=" flex flex-col text-xs">
                     <span className="translate-y-1">▴</span>
                     <span className="-translate-y-1">▾</span>
-                  </span></div></th>
-      <th scope="col"  onClick={()=>sortByColumn("price",3)}>
-      <div role="button" className="d-flex flex-row justify-content-between "> 
-      <span className="mt-1.5">Price</span>
-      <span className="cursor-pointer d-flex flex-col text-xs">
+                  </span>
+              </div></th>
+          <th className="w-20 p-3 text-sm font-semibold tracking-wide text-left cursor-pointer">Sizes</th>
+          <th className="p-3 text-sm font-semibold  tracking-wide text-left" 
+            onClick={()=>sortByColumn("price",3)}>
+            <div className="flex items-center justify-between">
+              <span>Price</span> 
+                  <span className=" flex flex-col text-xs">
                     <span className="translate-y-1">▴</span>
                     <span className="-translate-y-1">▾</span>
-                  </span></div> </th>
-    </tr>
-  </thead>
-  <tbody>
+                  </span>
+              </div></th>
+        </tr>
+        </thead>
+        <tbody className=" divide-gray-100">
         {ShownArr.map(item=>{
             return(
-                <tr>
-                <th scope="row">{item.barcode}</th>
-                <td><img style={{width:"40px", height:"40px"}}  src={item.image} alt="" /></td>
-                <td>{item.name}</td>
-                <td>{item.brand}</td>
-                <td>{item.category}</td>
-                <td>{item.price+"$"}</td>
+                <tr className="bg-white">
+                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                 
+            <a href="#" className="font-bold text-blue-500 hover:underline">{item.id}</a>
+          </td>
+          <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+          <img style={{width:"40px", height:"40px"}}  src={item.images[0]} alt="" />
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+          <span
+            className="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg bg-opacity-50">Delivered</span>
+          </td>
+          <td className="p-3 text-sm text-gray-700 whitespace-nowrap">{item.name}</td>
+          <td className="p-3 text-sm text-gray-700 whitespace-nowrap flex ">{item.colors.map((item)=>{
+            return(
+              <div className="mx-px"
+              style={{borderRadius:"100%", border:"1px solid black", backgroundColor:`${item}`, width:"20px", height:"20px"}}></div>)
+          })} </td>
+          <td className="p-3 text-sm text-gray-700 whitespace-nowrap">{item.brand}</td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">{item.category}</td>
+                <td className="p-3 text-sm font-bold   text-gray-700 whitespace-nowrap">{item.sizes.join("/")}</td>
+                <td className="p-3 text-sm  font-bold text-gray-700 whitespace-nowrap">{item.price+"$"}</td>
                 </tr>
             )
         })
         }
-  </tbody>
-    </table>
-      </div>
-        
+        </tbody>
+      </table>
+    </div>
+      </div> 
     )
 }
 

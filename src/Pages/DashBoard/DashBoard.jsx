@@ -3,9 +3,9 @@ import { ItemsList } from "./ListComponent";
 import { AddComponent } from "./AddComponent";
 import "../../assets/dashBoard.css";
 import { useState } from "react";
-
+import { ProductArray } from "../../data/ProductArray";
  export let Dashboard = ()=>{
-    const [ShownArr, setShownArr] = useState(itemsArr);
+    const [ShownArr, setShownArr] = useState(ProductArray);
     let saveAdd=(_Object)=>{
         setShownArr([...ShownArr,_Object]);             
        }
