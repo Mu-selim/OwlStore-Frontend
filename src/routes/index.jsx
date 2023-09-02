@@ -11,6 +11,7 @@ import { JoinContextProvider } from "../contexts/joinContext";
 import { SigninPage } from "../pages/signin";
 import { HomePage } from "../pages/home";
 import { ProductPage } from "../pages/ProductPage";
+import { Dashboard } from "../Pages/DashBoard/DashBoard";
 
 const NavLayout = () => {
   return (
@@ -39,6 +40,7 @@ export const MainRouter = () => {
           }
         />
         <Route path="signin" element={<SigninPage />} />
+        <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </Router>
