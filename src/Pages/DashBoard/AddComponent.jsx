@@ -10,7 +10,10 @@ import { RadioButton } from "./RadioButton";
 import { Product } from "../../data/Product";
 import {UniqueColors} from "./UniqueColors"
 import { useEffect } from "react";
-const clothesSize = ['xs', 's','m','l','xl']; 
+const clothesSize = ['xs', 's','m','l','xl'];
+const trouserMen = [34, 36, 38, 40, 42, 44, 46, 48];
+const trouserWomen = [26, 28, 30, 32, 34, 36, 38, 40, 42, 44];
+const shoeSize = [41, 42, 43, 44, 45];
 export let AddComponent=(props)=>{
     let checkboxes=document.querySelectorAll("input[type=checkbox]");
     let [AddObjectTxt, setAddObjectTxts] = useState({
@@ -147,10 +150,19 @@ export let AddComponent=(props)=>{
         return;
     }   
     if(AddObjectTxt.Addbtntxt=="ADD Item")
-    {
+    {   
+        let sizes=[];
+        if(AddObjectTxt.Category=="T-shirt"||AddObjectTxt.Category=="Jacket"||AddObjectTxt.Category=="Shirt")
+            sizes=clothesSize;
+        else if(AddObjectTxt.Category=="Shoes")
+            sizes=shoeSize;
+        else if(AddObjectTxt.Category=="Trouser"&&AddObjectTxt.Gender=="male")
+            sizes=trouserMen;
+        else if(AddObjectTxt.Category=="Trouser"&&AddObjectTxt.Gender=="female")
+        sizes=trouserWomen;
         let newObject = new Product(AddObjectTxt.Name.toString(),parseInt(AddObjectTxt.Price),["public/images/DashBoard/imagePlaceholder.png"],
      AddObjectTxt.Gender, AddObjectTxt.Category
-        ,clothesSize,colorsArr,"",AddObjectTxt.Brand);
+        ,sizes,colorsArr,"",AddObjectTxt.Brand);
         props.SaveAddHRef(newObject);
     }
     else
