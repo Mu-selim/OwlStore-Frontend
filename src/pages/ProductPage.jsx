@@ -41,7 +41,6 @@ export function ProductPage(){
             quantity : 0 
             
         })
-        console.log(productData.imgIndex);
     },[product])
 
     const changeImg = (event, index)=>{
