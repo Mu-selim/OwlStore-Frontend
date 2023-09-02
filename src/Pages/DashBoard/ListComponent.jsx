@@ -2,24 +2,22 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-undef */
 import { useEffect, useState } from "react";
+import { ColoredWord } from "./ColoredWords";
+import { uniquecategorys } from "./categorydropdown";
 var sort = [
   { name: "name", dsc: 0 },
   { name: "brand", dsc: 0 },
   { name: "category", dsc: 0 },
   { name: "price", dsc: 0 },
 ];
+
 export let ItemsList=(props)=>{
   let {itemsArrRef}=props;
   let [ShownArr, setShownArr] = useState(itemsArrRef);
   let uniquebrands=[];
-  let uniquecategorys=[];
   itemsArrRef.filter((item) =>{ 
   if(!uniquebrands.includes(item.brand))
   uniquebrands.push(item.brand);
-    });
-  itemsArrRef.filter((item) =>{ 
-  if(!uniquecategorys.includes(item.category))
-  uniquecategorys.push(item.category);
     });
 
   let sortByColumn=(prop, index) =>{
@@ -80,9 +78,9 @@ export let ItemsList=(props)=>{
     newArr.splice(index,1);
     setShownArr(newArr);
   }
-  /* useEffect(()=>{
-  setShownArr(ShownArr);
-  }) */ 
+  useEffect(()=>{
+    setShownArr(ShownArr);
+    },[ShownArr])   
 
   
   return(
@@ -101,7 +99,8 @@ export let ItemsList=(props)=>{
   </div>
 </form>
       </div>
-      <div  className="w-full flex flex-col mb-2 justify-end mt-1 md:flex-row ">
+      <div className="w-full flex flex-col mb-2 justify-between mt-1 md:flex-row">
+      <div className="w-full flex flex-col mb-2 mt-1 md:flex-row">
       <select
           className="filters"
           name="Brand-filter"
@@ -137,10 +136,12 @@ export let ItemsList=(props)=>{
           <option value="200,250">200 - 250</option>
           <option value="250,90000">250 - &infin;</option>
         </select>
-        <button id="clearfilters" className="font-bold py-2 mt-1 px-2 w-2/6 ml-96 md:mt-0 md:w-full md"
+      </div>
+      <button id="clearfilters" className="font-bold py-2  mx-1  px-2 md:mt-0 w-3/4 self-center"
          onClick={clearfilters}>Clear Filters </button>
       </div>
-      <div className="shadow md:block">
+      
+      <div >
     <table className="w-full">
       <thead className="bg-primary border-b-2 border-gray-200 rounded-lg text-white">
       <tr >
@@ -203,8 +204,7 @@ export let ItemsList=(props)=>{
               </td>
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap">{item.name.substring(0,25)+"..."}</td>
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-        <span
-          className="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg bg-opacity-50">Available</span>
+          <ColoredWord word={item.gender}/>
         </td>
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap flex ">{item.colors.map((item)=>{
           return(
