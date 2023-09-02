@@ -1,7 +1,16 @@
+import { useState } from 'react'
+
 export  function WhatsAppIcon (props){
+    const [Color, setColor] = useState(props.color)
+    let changeColor = ()=>{
+        if(props.secondaryColor) setColor(props.secondaryColor);   
+    }
+    let resetColor = ()=>{
+        setColor(props.color)
+    }
     return(
 
-        <svg fill={props.color} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <svg fill={Color} className=' transition-all ' viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" onMouseEnter={changeColor} onMouseLeave={resetColor}>
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
             <g id="SVGRepo_iconCarrier">
