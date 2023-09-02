@@ -6,6 +6,11 @@ import {
 } from "react-router-dom";
 
 import { Navbar } from "../components/navbar";
+import { JoinPage } from "../pages/join";
+import { JoinContextProvider } from "../contexts/joinContext";
+import { SigninPage } from "../pages/signin";
+import { HomePage } from "../pages/home";
+import { ProductPage } from "../pages/ProductPage";
 import { Dashboard } from "../Pages/DashBoard/DashBoard";
 
 const NavLayout = () => {
@@ -22,11 +27,21 @@ export const MainRouter = () => {
     <Router>
       <Routes>
         <Route path="/" element={<NavLayout />}>
-          <Route index element={<h1>Home</h1>} />
+          <Route index element={<HomePage />} />
+          <Route path="product/:id" element={<ProductPage/>}/>
           <Route path="about" element={<h1>About</h1>} />
         </Route>
+        <Route
+          path="/join"
+          element={
+            <JoinContextProvider>
+              <JoinPage />
+            </JoinContextProvider>
+          }
+        />
+        <Route path="signin" element={<SigninPage />} />
+        <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="*" element={<h1>Not Found</h1>} />
-        <Route path="/DashBoard" element={<Dashboard />}/>
       </Routes>
     </Router>
   );
