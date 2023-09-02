@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
 export  function FaceBookIcon (props){
     const [Color, setColor] = useState(props.color)
