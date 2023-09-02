@@ -4,13 +4,14 @@
 import { useEffect, useState } from "react";
 import { ColoredWord } from "./ColoredWords";
 import { uniquecategorys } from "./categorydropdown";
+import { DeleteIcon } from "../../components/icons/DeleteIcon";
+import { EditIcon } from "../../components/icons/EditIcon";
 var sort = [
   { name: "name", dsc: 0 },
   { name: "brand", dsc: 0 },
   { name: "category", dsc: 0 },
   { name: "price", dsc: 0 },
 ];
-
 export let ItemsList=(props)=>{
   let {itemsArrRef}=props;
   let [ShownArr, setShownArr] = useState(itemsArrRef);
@@ -74,15 +75,26 @@ export let ItemsList=(props)=>{
     setShownArr(itemsArrRef);
   }
   let deletefun=(index)=>{
-    let newArr=ShownArr.filter(()=>{return true});
-    newArr.splice(index,1);
-    setShownArr(newArr);
+      props.RemoveHandlerRef(index);
   }
-  useEffect(()=>{
-    setShownArr(ShownArr);
-    },[ShownArr])   
+  let EditFun=(i,item)=>{
+    document.querySelectorAll("input[type=checkbox]").forEach((e)=>{
+      e.checked=false;
+    })
+    let gender=document.getElementsByName("Gender");
+    gender.forEach((e)=>{
+      if(e.value==ShownArr[i].gender.toLowerCase())
+        e.checked=true;
+    })
+    ShownArr[i].colors.forEach((e)=>{
+      document.getElementById(`${e.toLowerCase()}`).checked=true;
+    })
+    props.setEditObjRef(item);
 
-  
+  }
+   useEffect(()=>{
+    setShownArr(itemsArrRef);
+    },[itemsArrRef])
   return(
     
       <div>
@@ -136,12 +148,15 @@ export let ItemsList=(props)=>{
           <option value="200,250">200 - 250</option>
           <option value="250,90000">250 - &infin;</option>
         </select>
-      </div>
-      <button id="clearfilters" className="font-bold py-2  mx-1  px-2 md:mt-0 w-3/4 self-center"
+      </div >
+      <div className="p-2 md:w-1/4">
+      <button id="clearfilters" className="font-bold w-full  py-2 self-center rounded-lg"
          onClick={clearfilters}>Clear Filters </button>
       </div>
       
-      <div >
+      </div>
+      
+      <div className="block overflow-x-scroll">
     <table className="w-full">
       <thead className="bg-primary border-b-2 border-gray-200 rounded-lg text-white">
       <tr >
@@ -194,7 +209,7 @@ export let ItemsList=(props)=>{
       <tbody className=" divide-gray-100">
       {ShownArr.map((item,i)=>{
           return(
-              <tr className="bg-white">
+              <tr className="bg-white hover:bg-gray-100">
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                 
           <a href="#" className="font-bold text-blue-500 hover:underline">{item.id}</a>
@@ -208,7 +223,7 @@ export let ItemsList=(props)=>{
         </td>
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap flex ">{item.colors.map((item)=>{
           return(
-            <div className="mx-px"
+            <div className="mx-px mt-2.5"
             style={{borderRadius:"100%", border:"1px solid black", backgroundColor:`${item}`, width:"20px", height:"20px"}}></div>)
         })} </td>
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap">{item.brand}</td>
@@ -217,12 +232,13 @@ export let ItemsList=(props)=>{
               <td className="p-3 text-sm  font-bold text-gray-700 whitespace-nowrap">{item.price+"$"}</td>
               <td>
                 <div className="flex">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 w-1/2 px-3 rounded-xl">
-                Edit
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 w-1/2 px-1.5 flex justify-center rounded-xl"
+                onClick={()=>EditFun(i,item)}>
+                <EditIcon/>
               </button>
-                <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-1.5 w-1/2 ml-2 px-2 rounded-xl"
+                <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 w-1/2 ml-2  mr-1 px-1.5 flex justify-center rounded-xl"
               onClick={()=>deletefun(i)}>
-                Delete
+                <DeleteIcon/>
               </button>
                 </div>
               </td>

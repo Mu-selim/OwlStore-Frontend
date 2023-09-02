@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 import { useState } from "react";
 import {OwlIcon} from "../../components/icons/owlIcon"
@@ -7,67 +8,89 @@ import { CheckBox } from "./ColorsInput";
 import { TxtInput } from "./TxtInput";
 import { RadioButton } from "./RadioButton";
 import { Product } from "../../data/Product";
+import {UniqueColors} from "./UniqueColors"
+import { useEffect } from "react";
 const clothesSize = ['xs', 's','m','l','xl']; 
 export let AddComponent=(props)=>{
     let checkboxes=document.querySelectorAll("input[type=checkbox]");
     let [AddObjectTxt, setAddObjectTxts] = useState({
-        Name: '',
-        Brand: '',
+        product:props.ProductRef,
+        Name:'',
+        Brand:'',
         Category:'',
         Price:'',
-        Gender:"male"
+        Gender:'',
+        Addbtntxt:"ADD Item",
+        Resetbtntxt:"Reset",
+        Nameflag:false,
+        Brandflag:false,
+        Categoryflag:false,
+        Priceflag:false,
     });
-    
-    let validateForm=()=> {
-        let warnbar= document.getElementById("Bardcodewarn");
-        let warnname=document.getElementById("namewarn");
-        let Brandwarn=document.getElementById("Brandwarn");
-        let catwarn=document.getElementById("categorywarn");
-        let pricewarn=document.getElementById("pricewarn");
-
-        if (AddObjectTxt.Barcode.length==0 ||isNaN(parseFloat(AddObjectTxt.Barcode))|| !isFinite(AddObjectTxt.Barcode)) {
-            warnbar.style.display="inline";
-            return false;
-        } 
+    let ValidateString=(e)=>{
+        if(e.target.value=="")
+        {
+            document.getElementById(`warn${e.target.name}`).innerText=`${e.target.name} cannot be empty`;
+            setAddObjectTxts({
+                ...AddObjectTxt,
+                [`${e.target.name}flag`]:false
+            })
+        }
+        else if(e.target.value.length<3||e.target.value.length>60)
+        {
+            document.getElementById(`warn${e.target.name}`).innerText=`${e.target.name} Must be between 3 and 60 chars`;
+            setAddObjectTxts({
+                ...AddObjectTxt,
+                [`${e.target.name}flag`]:false
+            })
+        }
         else
         {
-            warnbar.style.display="none";
-        }
-         if (AddObjectTxt.Name.length == 0 ||!isNaN(parseFloat(AddObjectTxt.Name))) {
-            warnname.style.display="inline";
-            return false;
-         }
-         else
-         {
-            warnname.style.display="none";
-         }
-         if (AddObjectTxt.Brand.length==0 ||!isNaN(parseFloat(AddObjectTxt.Brand))) {
-            Brandwarn.style.display="inline";
-            return false;
-        } 
-        else
-        {
-            Brandwarn.style.display="none";
-        }
-        if (AddObjectTxt.Category.length==0 ||!isNaN(parseFloat(AddObjectTxt.Category))) {
-            catwarn.style.display="inline";
-            return false;
-        } 
-        else
-        {
-            catwarn.style.display="none";
-        }
-        if (AddObjectTxt.Price.length==0 ||isNaN(parseFloat(AddObjectTxt.Price))|| !isFinite(AddObjectTxt.Price)) {
-            pricewarn.style.display="inline";
-            return false;
-        } 
-        else
-        {
-            pricewarn.style.display="none";
-        }
-        return true;
+            document.getElementById(`warn${e.target.name}`).innerText="";
+            setAddObjectTxts({
+                ...AddObjectTxt,
+                [`${e.target.name}flag`]:true
+            })
+        }    
     }
-    
+
+    let ValidateNumber=(e)=>{
+        var numberRegex = /^\d+$/;
+        if(e.target.value=="")
+        {
+            document.getElementById(`warn${e.target.name}`).innerText=`${e.target.name} cannot be empty.`;
+            setAddObjectTxts({
+                ...AddObjectTxt,
+                [`${e.target.name}flag`]:false
+            })
+
+        }
+        else if(!numberRegex.test(e.target.value))
+        {
+            document.getElementById(`warn${e.target.name}`).innerText=`${e.target.name} can only contain numbers`;
+            setAddObjectTxts({
+                ...AddObjectTxt,
+                [`${e.target.name}flag`]:false
+            })
+        }
+        else if(parseInt(e.target.value)>500||parseInt(e.target.value)<=0)
+        {
+            document.getElementById(`warn${e.target.name}`).innerText=`${e.target.name} can only contain numbers from 1 to 500`;
+            setAddObjectTxts({
+                ...AddObjectTxt,
+                [`${e.target.name}flag`]:false
+            })
+        }
+        else
+        {
+            document.getElementById(`warn${e.target.name}`).innerText="";
+            setAddObjectTxts({
+                ...AddObjectTxt,
+                [`${e.target.name}flag`]:true
+            })
+        }    
+    }
+
     let changeinputvlaue = (e) => {
         setAddObjectTxts({
             ...AddObjectTxt,
@@ -75,6 +98,7 @@ export let AddComponent=(props)=>{
         })
     }
     let Resetinput=()=>{
+        document.querySelectorAll(".warning").forEach((e)=>e.innerText="");
         checkboxes.forEach((e)=>{
             e.checked=false;
         })
@@ -85,32 +109,98 @@ export let AddComponent=(props)=>{
             Brand: '',
             Category:'',
             Price:'',
-            Gender:"male"
+            Gender:"male",
+            Addbtntxt:"ADD Item",
+            Resetbtntxt:"Reset"
         })
     }
- let SavingAdd = () => {
+    let SavingAdd = () => {
+    let flag=true;
     let colorsArr=[];
     checkboxes.forEach((e)=>{
         if(e.checked)
         colorsArr.push(e.value);
     })
-    let newObject = new Product(AddObjectTxt.Name,AddObjectTxt.Price,"../../../public/images/DashBoard/imagePlaceholder.png",
+    if(!AddObjectTxt.Category)
+    {
+        document.getElementById("categorywarn").innerText="pick a category";
+        flag=false;
+    }
+    else
+    document.getElementById("categorywarn").innerText="";
+    if(colorsArr.length==0)
+    {
+        document.getElementById("colorswarn").innerText="Choose at least 1 color";
+        flag=false;
+    }
+    else
+    document.getElementById("colorswarn").innerText="";
+    if(!AddObjectTxt.Gender)
+    {
+        document.getElementById("genderwarn").innerText="Choose a gender";
+        flag=false;
+    }
+    else
+    document.getElementById("genderwarn").innerText="";
+    if(!(flag&&AddObjectTxt.Nameflag&&AddObjectTxt.Priceflag&&AddObjectTxt.Brandflag))
+    {
+        return;
+    }   
+    if(AddObjectTxt.Addbtntxt=="ADD Item")
+    {
+        let newObject = new Product(AddObjectTxt.Name.toString(),parseInt(AddObjectTxt.Price),["public/images/DashBoard/imagePlaceholder.png"],
      AddObjectTxt.Gender, AddObjectTxt.Category
         ,clothesSize,colorsArr,"",AddObjectTxt.Brand);
+        props.SaveAddHRef(newObject);
+    }
+    else
+    {
+        let editiedProduct=props.ProductRef;
+        editiedProduct.name=AddObjectTxt.Name;
+        editiedProduct.brand=AddObjectTxt.Brand;
+        editiedProduct.category=AddObjectTxt.Category;
+        editiedProduct.price=parseInt(AddObjectTxt.Price);
+        editiedProduct.gender=AddObjectTxt.Gender;
+        editiedProduct.colors=colorsArr;
+        props.SaveEditHandlerRef(editiedProduct);
+        setAddObjectTxts({
+            ...AddObjectTxt,
+            product:null
+        })
+    }
     // eslint-disable-next-line react/prop-types
-    console.log(newObject);
-    props.SaveAddHRef(newObject);
     Resetinput();
 }
-    
+useEffect(()=>{
+    setAddObjectTxts({
+        ...AddObjectTxt,
+        product:props.ProductRef
+    })
+        if(props.ProductRef==null)
+        {
+            return;
+        }
+        else
+        {
+            setAddObjectTxts({
+                Name:props.ProductRef.name,
+                Brand:props.ProductRef.brand,
+                Category:props.ProductRef.category,
+                Price:props.ProductRef.price,
+                Gender:props.ProductRef.gender,
+                Addbtntxt:"Confirm",
+                Resetbtntxt:"Cancel"
+            });
+        }
+    },[props.ProductRef])
 return (
-    <div  id="addcomp" className=" p-3 flex flex-col gap-2 md:gap-0 lg:gap-2">
+    <div  id="addcomp" className="pt-3 px-3 flex flex-col lg:gap-0.5">
         <Link id="icon" to="/">
             <OwlIcon />
           </Link>
-        <h1 id="addhead"className="">Item: </h1>
-        <TxtInput value={AddObjectTxt.Name} name={"Name"} change={changeinputvlaue}/>
-        <TxtInput value={AddObjectTxt.Brand} name={"Brand"} change={changeinputvlaue}/>
+        <h2 id="addhead"className="">Item: </h2>
+        <TxtInput value={AddObjectTxt.Name} name={"Name"} change={changeinputvlaue} validate={ValidateString}/>
+        <TxtInput value={AddObjectTxt.Brand} name={"Brand"} change={changeinputvlaue} validate={ValidateString}/>
         <div>
             <label htmlFor="Category" >Category</label>
             <select
@@ -125,28 +215,25 @@ return (
             return (<option className="text-black" value={item}>{item}</option>)
           })}
         </select>
+        <span className="warning text-xs text-red-600" id="categorywarn"></span>
         </div>
-        <TxtInput value={AddObjectTxt.Price} name={"Price"} change={changeinputvlaue}/>
+        <TxtInput value={AddObjectTxt.Price} name={"Price"} change={changeinputvlaue} validate={ValidateNumber}/>
         <span>Gender</span>
         <div className="flex flex-row flex-wrap">
             <RadioButton name={"Male"} change={changeinputvlaue} checked={(AddObjectTxt.Gender=="male")?true:false}/>
             <RadioButton name={"Female"} change={changeinputvlaue} checked={(AddObjectTxt.Gender=="female")?true:false} />
             <RadioButton name={"Uni"} change={changeinputvlaue} checked={(AddObjectTxt.Gender=="uni")?true:false}/>
+            <span className="warning text-xs text-red-600" id="genderwarn"></span>
         </div>
         <span >Colors</span>
         <div className="flex flex-wrap">
-        <CheckBox color={"blue"}/>
-        <CheckBox color={"green"}/>
-        <CheckBox color={"yellow"}/>
-        <CheckBox color={"white"}/>
-        <CheckBox color={"gray"}/>
-        <CheckBox color={"black"}/>
-        <CheckBox color={"red"}/>
-        <CheckBox color={"purple"}/>
-        <CheckBox color={"orange"}/>
+        {UniqueColors.map(e=>{
+            return (<CheckBox color={`${e}`}/>);
+        })}
         </div>
-        <button type="submit" id="additembtn"className="bg-yellow-light h-10 font-bold w-3/4 self-center rounded-lg" onClick={SavingAdd}>ADD Item</button>
-        <button  id="resetbtn" className="mt-1 bg-red-600 hover:bg-red-700 h-10 font-bold w-3/4  self-center rounded-lg" onClick={Resetinput}>Reset</button>
+        <span className="warning text-xs text-red-600" id="colorswarn"></span>
+        <button type="submit"  id="additembtn"className=" disabled:bg-gray-400 hover:bg-yellow-500 bg-yellow-light h-10 font-bold w-full self-center rounded-lg" onClick={SavingAdd}>{AddObjectTxt.Addbtntxt}</button>
+        <button  id="resetbtn" className="mt-1 bg-red-600 text-white hover:bg-red-700 h-10 font-bold w-full  self-center rounded-lg" onClick={Resetinput}>{AddObjectTxt.Resetbtntxt}</button>
     </div>
 )
 }
