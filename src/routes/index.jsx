@@ -12,6 +12,7 @@ import { SigninPage } from "../pages/signin";
 import { HomePage } from "../pages/home";
 import { ProductPage } from "../pages/ProductPage";
 import { ExplorePage } from "../pages/ExplorePage";
+import { Dashboard } from "../Pages/DashBoard/DashBoard";
 
 const NavLayout = () => {
   return (
@@ -28,8 +29,8 @@ export const MainRouter = () => {
       <Routes>
         <Route path="/" element={<NavLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="product/:id" element={<ProductPage/>}/>
-          <Route path="explore" element={<ExplorePage/>}/>
+          <Route path="product/:id" element={<ProductPage />}/>
+          <Route path="explore" element={<ExplorePage />}/>
           <Route path="about" element={<h1>About</h1>} />
         </Route>
         <Route
@@ -41,6 +42,7 @@ export const MainRouter = () => {
           }
         />
         <Route path="signin" element={<SigninPage />} />
+        <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </Router>
