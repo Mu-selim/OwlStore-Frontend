@@ -18,6 +18,10 @@ export function ExplorePage(){
         return product.category;
     }))];
 
+    let genderArr = [...new Set(ProductArray.map((product)=>{
+        return product.gender;
+    }))];
+
     let matchRule = (str, rule)=>{
         var escapeRegex = (str) => str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
         return new RegExp("^" + rule.split("*").map(escapeRegex).join(".*") + "$").test(str);
@@ -92,7 +96,7 @@ export function ExplorePage(){
 
                             <DropDownMenu value={exploreObject.category} name={"category"} changeFun={filterChange} options={categoriesArr}/>
 
-                            <DropDownMenu value={exploreObject.gender} name={"gender"} changeFun={filterChange} options={['male','female','uni']}/>                            
+                            <DropDownMenu value={exploreObject.gender} name={"gender"} changeFun={filterChange} options={genderArr}/>                            
                         </div>
                         <div className="mx-3">
                             <button className=" bg-yellow-light px-2 py-1 rounded-xl text-primary text-base" onClick={clearFilter}>Clear Filter</button>
