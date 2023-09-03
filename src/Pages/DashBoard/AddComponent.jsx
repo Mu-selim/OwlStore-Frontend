@@ -104,7 +104,6 @@ export let AddComponent=(props)=>{
         checkboxes.forEach((e)=>{
             e.checked=false;
         })
-        console.log(AddObjectTxt.Category);
         setAddObjectTxts({
             ...AddObjectTxt,
             Name: '',
