@@ -3,14 +3,14 @@ import { Product } from "./Product";
 const clothesSize = ['xs', 's','m','l','xl'];
 const trouserMen = [34, 36, 38, 40, 42, 44, 46, 48];
 const trouserWomen = [26, 28, 30, 32, 34, 36, 38, 40, 42, 44];
-const showSize = [41, 42, 43, 44, 45];
+const shoeSize = [41, 42, 43, 44, 45];
 export const ProductArray =[
     
     new Product("CAMPUS FOOTPATROL SHOES", 50, [
     "/images/products/1.avif",
     "/images/products/2.avif",
     "/images/products/3.avif"]
-    , "uni", "Shoes", showSize, ["gray", "black", "orange"], 4,"Adidas" ),
+    , "uni", "Shoes", shoeSize, ["gray", "black", "orange"], 4,"Adidas" ),
 
     new Product("‘ONE PIECE’ CHARACTERS T-SHIRT", 20, [
     "/images/products/‘ONE PIECE’ CHARACTERS T-SHIRT1.jpg",
@@ -40,7 +40,7 @@ export const ProductArray =[
     "/images/products/BASIC STANDARD FIT JEANS1.jpg",
     "/images/products/BASIC STANDARD FIT JEANS2.jpg",
     "/images/products/BASIC STANDARD FIT JEANS3.jpg"]
-    , "male", "Trousers", trouserMen, ["blue", "black", "white"], 2,"Bershka" ),
+    , "male", "Trouser", trouserMen, ["blue", "black", "white"], 2,"Bershka" ),
 
     new Product("CARGO BERMUDA SHORTS", 35, [
     "/images/products/CARGO BERMUDA SHORTS1.jpg",
@@ -76,13 +76,13 @@ export const ProductArray =[
     "/images/products/OVERSIZE HOODIE gray1.jpg",
     "/images/products/OVERSIZE HOODIE gray2.jpg",
     "/images/products/OVERSIZE HOODIE gray3.jpg"]
-    , "female", "T-shirt", clothesSize, ["gray"], 4,"Zara" ),
+    , "female", "Hoodie", clothesSize, ["gray"], 4,"Zara" ),
 
     new Product("OVERSIZE HOODIE", 30, [
     "/images/products/OVERSIZE HOODIE1.jpg",
     "/images/products/OVERSIZE HOODIE2.jpg",
     "/images/products/OVERSIZE HOODIE3.jpg"]
-    , "female", "Shoes", showSize, ["black", "white"], 5,"Zara" ),
+    , "female", "Hoodie", shoeSize, ["black", "white"], 5,"Zara" ),
 
     new Product("PUSH UP MID-RISE JEANS", 40, [
     "/images/products/PUSH UP MID-RISE JEANS1.jpg",
@@ -94,7 +94,7 @@ export const ProductArray =[
     "/images/products/SASUKE UCHIHA T-SHIRT1.jpg",
     "/images/products/SASUKE UCHIHA T-SHIRT2.jpg",
     "/images/products/SASUKE UCHIHA T-SHIRT3.jpg"]
-    , "female", "Shirt", clothesSize, ["green", "black", "white"], 5,"Defacto" ),
+    , "female", "T-shirt", clothesSize, ["green", "black", "white"], 5,"Defacto" ),
 
     new Product("SOFT-KNIT CARGO JOGGING TROUSERS", 70, [
     "/images/products/SOFT-KNIT CARGO JOGGING TROUSERS1.jpg",
@@ -155,7 +155,7 @@ export const ProductArray =[
     "/images/products/Men's contrast mesh trainers1.jpg",
     "/images/products/Men's contrast mesh trainers2.jpg",
     "/images/products/Men's contrast mesh trainers3.jpg"]
-    , "uni", "Shoes", showSize, ["gray"], 5,"Zara" ),
+    , "uni", "Shoes", shoeSize, ["gray"], 5,"Zara" ),
 
     new Product("Ripped wide-leg 90s jeans", 40, [
     "/images/products/Ripped wide-leg 90s jeans1.jpg",

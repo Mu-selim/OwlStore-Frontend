@@ -12,17 +12,17 @@ export function Footer(){
                 <div className="follow-us">
                     <p className="text-primary font-bold my-1">Follow us on Social Media</p>
                     <div className="social-media flex gap-3">
-                        <div className="w-8">
-                            <FaceBookIcon color={"#edcf5d"}/>
+                        <div className="w-8 hover:cursor-pointer">
+                            <FaceBookIcon color={"#edcf5d"} secondaryColor={"#010101"}/>
                         </div>
-                        <div className="w-8">
-                            <TwitterIcon color={"#edcf5d"}/>
+                        <div className="w-8 hover:cursor-pointer">
+                            <TwitterIcon color={"#edcf5d"} secondaryColor={"#010101"}/>
                         </div>
-                        <div className="w-8">
-                            <InstagramIcon color={"#edcf5d"}/>
+                        <div className="w-8 hover:cursor-pointer">
+                            <InstagramIcon color={"#edcf5d"} secondaryColor={"#010101"}/>
                         </div>
-                        <div className="w-8">
-                            <WhatsAppIcon color={"#edcf5d"}/>
+                        <div className="w-8 hover:cursor-pointer">
+                            <WhatsAppIcon color={"#edcf5d"} secondaryColor={"#010101"}/>
                         </div>
                     </div>
                 </div>
