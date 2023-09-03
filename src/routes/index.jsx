@@ -11,7 +11,7 @@ import { JoinContextProvider } from "../contexts/joinContext";
 import { SigninPage } from "../pages/signin";
 import { HomePage } from "../pages/home";
 import { ProductPage } from "../pages/ProductPage";
-import { ExplorePage } from "../pages/home/ExplorePage";
+import { ExplorePage } from "../pages/ExplorePage";
 
 const NavLayout = () => {
   return (
