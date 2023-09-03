@@ -6,10 +6,12 @@ import { ProductArray } from "../../data/ProductArray";
  export let Dashboard = ()=>{ 
     const [ShownArr, setShownArr] = useState(ProductArray);
     const [emptyProduct, setemptyProduct]=useState(null);
+    const [triggerEdit,setTriggerEdit]=useState(false);
     let saveAdd=(_Object)=>{
         setShownArr([...ShownArr,_Object]);    
        }
     let setEditObj=(_Object)=>{
+        setTriggerEdit(!triggerEdit);
         setemptyProduct(_Object);
     }
     let RemoveHandler=(index)=>{
@@ -29,7 +31,7 @@ import { ProductArray } from "../../data/ProductArray";
         return(
             <div className="flex  flex-col md:flex-row">
                 <div className=" md:sticky md:top-0 md:h-screen md:w-1/6">
-                    <AddComponent SaveEditHandlerRef={SaveEditHandler} itemsArrRef={ShownArr} ProductRef={emptyProduct} SaveAddHRef={saveAdd}/>
+                    <AddComponent triggerEdit={triggerEdit} SaveEditHandlerRef={SaveEditHandler} itemsArrRef={ShownArr} ProductRef={emptyProduct} SaveAddHRef={saveAdd}/>
                 </div>
                 <div className="md:w-5/6 max-w-full">
                 <ItemsList itemsArrRef={ShownArr} setEditObjRef={setEditObj} RemoveHandlerRef={RemoveHandler}/>

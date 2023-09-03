@@ -25,10 +25,9 @@ export let AddComponent=(props)=>{
         Gender:'',
         Addbtntxt:"ADD Item",
         Resetbtntxt:"Reset",
-        Nameflag:false,
-        Brandflag:false,
-        Categoryflag:false,
-        Priceflag:false,
+        Nameflag:null,
+        Brandflag:null,
+        Priceflag:null
     });
     let ValidateString=(e)=>{
         if(e.target.value=="")
@@ -145,11 +144,13 @@ export let AddComponent=(props)=>{
     }
     else
     document.getElementById("genderwarn").innerText="";
-    if(!(flag&&AddObjectTxt.Nameflag&&AddObjectTxt.Priceflag&&AddObjectTxt.Brandflag))
+    if(AddObjectTxt.Nameflag==false||AddObjectTxt.Priceflag==false||AddObjectTxt.Brandflag==false)
     {
-        return;
-    }   
-    if(AddObjectTxt.Addbtntxt=="ADD Item")
+        flag=false;
+    }
+    if(flag)
+    {
+        if(AddObjectTxt.Addbtntxt=="ADD Item")
     {   
         let sizes=[];
         if(AddObjectTxt.Category=="T-shirt"||AddObjectTxt.Category=="Jacket"||AddObjectTxt.Category=="Shirt")
@@ -180,8 +181,9 @@ export let AddComponent=(props)=>{
             product:null
         })
     }
-    // eslint-disable-next-line react/prop-types
     Resetinput();
+    }
+    // eslint-disable-next-line react/prop-types
 }
 useEffect(()=>{
     setAddObjectTxts({
@@ -204,7 +206,7 @@ useEffect(()=>{
                 Resetbtntxt:"Cancel"
             });
         }
-    },[props.ProductRef])
+    },[props.ProductRef,props.triggerEdit])
 return (
     <div  id="addcomp" className="pt-3 px-3 flex flex-col lg:gap-0.5">
         <Link id="icon" to="/">
