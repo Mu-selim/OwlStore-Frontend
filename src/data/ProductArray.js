@@ -76,13 +76,13 @@ export const ProductArray =[
     "/images/products/OVERSIZE HOODIE gray1.jpg",
     "/images/products/OVERSIZE HOODIE gray2.jpg",
     "/images/products/OVERSIZE HOODIE gray3.jpg"]
-    , "female", "T-shirt", clothesSize, ["gray"], 4,"Zara" ),
+    , "female", "Hoodie", clothesSize, ["gray"], 4,"Zara" ),
 
     new Product("OVERSIZE HOODIE", 30, [
     "/images/products/OVERSIZE HOODIE1.jpg",
     "/images/products/OVERSIZE HOODIE2.jpg",
     "/images/products/OVERSIZE HOODIE3.jpg"]
-    , "female", "Shoes", shoeSize, ["black", "white"], 5,"Zara" ),
+    , "female", "Hoodie", shoeSize, ["black", "white"], 5,"Zara" ),
 
     new Product("PUSH UP MID-RISE JEANS", 40, [
     "/images/products/PUSH UP MID-RISE JEANS1.jpg",
@@ -94,7 +94,7 @@ export const ProductArray =[
     "/images/products/SASUKE UCHIHA T-SHIRT1.jpg",
     "/images/products/SASUKE UCHIHA T-SHIRT2.jpg",
     "/images/products/SASUKE UCHIHA T-SHIRT3.jpg"]
-    , "female", "Shirt", clothesSize, ["green", "black", "white"], 5,"Defacto" ),
+    , "female", "T-shirt", clothesSize, ["green", "black", "white"], 5,"Defacto" ),
 
     new Product("SOFT-KNIT CARGO JOGGING TROUSERS", 70, [
     "/images/products/SOFT-KNIT CARGO JOGGING TROUSERS1.jpg",
