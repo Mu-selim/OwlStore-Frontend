@@ -2,6 +2,7 @@ import { ProductArray } from "../../data/ProductArray"
 import { ProductCard } from "../../components/ProductCard"
 import { Footer } from "../../components/Footer"
 import { useState} from "react"
+import { DropDownMenu } from "../../components/DropDownMenu"
 export function ExplorePage(){
 
     
@@ -88,22 +89,10 @@ export function ExplorePage(){
                     <div className="filter text-yellow-light text-xl flex justify-center items-center w-full  ">
                         <div className="flex justify-between items-center">
                             <label className="w-1/3">Filter By:</label>
-                            <select value={exploreObject.category} name="category" onChange={filterChange} className="border-0 font-semibold outline-none cursor-pointer mx-2  p-2 rounded-lg">
-                                <option className=" text-gray-500" value={""}> Category </option>
-                                {
-                                    categoriesArr.map((category,index)=>{
-                                        return(
-                                            <option key={index}>{category}</option>
-                                        );
-                                    })
-                                }
-                            </select>
-                            <select value={exploreObject.gender} name="gender" onChange={filterChange} className="border-0 outline-none font-semibold cursor-pointer mx-2  p-2 rounded-lg">
-                                <option className=" text-gray-500" value={""}> Gender </option>
-                                <option >male</option>
-                                <option >female</option>
-                                <option >uni</option>
-                            </select>
+
+                            <DropDownMenu value={exploreObject.category} name={"category"} changeFun={filterChange} options={categoriesArr}/>
+
+                            <DropDownMenu value={exploreObject.gender} name={"gender"} changeFun={filterChange} options={['male','female','uni']}/>                            
                         </div>
                         <div className="mx-3">
                             <button className=" bg-yellow-light px-2 py-1 rounded-xl text-primary text-base" onClick={clearFilter}>Clear Filter</button>
