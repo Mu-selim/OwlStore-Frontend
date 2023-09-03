@@ -13,6 +13,10 @@ export function ExplorePage(){
        gender:''
     })
 
+    let categoriesArr = [...new Set(ProductArray.map((product)=>{
+        return product.category;
+    }))];
+
     let matchRule = (str, rule)=>{
         var escapeRegex = (str) => str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
         return new RegExp("^" + rule.split("*").map(escapeRegex).join(".*") + "$").test(str);
@@ -37,6 +41,7 @@ export function ExplorePage(){
         let filteredArr = ProductArray.filter((product)=>{
             return (product.category === exploreObject.category);
         })
+        if(event.target.value =="") filteredArr = ProductArray
         setExploreObject({
             ...exploreObject,
             category:exploreObject.category,
@@ -48,7 +53,8 @@ export function ExplorePage(){
         let filteredArr = ProductArray.filter((product)=>{
             return (product.gender === exploreObject.gender);
         })
-        if(filteredArr.length ===0) filteredArr = ProductArray
+        
+        if(event.target.value =="") filteredArr = ProductArray
         setExploreObject({
             ...exploreObject,
             category:exploreObject.gender,
@@ -69,10 +75,17 @@ export function ExplorePage(){
                     <div className="filter ml-2 text-yellow-light text-xl flex justify-end items-center md:w-1/3 md:self-center md:justify-self-end">
                         <label className="w-1/3">Filter By:</label>
                         <select value={exploreObject.category} onChange={categoryChange} className="border-0 font-semibold outline-none w-1/3 p-2 rounded-lg">
-                            <option disabled={true} value={""}> category </option>
+                            <option className=" text-gray-500" value={""}> Category </option>
+                            {
+                                categoriesArr.map((category,index)=>{
+                                    return(
+                                        <option key={index}>{category}</option>
+                                    );
+                                })
+                            }
                         </select>
                         <select value={exploreObject.gender} onChange={genderChange} className="border-0 outline-none font-semibold w-1/3 p-2 rounded-lg">
-                            <option disabled={true} value={""}> Gender </option>
+                            <option className=" text-gray-500" value={""}> Gender </option>
                             <option >male</option>
                             <option >female</option>
                             <option >uni</option>
