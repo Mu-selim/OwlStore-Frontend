@@ -98,12 +98,14 @@ export function ExplorePage(){
                     </div>
                 </div>
 
-                <div className="products-show flex flex-row flex-wrap my-1 mx-auto pt-5 gap-6">
-                    {exploreObject.array.map((product)=>{
-                        return(
-                            <ProductCard key={product.id} product={product}/>
-                        )
-                    })}
+                <div className="products-show flex flex-row justify-center pt-5  ">
+                    <div className="flex flex-wrap justify-evenly w-10/12">   
+                        {exploreObject.array.map((product)=>{
+                            return(
+                                <ProductCard key={product.id} product={product}/>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
             <Footer/>
