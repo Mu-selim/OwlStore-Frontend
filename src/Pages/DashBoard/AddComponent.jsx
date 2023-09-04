@@ -143,6 +143,18 @@ export let AddComponent=(props)=>{
     }
     else
     document.getElementById("genderwarn").innerText="";
+    if(AddObjectTxt.Brand==""&&AddObjectTxt.Addbtntxt=="ADD Item")
+    {
+        flag=false;
+        document.getElementById("warnBrand").innerText="Brand cannot be empty";
+    }
+    if(AddObjectTxt.Name==""&&AddObjectTxt.Addbtntxt=="ADD Item")
+    {document.getElementById("warnName").innerText="Name cannot be empty";
+        flag=false;
+    }
+    if(AddObjectTxt.Price==""&&AddObjectTxt.Addbtntxt=="ADD Item")
+    {document.getElementById("warnPrice").innerText="Price cannot be empty";
+        flag=false;}
     if(AddObjectTxt.Nameflag==false||AddObjectTxt.Priceflag==false||AddObjectTxt.Brandflag==false)
     {
         flag=false;
@@ -228,7 +240,7 @@ return (
             return (<option className="text-black" value={item}>{item}</option>)
           })}
         </select>
-        <span className="warning text-xs text-red-600" id="categorywarn"></span>
+        <span className="spann warning text-xs text-red-600" id="categorywarn"></span>
         </div>
         <TxtInput value={AddObjectTxt.Price} name={"Price"} change={changeinputvlaue} validate={ValidateNumber}/>
         <span>Gender</span>
@@ -236,7 +248,7 @@ return (
             <RadioButton name={"Male"} change={changeinputvlaue} checked={(AddObjectTxt.Gender=="male")?true:false}/>
             <RadioButton name={"Female"} change={changeinputvlaue} checked={(AddObjectTxt.Gender=="female")?true:false} />
             <RadioButton name={"Uni"} change={changeinputvlaue} checked={(AddObjectTxt.Gender=="uni")?true:false}/>
-            <span className="warning text-xs text-red-600" id="genderwarn"></span>
+            <span className="spann warning text-xs text-red-600" id="genderwarn"></span>
         </div>
         <span >Colors</span>
         <div className="flex flex-wrap">
@@ -244,7 +256,7 @@ return (
             return (<CheckBox color={`${e}`}/>);
         })}
         </div>
-        <span className="warning text-xs text-red-600" id="colorswarn"></span>
+        <span className="spann warning text-xs text-red-600" id="colorswarn"></span>
         <button type="submit"  id="additembtn"className=" disabled:bg-gray-400 hover:bg-yellow-500 bg-yellow-light h-10 font-bold w-full self-center rounded-lg" onClick={SavingAdd}>{AddObjectTxt.Addbtntxt}</button>
         <button  id="resetbtn" className="mt-1 bg-red-600 text-white hover:bg-red-700 h-10 font-bold w-full  self-center rounded-lg" onClick={Resetinput}>{AddObjectTxt.Resetbtntxt}</button>
     </div>
