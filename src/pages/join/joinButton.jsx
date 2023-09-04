@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { AuthContext } from "../../contexts/authContext";
 import { JoinContext } from "../../contexts/joinContext";
 import { AlertContext } from "../../contexts/alertContext";
 import { useNavigate } from "react-router-dom";
@@ -26,6 +27,7 @@ const useJoin = (data) => {
 
 export const JoinButton = ({ enabled }) => {
   const navigate = useNavigate();
+  const { setUserAuth } = useContext(AuthContext);
   const { registerData, setRegisterData } = useContext(JoinContext);
   const { setAlert } = useContext(AlertContext);
   const joinMutation = useJoin(registerData);
@@ -33,7 +35,6 @@ export const JoinButton = ({ enabled }) => {
   const handleJoin = async () => {
     const isUserExist = await joinMutation.mutateAsync(registerData);
     if (isUserExist.status === "faild") {
-      console.log(registerData);
       setAlert((prev) => ({
         ...prev,
         show: true,
@@ -62,8 +63,13 @@ export const JoinButton = ({ enabled }) => {
         ),
       };
       users.push(newUser);
-      delete newUser.password;
-      localStorage.setItem("user", JSON.stringify(newUser));
+      const { password, ...rest } = newUser;
+      rest.isAuth = true;
+      setUserAuth((prev) => ({
+        ...prev,
+        rest,
+      }));
+      localStorage.setItem("user", JSON.stringify(rest));
       navigate("/");
     }
     localStorage.removeItem("userRegisterData");

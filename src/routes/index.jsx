@@ -13,10 +13,12 @@ import { HomePage } from "../pages/home";
 import { ProductPage } from "../pages/ProductPage";
 import { ExplorePage } from "../pages/ExplorePage";
 import { Dashboard } from "../Pages/DashBoard/DashBoard";
+import { AuthChecker } from "../components/authChecker";
 
 const NavLayout = () => {
   return (
     <div className="h-screen w-full max-w-screen-2xl mx-auto">
+      <AuthChecker />
       <Navbar />
       <Outlet />
     </div>
@@ -29,8 +31,8 @@ export const MainRouter = () => {
       <Routes>
         <Route path="/" element={<NavLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="product/:id" element={<ProductPage />}/>
-          <Route path="explore" element={<ExplorePage />}/>
+          <Route path="product/:id" element={<ProductPage />} />
+          <Route path="explore" element={<ExplorePage />} />
           <Route path="about" element={<h1>About</h1>} />
         </Route>
         <Route
@@ -42,7 +44,7 @@ export const MainRouter = () => {
           }
         />
         <Route path="signin" element={<SigninPage />} />
-        <Route path="/dashboard" element={<Dashboard />}/>
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </Router>
