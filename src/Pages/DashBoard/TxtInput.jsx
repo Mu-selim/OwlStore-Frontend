@@ -3,6 +3,6 @@ export let TxtInput=(props)=>{
         <label htmlFor={`txt${props.name}`}>{props.name}</label>
         <input type="text" className="rounded p-1 w-full" placeholder={props.name}
          value={props.value} id={`txt${props.name}`} name={props.name} onChange={props.change} onKeyUp={props.validate} />
-         <span className="warning text-xs text-red-600" id={`warn${props.name}`}></span>
+         <span className="spann warning text-xs text-red-600" id={`warn${props.name}`}></span>
     </div>)
 }
