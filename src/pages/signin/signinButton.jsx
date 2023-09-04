@@ -1,26 +1,58 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AlertContext } from "../../contexts/alertContext";
 import { ButtonFull } from "../../components/ButtonFull";
 import { useMutation } from "react-query";
+import { users } from "../../data/users";
 
 const useJoin = (data) => {
   return useMutation((data) => {
-    // create a promise for 2 seconds
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(data);
-      }, 2000);
+        const isUserExist = users.find(
+          (user) => user.email === data.email && user.password === data.password
+        );
+        if (isUserExist) {
+          resolve({
+            status: "success",
+            user: isUserExist,
+          });
+        }
+        resolve({
+          status: "faild",
+          message: "This email or password is wrong",
+        });
+      }, 1000);
     });
   });
 };
 
 export const SigninButton = ({ enabled, state }) => {
   const navigate = useNavigate();
+  const { setAlert } = useContext(AlertContext);
   const joinMutation = useJoin(state);
 
   const handleContinue = async () => {
-    const data = await joinMutation.mutateAsync(state);
-    alert(JSON.stringify(data));
-    navigate("/");
+    const isUserExist = await joinMutation.mutateAsync(state);
+    if (isUserExist.status === "faild") {
+      setAlert((prev) => ({
+        ...prev,
+        show: true,
+        message: isUserExist.message,
+      }));
+      const timer = setTimeout(() => {
+        setAlert((prev) => ({
+          ...prev,
+          show: false,
+          message: "",
+        }));
+      }, 3000);
+    } else {
+      const { user } = isUserExist;
+      const { password, ...rest } = user;
+      localStorage.setItem("user", JSON.stringify(rest));
+      navigate("/");
+    }
   };
   return (
     <div className="mt-3">
