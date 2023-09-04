@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { JoinContext } from "../../contexts/joinContext";
+import { AlertContext } from "../../contexts/alertContext";
 import { useNavigate } from "react-router-dom";
 import { ButtonFull } from "../../components/ButtonFull";
 import { useMutation } from "react-query";
@@ -26,13 +27,25 @@ const useJoin = (data) => {
 export const JoinButton = ({ enabled }) => {
   const navigate = useNavigate();
   const { registerData, setRegisterData } = useContext(JoinContext);
+  const { setAlert } = useContext(AlertContext);
   const joinMutation = useJoin(registerData);
 
   const handleJoin = async () => {
     const isUserExist = await joinMutation.mutateAsync(registerData);
     if (isUserExist.status === "faild") {
       console.log(registerData);
-      alert("This email is already exist");
+      setAlert((prev) => ({
+        ...prev,
+        show: true,
+        message: "This email is already exist",
+      }));
+      const timer = setTimeout(() => {
+        setAlert((prev) => ({
+          ...prev,
+          show: false,
+          message: "",
+        }));
+      }, 3000);
       // set step to 1
       setRegisterData({
         ...registerData,

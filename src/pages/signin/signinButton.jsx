@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AlertContext } from "../../contexts/alertContext";
 import { ButtonFull } from "../../components/ButtonFull";
 import { useMutation } from "react-query";
 import { users } from "../../data/users";
@@ -27,12 +29,24 @@ const useJoin = (data) => {
 
 export const SigninButton = ({ enabled, state }) => {
   const navigate = useNavigate();
+  const { setAlert } = useContext(AlertContext);
   const joinMutation = useJoin(state);
 
   const handleContinue = async () => {
     const isUserExist = await joinMutation.mutateAsync(state);
     if (isUserExist.status === "faild") {
-      alert(isUserExist.message);
+      setAlert((prev) => ({
+        ...prev,
+        show: true,
+        message: isUserExist.message,
+      }));
+      const timer = setTimeout(() => {
+        setAlert((prev) => ({
+          ...prev,
+          show: false,
+          message: "",
+        }));
+      }, 3000);
     } else {
       const { user } = isUserExist;
       const { password, ...rest } = user;
