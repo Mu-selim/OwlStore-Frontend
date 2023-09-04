@@ -32,7 +32,7 @@ export const SigninButton = ({ enabled, state }) => {
   const handleContinue = async () => {
     const isUserExist = await joinMutation.mutateAsync(state);
     if (isUserExist.status === "faild") {
-      alert("This email is not exist");
+      alert(isUserExist.message);
     } else {
       const { user } = isUserExist;
       const { password, ...rest } = user;
