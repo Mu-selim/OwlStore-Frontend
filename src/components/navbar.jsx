@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/authContext";
 import { CartContext } from "../contexts/cartContext";
 import { OwlIcon } from "./icons/owlIcon";
 import { BurgerMenu } from "./burgerMenu";
@@ -8,6 +9,7 @@ import { SideMenuProvider } from "../contexts/sideMenuContext";
 import { SideMenu } from "./sideMenu";
 
 export const Navbar = () => {
+  const { userAuth } = useContext(AuthContext);
   const { cart } = useContext(CartContext);
 
   return (
@@ -46,17 +48,25 @@ export const Navbar = () => {
             </li>
           </ul>
           <NavCart cart={cart} />
-          <div className="flex justify-center items-center gap-4 font-bold">
-            <Link to="/signin" className="">
-              Sign In
-            </Link>
-            <Link
-              to="/join"
-              className="px-3 py-1 border border-primary rounded-md transition hover:bg-primary hover:text-secondary"
-            >
-              Join
-            </Link>
-          </div>
+          {userAuth.isAuth ? (
+            <div>
+              <Link to="/dashboard" className="nav-link">
+                {userAuth.username}
+              </Link>
+            </div>
+          ) : (
+            <div className="flex justify-center items-center gap-4 font-bold">
+              <Link to="/signin" className="">
+                Sign In
+              </Link>
+              <Link
+                to="/join"
+                className="px-3 py-1 border border-primary rounded-md transition hover:bg-primary hover:text-secondary"
+              >
+                Join
+              </Link>
+            </div>
+          )}
         </div>
       </nav>
     </SideMenuProvider>

@@ -1,12 +1,25 @@
 import { useContext } from "react";
+import { AuthContext } from "../contexts/authContext";
 import { SideMenuContext } from "../contexts/sideMenuContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const SideMenu = () => {
+  const navigate = useNavigate();
+  const { userAuth, setUserAuth } = useContext(AuthContext);
   const { showSideMenu, handleShowSideMenu } = useContext(SideMenuContext);
 
   const handleLeave = () => {
+    setUserAuth((prev) => ({
+      ...prev,
+      isAuth: false,
+      username: "",
+      email: "",
+      phone: "",
+      userType: "",
+    }));
+    localStorage.removeItem("user");
     handleShowSideMenu();
+    navigate("/");
   };
 
   return (
@@ -38,12 +51,14 @@ export const SideMenu = () => {
           </Link>
         </li>
       </ul>
-      <button
-        className="mb-8 px-3 py-1 border border-primary rounded-md transition-custom hover:bg-primary hover:text-secondary"
-        onClick={handleLeave}
-      >
-        Leave
-      </button>
+      {userAuth.isAuth && (
+        <button
+          className="mb-8 px-3 py-1 border border-primary rounded-md transition-custom hover:bg-primary hover:text-secondary"
+          onClick={handleLeave}
+        >
+          Leave
+        </button>
+      )}
     </menu>
   );
 };

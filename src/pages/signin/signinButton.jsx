@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AlertContext } from "../../contexts/alertContext";
+import { AuthContext } from "../../contexts/authContext";
 import { ButtonFull } from "../../components/ButtonFull";
 import { useMutation } from "react-query";
 import { users } from "../../data/users";
@@ -30,6 +31,7 @@ const useJoin = (data) => {
 export const SigninButton = ({ enabled, state }) => {
   const navigate = useNavigate();
   const { setAlert } = useContext(AlertContext);
+  const { setUserAuth } = useContext(AuthContext);
   const joinMutation = useJoin(state);
 
   const handleContinue = async () => {
@@ -50,6 +52,8 @@ export const SigninButton = ({ enabled, state }) => {
     } else {
       const { user } = isUserExist;
       const { password, ...rest } = user;
+      rest.isAuth = true;
+      setUserAuth(rest);
       localStorage.setItem("user", JSON.stringify(rest));
       navigate("/");
     }
