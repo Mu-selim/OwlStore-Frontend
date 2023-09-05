@@ -8,10 +8,15 @@ import { Footer } from "../components/Footer";
 import { useParams} from "react-router-dom";
 export function ProductPage(){
     
-    let { id } = useParams();
+    const { id } = useParams();
     const product = ProductArray.filter((product)=>{
         if(parseInt(id)===product.id) return product;
     })[0];
+
+    const moreLikeArr = ProductArray.filter((prod)=>{
+        return(prod.category === product.category && prod.gender === product.gender)
+    });
+    console.log(moreLikeArr);
     
     const [productData, setProduct ] = useState({
         
@@ -79,7 +84,7 @@ export function ProductPage(){
             <div className="product-path">
                 <p className="text-gray-400 ml-6 w-3/4 capitalize">{`Product > ${product.gender} > ${product.category}`}</p>
             </div>
-            <div className="product-details-container w-full my-auto  p-5 md:flex">
+            <div className="product-details-container w-full my-auto mb-12 p-5 md:flex">
 
                 <div className="images-container h-[calc(100vh-66px)] float-right md:w-1/2 flex item-center justify-center mb-3">
                     <div className="small-image flex-col justify-center items-center px-1 w-1/4">
@@ -210,10 +215,15 @@ export function ProductPage(){
                 <p className="text-gray-400 ml-6 w-3/4">More Like </p>
             </div>
             <div className="more-like-container flex flex-row flex-wrap">
-                <ProductCard product = {ProductArray[1]}/>
-                <ProductCard product = {ProductArray[2]}/>
-                <ProductCard product = {ProductArray[3]}/>
-                
+                {moreLikeArr.slice(0,6).map((prod, index)=>{
+                    if(prod === product) return;
+                    else{
+                        return(
+                            <ProductCard key={index} product={prod} />
+                        )
+                    }
+                    })
+                }
             </div>
         </div>
         <Footer/>
