@@ -7,6 +7,37 @@ import { BurgerMenu } from "./burgerMenu";
 import { NavCart } from "./navCart";
 import { SideMenuProvider } from "../contexts/sideMenuContext";
 import { SideMenu } from "./sideMenu";
+import { ButtonLeave } from "./buttonLeave";
+
+const UserNavigation = () => {
+  const { userAuth } = useContext(AuthContext);
+  return (
+    <div className="flex items-center gap-4">
+      <Link to="/dashboard" className="nav-link">
+        {userAuth.username}
+      </Link>
+      <div className="hidden md:block">
+        <ButtonLeave />
+      </div>
+    </div>
+  );
+};
+
+const VisitorNavigation = () => {
+  return (
+    <div className="flex justify-center items-center gap-4 font-bold">
+      <Link to="/signin" className="">
+        Sign In
+      </Link>
+      <Link
+        to="/join"
+        className="px-3 py-1 border border-primary rounded-md transition hover:bg-primary hover:text-secondary"
+      >
+        Join
+      </Link>
+    </div>
+  );
+};
 
 export const Navbar = () => {
   const { userAuth } = useContext(AuthContext);
@@ -25,7 +56,7 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="flex justify-center items-center gap-8">
-          <ul className="font-bold gap-6 hidden sm:flex">
+          <ul className="font-bold gap-6 hidden md:flex">
             <li>
               <Link to="/" className="nav-link">
                 Home
@@ -48,25 +79,7 @@ export const Navbar = () => {
             </li>
           </ul>
           <NavCart cart={cart} />
-          {userAuth.isAuth ? (
-            <div>
-              <Link to="/dashboard" className="nav-link">
-                {userAuth.username}
-              </Link>
-            </div>
-          ) : (
-            <div className="flex justify-center items-center gap-4 font-bold">
-              <Link to="/signin" className="">
-                Sign In
-              </Link>
-              <Link
-                to="/join"
-                className="px-3 py-1 border border-primary rounded-md transition hover:bg-primary hover:text-secondary"
-              >
-                Join
-              </Link>
-            </div>
-          )}
+          {userAuth.isAuth ? <UserNavigation /> : <VisitorNavigation />}
         </div>
       </nav>
     </SideMenuProvider>
