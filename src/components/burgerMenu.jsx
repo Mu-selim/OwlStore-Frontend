@@ -5,7 +5,7 @@ export const BurgerMenu = () => {
   const { showSideMenu, handleShowSideMenu } = useContext(SideMenuContext);
   return (
     <div
-      className="z-40 w-8 flex flex-col gap-1 cursor-pointer sm:hidden"
+      className="z-40 w-8 flex flex-col gap-1 cursor-pointer md:hidden"
       onClick={handleShowSideMenu}
     >
       <span
