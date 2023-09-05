@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { HeartIcon } from "../components/icons/heartIcon";
 import { CartIcon } from "../components/icons/cartIcon";
 import { DollarIcon } from "../components/icons/dollarIcon";
-import { StarIcon } from "../components/icons/starIcon";
 import { ProductArray } from "../data/ProductArray";
 import { ProductCard } from "../components/ProductCard";
 import { Footer } from "../components/Footer";
@@ -46,6 +45,7 @@ export function ProductPage(){
             quantity : 1 
             
         })
+        window.scrollTo(0, 0);
     },[product])
 
     const changeImg = (event, index)=>{
