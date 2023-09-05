@@ -12,7 +12,6 @@ export function ProductPage(){
     const product = ProductArray.filter((product)=>{
         if(parseInt(id)===product.id) return product;
     })[0];
-    // console.log(product);
     
     const [productData, setProduct ] = useState({
         
@@ -77,8 +76,8 @@ export function ProductPage(){
         <>
         <div >
 
-            <div>
-                <p className="text-gray-400 ml-6 w-3/4">{"Product > Men > Shoes"}</p>
+            <div className="product-path">
+                <p className="text-gray-400 ml-6 w-3/4 capitalize">{`Product > ${product.gender} > ${product.category}`}</p>
             </div>
             <div className="product-details-container w-full my-auto p-5 md:flex">
 
@@ -90,7 +89,7 @@ export function ProductPage(){
                         {productData.images.map((img, index)=>{
                             return(
                             <img key={index} 
-                            className={"rounded-xl w-1/6 mx-3 " + (index === productData.imgIndex? "border-2 border-primary animate-pulse ": " ")} 
+                            className={"rounded-xl w-1/6 mx-3 " + (index === productData.imgIndex? "border-2 border-primary animate-pulse ": " ")}
                                 src={img} 
                                 onMouseEnter = {e => changeImg(e, index)}
                                 />
