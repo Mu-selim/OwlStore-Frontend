@@ -90,7 +90,7 @@ export function ExplorePage(){
                         onChange={inputChange} 
                         placeholder="Search"/>
                     </div>
-                    <div className="filter text-yellow-light text-xl flex justify-center items-center w-full  ">
+                    <div className="filter text-primary text-xl flex justify-center items-center w-full  ">
                         <div className="flex justify-between items-center">
                             <label className="w-1/3">Filter By:</label>
 
@@ -99,7 +99,7 @@ export function ExplorePage(){
                             <DropDownMenu value={exploreObject.gender} name={"gender"} changeFun={filterChange} options={genderArr}/>                            
                         </div>
                         <div className="mx-3">
-                            <button className=" bg-yellow-light px-2 py-1 rounded-xl text-primary text-base" onClick={clearFilter}>Clear Filter</button>
+                            <button className=" bg-yellow-light px-2 py-2 rounded-xl text-primary text-base" onClick={clearFilter}>Clear Filter</button>
                         </div>
                     </div>
                 </div>
