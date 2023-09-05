@@ -84,7 +84,7 @@ export function ExplorePage(){
             <div className="p-5">
                 <div className="search-filer-container w-full border-b-2 py-4 flex flex-col items-center gap-4  ">
                     <div className="search container  lg:w-2/3">
-                        <input className="w-full border-2 p-1 text-lg rounded-lg shadow-lg outline-yellow-light" 
+                        <input className="w-full border-2 p-2 text-lg rounded-lg shadow-lg outline-yellow-light" 
                         name="searchTxt"
                         value={exploreObject.searchTxt} 
                         onChange={inputChange} 
