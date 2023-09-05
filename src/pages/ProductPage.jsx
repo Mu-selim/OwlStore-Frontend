@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { HeartIcon } from "../components/icons/heartIcon";
 import { CartIcon } from "../components/icons/cartIcon";
 import { DollarIcon } from "../components/icons/dollarIcon";
@@ -7,8 +7,12 @@ import { ProductCard } from "../components/ProductCard";
 import { Footer } from "../components/Footer";
 import { RatingStars } from "../components/RatingStars";
 import { useParams} from "react-router-dom";
+
+import { CartContext } from "../contexts/cartContext";
+
 export function ProductPage(){
-    
+    const { cart, setCart } = useContext(CartContext);
+
     const { id } = useParams();
     const product = ProductArray.filter((product)=>{
         if(parseInt(id)===product.id) return product;
@@ -70,12 +74,35 @@ export function ProductPage(){
 
     const addCart = ()=>{
         if (productData.quantity === 0) return;
-        let productBuyInfo = {
-            size : productData.sizes[productData.sizeIndex],
-            color: productData.colors[productData.colorIndex],
-            quantity : productData.quantity 
+       
+        let size = productData.sizes[productData.sizeIndex];
+        let color = productData.colors[productData.colorIndex];
+        let quantity = productData.quantity;
+
+        let oldQuantity = 0;
+        let itemIndex = cart.items.map((item , index)=>{
+            if(item.id === product.id) return index;
+        })[0];
+        
+        if (!isNaN(itemIndex)){
+            oldQuantity = cart.items[itemIndex].quantity;
         }
-        console.log(productBuyInfo);
+
+        let cartProduct = {
+            ...product,
+            sizes: size,
+            colors: color,
+            quantity: (oldQuantity + quantity)
+        }
+        if (!isNaN(itemIndex))   cart.items[itemIndex] = cartProduct;
+        else    cart.items.push(cartProduct);
+
+        cart.total = (cart.total + (product.price * quantity));
+        setCart({
+            ...cart,
+            cart:cart.items,
+            total : cart.total
+        })
     }
 
     return (
