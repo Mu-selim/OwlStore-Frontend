@@ -107,6 +107,7 @@ export function ProductPage(){
                 <div className="details md:float-left md:w-1/2 px-6 mb-12  text-primary">
                         <div className="h-[calc(100vh-66px)]">
                             <h1 className="text-2xl font-bold tracking-tight ">{productData.name}</h1>
+                            <h1 className="font-bold mt-2 text-gray-400"> {product.brand}</h1>
                             <div className="md:p-5">
                             <div className="rating">
                                 <div className="flex items-center space-x-1">
