@@ -99,7 +99,8 @@ export function ExplorePage(){
                             <DropDownMenu value={exploreObject.gender} name={"gender"} changeFun={filterChange} options={genderArr}/>                            
                         </div>
                         <div className="mx-3">
-                            <button className=" bg-yellow-light px-2 py-2 rounded-xl text-primary text-base" onClick={clearFilter}>Clear Filter</button>
+                            <button className="px-2 py-1 rounded-xl text-base border-2 border-yellow-light text-yellow-light hover:text-white hover:bg-yellow-light transition-colors" 
+                            onClick={clearFilter}>Clear Filters</button>
                         </div>
                     </div>
                 </div>
