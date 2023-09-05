@@ -1,13 +1,13 @@
 export let InputArea=(props)=>{
     return(
-        <div className="relative h-32 w-full min-w-[200px] my-5">
+        <div className="relative h-32 w-full min-w-[200px] my-7">
     <textarea id={props.name}
       className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent
     bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0
     transition-all  placeholder-shown:border-black placeholder-shown:border-2
     placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-yellow-light
     focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-      placeholder=" "
+      placeholder=" " onChange={props.change}
     />
     <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 
     -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight
@@ -27,6 +27,7 @@ export let InputArea=(props)=>{
     peer-disabled:peer-placeholder-shown:text-blue-gray-500">
       {props.name}
     </label>
+    <div id={`warn${props.name}`} className={" text-primary text-sm px-1"}>{props.error}</div>
   </div>
     )
 }
