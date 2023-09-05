@@ -23,7 +23,7 @@ export function ProductPage(){
         imgIndex : 0,
         sizeIndex : 0,
         colorIndex: 0,
-        quantity : 0 
+        quantity : 1 
     })
 
     useEffect(()=>{
@@ -37,7 +37,7 @@ export function ProductPage(){
             imgIndex : 0,
             sizeIndex : 0,
             colorIndex: 0,
-            quantity : 0 
+            quantity : 1 
             
         })
     },[product])
@@ -98,7 +98,7 @@ export function ProductPage(){
                     </div>
                 </div>
 
-                <div className="details md:float-left md:w-1/2 p-6 text-primary">
+                <div className="details md:float-left md:w-1/2 px-6 h-[calc(100vh-66px)]  text-primary">
                     <h1 className="text-2xl font-bold tracking-tight ">{productData.name}</h1>
                     <div className="md:p-5">
                         <div className="rating">
@@ -131,7 +131,7 @@ export function ProductPage(){
                             </h1>
                         </div>
                         
-                        <div className="quantity flex my-8 flex-col">
+                        <div className="quantity flex my-4 flex-col">
                             <h3 className="mr-6 mb-3">Color </h3>
                             <div>
                                 {productData.colors.map((color, index)=>{
@@ -145,7 +145,7 @@ export function ProductPage(){
                                 })}
                             </div>
                         </div>
-                        <div className="quantity flex my-8 flex-col">
+                        <div className="quantity flex my-4 flex-col">
                             <h3 className="mr-6 mb-3">size </h3>
                             <div className="">
                                 {
@@ -175,7 +175,7 @@ export function ProductPage(){
                             }}
                             value={productData.quantity}
                             style={{caretColor: "transparent"}}
-                            min={0} />
+                            min={1} />
                         </div>
                         <div className="flex justify-start my-5">
                             <button className="bg-primary text-secondary rounded-lg py-3 px-5 mr-3 font-normal w-2/3 flex justify-center items-center" onClick={addCart}>
@@ -194,7 +194,7 @@ export function ProductPage(){
                         </div>
                         <div className="my-5">
                             <h4 className="mb-2">Details </h4>
-                            <p className="text-gray-400 ml-6 w-3/4">It debuted in basketball and was transformed by subcultures around the globe. The adidas Campus trainer has made an impact everywhere, from stages to skate parks to city streets. Now, in collaboration with Footpatrol.</p>
+                            <p className="text-gray-400 ml-6 w-3/4">{product.description}</p>
                         </div>
                             
                     </div>
