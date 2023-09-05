@@ -13,7 +13,7 @@ import { HomePage } from "../pages/home";
 import { ProductPage } from "../pages/ProductPage";
 import { ExplorePage } from "../pages/ExplorePage";
 import { Dashboard } from "../Pages/DashBoard/DashBoard";
-
+import { ContactUs } from "../Pages/ContactUs/ContactUs";
 const NavLayout = () => {
   return (
     <div className="h-screen w-full max-w-screen-2xl mx-auto">
@@ -32,6 +32,7 @@ export const MainRouter = () => {
           <Route path="product/:id" element={<ProductPage />}/>
           <Route path="explore" element={<ExplorePage />}/>
           <Route path="about" element={<h1>About</h1>} />
+          <Route path="Contact" element={<ContactUs/>} />
         </Route>
         <Route
           path="/join"
