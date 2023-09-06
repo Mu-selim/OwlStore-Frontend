@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 
 import { useContext } from "react";
 import { CartContext } from "../contexts/cartContext";
+import { WishListContext } from "../contexts/wishListContext";
 
 
 
 export function ProductCard({product}){
     const { cart, setCart } = useContext(CartContext);
+    const { wishList, setWishList } = useContext(WishListContext);
     const Navigate = useNavigate();
  
     const clickProduct = ()=>{
@@ -45,6 +47,11 @@ export function ProductCard({product}){
             total : cart.total
         })
     }
+    const addWish = ()=>{
+        if(wishList.includes(product)) return;
+        wishList.push(product);
+        setWishList(wishList);
+    }
     
     return(
         <>
@@ -67,13 +74,14 @@ export function ProductCard({product}){
                         </div>
                         <p className=" text-lg font-bold">{product.price}</p> 
                     </div>
-                    <div className="card-buttons w-2/3 flex justify-center items-center">
-                        <button className="bg-secondary rounded-lg w-2/5  py-1 flex justify-center items-center ">
+                    <div className="card-buttons w-2/3 flex justify-center items-center"
+                    onClick={addWish}>
+                        <button className="bg-secondary rounded-lg w-2/5  py-1 flex justify-center items-center transition-transform hover:scale-95">
                             <div className="w-6">
                                 <HeartIcon color={"#010101"}/>
                             </div>
                         </button>
-                        <button className="bg-primary py-1 flex justify-center items-center ml-2  rounded-lg w-2/5 "
+                        <button className="bg-primary py-1 flex justify-center items-center ml-2  rounded-lg w-2/5 transition-transform hover:scale-95"
                         onClick={addToCart}>
                             <div className="w-6">
                                 <CartIcon color={"#f2f0ea"}/>

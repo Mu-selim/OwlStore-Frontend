@@ -4,20 +4,16 @@ import { Arrow } from "./icons/Arrow";
 
 export const ProductCarousel = ({items})=>{
     const [offset, setOffset] = useState(0)
-    console.log(window.innerWidth/(16*16));
     
     const scrollRight = ()=>{
         let productsPerRow =  Math.floor(window.innerWidth/(16*16)) + 1 ;
-        console.log(((items.length-productsPerRow)*-16))
         if(offset < ((items.length-productsPerRow)*-16)) return;
         let newOffset = offset - 16;
-        console.log(newOffset);
         setOffset(newOffset)
     }
     const scrollLeft = ()=>{
         if(offset === 0) return;
         let newOffset = offset + 16;
-        console.log(newOffset);
         setOffset(newOffset)
     }
     return(
