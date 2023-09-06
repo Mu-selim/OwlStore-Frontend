@@ -114,28 +114,28 @@ export function ProductPage(){
             <div className="product-path">
                 <p className="text-gray-400 ml-6 w-3/4 capitalize">{`Product > ${product.gender} > ${product.category}`}</p>
             </div>
-            <div className="product-details-container w-full my-auto mb-12 p-5 md:flex">
+            <div className="product-details-container w-full my-auto mb-12 px-5 py-3 md:flex">
 
-                <div className="images-container h-[calc(100vh-66px)] float-right md:w-1/2 flex item-center justify-center mb-3">
+                <div className="images-container md:h-[calc(100vh-66px)] float-right md:w-1/2 flex item-center justify-center mb-3">
                     <div className="small-image flex-col justify-center items-center px-1 w-1/4">
                         {productData.images.map((img, index)=>{
                             return(
                             <img key={index} 
-                            className={"rounded-xl h-1/6 my-3 mx-auto " + (index === productData.imgIndex? "border-2 border-primary animate-pulse ": " ")}
+                            className={"rounded-xl h-1/6 flex-shrink-0 my-3 mx-auto " + (index === productData.imgIndex? "border-2 border-primary animate-pulse ": " ")}
                                 src={img} 
                                 onMouseEnter = {e => changeImg(e, index)}
                                 />
                             )
                         })}
                     </div>
-                    <div className="main-image flex mb-5 w-3/4 ">
-                        <img className="rounded-lg h-5/6" src={productData.images[productData.imgIndex]}/>
+                    <div className="main-image flex flex-shrink-0  mb-5 w-3/4 ">
+                        <img className="rounded-lg h-5/6 lg:h-4/6 md:h-4/6 xl:h-5/6 transition-all" src={productData.images[productData.imgIndex]}/>
                     </div>
                     
                 </div>
 
-                <div className="details md:float-left md:w-1/2 px-6 mb-12  text-primary">
-                        <div className="h-[calc(100vh-66px)]">
+                <div className="details md:float-left md:w-1/2 px-6  text-primary">
+                        <div className="">
                             <h1 className="text-2xl font-bold tracking-tight ">{productData.name}</h1>
                             <h1 className="font-bold mt-2 text-gray-400"> {product.brand}</h1>
                             <div className="md:p-5">
@@ -175,7 +175,7 @@ export function ProductPage(){
                                         productData.sizes.map((size, index) =>{
                                             return(
                                                 <button key={index} 
-                                                className={"bg-secondary w-20 h-10 rounded mx-3 font-bold mb-3 " + (index === productData.sizeIndex? "border-primary border-2 opacity-75":"")} 
+                                                className={"bg-secondary w-16 h-10 rounded mx-3 font-bold mb-3 " + (index === productData.sizeIndex? "border-primary border-2 opacity-75":"")} 
                                                 onClick={()=> sizeChange(index)}
                                                 value={size}>{size}</button>
                                             )
