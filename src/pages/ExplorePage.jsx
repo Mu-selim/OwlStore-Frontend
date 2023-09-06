@@ -84,13 +84,13 @@ export function ExplorePage(){
             <div className="p-5">
                 <div className="search-filer-container w-full border-b-2 py-4 flex flex-col items-center gap-4  ">
                     <div className="search container  lg:w-2/3">
-                        <input className="w-full border-2 p-1 text-lg rounded-lg shadow-lg outline-yellow-light" 
+                        <input className="w-full border-2 p-2 text-lg rounded-lg shadow-lg outline-yellow-light" 
                         name="searchTxt"
                         value={exploreObject.searchTxt} 
                         onChange={inputChange} 
                         placeholder="Search"/>
                     </div>
-                    <div className="filter text-yellow-light text-xl flex justify-center items-center w-full  ">
+                    <div className="filter text-primary text-xl flex justify-center items-center w-full  ">
                         <div className="flex justify-between items-center">
                             <label className="w-1/3">Filter By:</label>
 
@@ -99,7 +99,8 @@ export function ExplorePage(){
                             <DropDownMenu value={exploreObject.gender} name={"gender"} changeFun={filterChange} options={genderArr}/>                            
                         </div>
                         <div className="mx-3">
-                            <button className=" bg-yellow-light px-2 py-1 rounded-xl text-primary text-base" onClick={clearFilter}>Clear Filter</button>
+                            <button className="px-2 py-1 rounded-xl text-base border-2 border-yellow-light text-yellow-light hover:text-white hover:bg-yellow-light transition-colors" 
+                            onClick={clearFilter}>Clear Filters</button>
                         </div>
                     </div>
                 </div>
