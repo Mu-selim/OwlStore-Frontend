@@ -5,6 +5,7 @@ import { FormContainer } from "../../components/formContainer";
 import { OwlIcon } from "../../components/icons/owlIcon";
 import { StepOne } from "./stepOne";
 import { StepTwo } from "./stepTwo";
+import { AuthAlert } from "../../components/authAlert";
 
 export const JoinPage = () => {
   const { registerData, setRegisterData } = useContext(JoinContext);
@@ -20,6 +21,7 @@ export const JoinPage = () => {
   }, []);
   return (
     <FormContainer>
+      <AuthAlert />
       <div className="w-12 mb-3">
         <Link to="/">
           <OwlIcon />

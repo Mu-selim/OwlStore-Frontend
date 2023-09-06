@@ -4,6 +4,7 @@ import { FormContainer } from "../../components/formContainer";
 import { Input } from "../../components/input";
 import { OwlIcon } from "../../components/icons/owlIcon";
 import { SigninButton } from "./signinButton";
+import { AuthAlert } from "../../components/authAlert";
 
 const INITIAL_STATE = {
   email: "",
@@ -81,6 +82,7 @@ export const SigninPage = () => {
 
   return (
     <FormContainer>
+      <AuthAlert />
       <div className="w-12 mb-3">
         <Link to="/">
           <OwlIcon />
@@ -110,6 +112,14 @@ export const SigninPage = () => {
         enabled={state.continue}
         state={{ email: state.email, password: state.password }}
       />
+      <div className="w-full text-center mt-2">
+        <p className="text-gray-500">
+          Don't have an account?{" "}
+          <Link to="/join" className="text-gray-600 font-bold">
+            Join
+          </Link>
+        </p>
+      </div>
     </FormContainer>
   );
 };

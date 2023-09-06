@@ -78,6 +78,8 @@ export let ItemsList=(props)=>{
       props.RemoveHandlerRef(index);
   }
   let EditFun=(i,item)=>{
+    document.querySelectorAll(".spann").forEach((item)=>item.innerText="");
+    console.log(document.querySelectorAll(".spann"));
     document.querySelectorAll("input[type=checkbox]").forEach((e)=>{
       e.checked=false;
     })
@@ -221,7 +223,7 @@ export let ItemsList=(props)=>{
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
           <ColoredWord word={item.gender}/>
         </td>
-        <td className="p-3 text-sm text-gray-700 whitespace-nowrap flex ">{item.colors.map((item)=>{
+        <td className="p-3 text-sm text-gray-700 whitespace-nowrap flex flex-wrap w-28">{item.colors.map((item)=>{
           return(
             <div className="mx-px mt-2.5"
             style={{borderRadius:"100%", border:"1px solid black", backgroundColor:`${item}`, width:"20px", height:"20px"}}></div>)

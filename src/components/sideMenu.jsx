@@ -1,18 +1,17 @@
 import { useContext } from "react";
+import { AuthContext } from "../contexts/authContext";
 import { SideMenuContext } from "../contexts/sideMenuContext";
 import { Link } from "react-router-dom";
+import { ButtonLeave } from "./buttonLeave";
 
 export const SideMenu = () => {
+  const { userAuth } = useContext(AuthContext);
   const { showSideMenu, handleShowSideMenu } = useContext(SideMenuContext);
-
-  const handleLeave = () => {
-    handleShowSideMenu();
-  };
 
   return (
     <menu
       className={
-        "z-40 sm:hidden absolute top-0 h-screen pl-4 pr-16 flex flex-col justify-between bg-secondary transition-custom " +
+        "z-40 md:hidden absolute top-0 h-screen pl-4 pr-16 flex flex-col justify-between bg-secondary transition-custom " +
         (showSideMenu ? "left-0" : "-left-80")
       }
     >
@@ -38,12 +37,11 @@ export const SideMenu = () => {
           </Link>
         </li>
       </ul>
-      <button
-        className="mb-8 px-3 py-1 border border-primary rounded-md transition-custom hover:bg-primary hover:text-secondary"
-        onClick={handleLeave}
-      >
-        Leave
-      </button>
+      {userAuth.isAuth && (
+        <div className="mb-8">
+          <ButtonLeave handleShowSideMenu={handleShowSideMenu} />
+        </div>
+      )}
     </menu>
   );
 };
