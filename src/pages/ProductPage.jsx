@@ -77,12 +77,13 @@ export function ProductPage(){
        
         let size = productData.sizes[productData.sizeIndex];
         let color = productData.colors[productData.colorIndex];
-        let quantity = productData.quantity;
-
+        let quantity = parseInt(productData.quantity);
+        
         let oldQuantity = 0;
-        let itemIndex = cart.items.map((item , index)=>{
-            if(item.id === product.id) return index;
-        })[0];
+        let itemIndex = NaN;
+        cart.items.filter((item , index)=>{
+            if(item.id === product.id) itemIndex = index;
+        });
         
         if (!isNaN(itemIndex)){
             oldQuantity = cart.items[itemIndex].quantity;
@@ -103,6 +104,7 @@ export function ProductPage(){
             cart:cart.items,
             total : cart.total
         })
+        console.log(cart)
     }
 
     return (
