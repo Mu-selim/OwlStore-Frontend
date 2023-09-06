@@ -15,6 +15,7 @@ import { ExplorePage } from "../pages/ExplorePage";
 import { Dashboard } from "../Pages/DashBoard/DashBoard";
 import { AuthChecker } from "../components/authChecker";
 import { AboutPage } from "../pages/about";
+import { ContactUs } from "../Pages/ContactUs/ContactUs";
 
 const NavLayout = () => {
   return (
@@ -35,6 +36,7 @@ export const MainRouter = () => {
           <Route path="product/:id" element={<ProductPage />} />
           <Route path="explore" element={<ExplorePage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="contact" element={<ContactUs />} />
         </Route>
         <Route
           path="/join"
