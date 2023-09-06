@@ -110,7 +110,7 @@ export let ContactUs=()=>{
         <div className="h-[calc(100vh-66px)] w-full flex flex-col lg:flex-row " >
             <img
             className="h-full hidden lg:inline"
-             src="../../../public/images/ContactUS.jpg" alt="" />
+             src="/images/ContactUS.jpg" alt="" />
              <div className="w-full text-2xl h-full font-bold p-16 flex flex-col justify-center lg:w-1/2 ">
                 <h1 className=" text-4xl">Leave us a message</h1>
                 <form action="">
