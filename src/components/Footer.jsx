@@ -9,7 +9,7 @@ export function Footer(){
     return(
         <>
             <div className="footer  bg-secondary bottom-0  w-full p-2 ">
-                <div className="follow-us">
+                <div className="follow-us flex flex-col justify-center items-center mb-3">
                     <p className="text-primary font-bold my-1">Follow us on Social Media</p>
                     <div className="social-media flex gap-3">
                         <div className="w-8 hover:cursor-pointer">
@@ -28,7 +28,6 @@ export function Footer(){
                 </div>
                 <div className="copy-rights text-sm text-primary flex flex-col justify-center items-center">
                     <p> &copy; CopyRights {year}</p>
-                    <p>All rights reserved.</p>
                 </div>
             </div>
         </>
