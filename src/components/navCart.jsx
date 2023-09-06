@@ -31,7 +31,29 @@ export const NavCart = ({ cart }) => {
           </div>
           {cart.items.length > 0 ? (
             <>
-              <ul className="w-full px-4 py-2 border-b-2 max-h-40 overflow-y-auto"></ul>
+              <ul className="w-full px-4 py-2 flex flex-col gap-4 border-b-2 max-h-40 overflow-y-auto">
+                {cart.items.map((item) => (
+                  <li key={item.id} className="flex gap-2">
+                    <div className="w-16 h-16 rounded-md overflow-hidden">
+                      <img
+                        src={item.images[0]}
+                        alt={item.name}
+                        className="w-full h-full object-fill"
+                      />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-3 text-sm font-bold">
+                        <h2>{item.brand}</h2>
+                        <span>{item.price}$</span>
+                      </div>
+                      <div>
+                        {item.category} - {item.colors} - {item.sizes}
+                      </div>
+                      <div>quantity: {item.quantity}</div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
               <div className="w-full p-4 flex">
                 <Link
                   to="/checkout"
