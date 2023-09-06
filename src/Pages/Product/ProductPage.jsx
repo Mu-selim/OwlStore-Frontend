@@ -1,15 +1,15 @@
 import { useState, useEffect, useContext } from "react";
-import { HeartIcon } from "../components/icons/heartIcon";
-import { CartIcon } from "../components/icons/cartIcon";
-import { DollarIcon } from "../components/icons/dollarIcon";
-import { ProductArray } from "../data/ProductArray";
-import { ProductCard } from "../components/ProductCard";
-import { ProductCarousel } from "../components/ProductCarousel";
-import { Footer } from "../components/Footer";
-import { RatingStars } from "../components/RatingStars";
+import { HeartIcon } from "../../components/icons/heartIcon";
+import { CartIcon } from "../../components/icons/cartIcon";
+import { DollarIcon } from "../../components/icons/dollarIcon";
+import { ProductArray } from "../../data/ProductArray";
+import { ProductCard } from "../../components/ProductCard";
+import { ProductCarousel } from "../../components/ProductCarousel";
+import { Footer } from "../../components/Footer";
+import { RatingStars } from "../../components/RatingStars";
 import { useParams} from "react-router-dom";
 
-import { CartContext } from "../contexts/cartContext";
+import { CartContext } from "../../contexts/cartContext";
 
 export function ProductPage(){
     const { cart, setCart } = useContext(CartContext);

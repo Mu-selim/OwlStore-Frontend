@@ -2,6 +2,7 @@ import { MainRouter } from "./routes";
 import { AuthContextContextProvider } from "./contexts/authContext";
 import { CartProvider } from "./contexts/cartContext";
 import { AlertContextProvider } from "./contexts/alertContext";
+import { WishListProvider } from "./contexts/wishListContext";
 
 export const App = () => {
 
@@ -9,7 +10,9 @@ export const App = () => {
     <AuthContextContextProvider>
       <CartProvider>
         <AlertContextProvider>
-          <MainRouter />
+          <WishListProvider>
+            <MainRouter />
+          </WishListProvider>
         </AlertContextProvider>
       </CartProvider>
     </AuthContextContextProvider>
