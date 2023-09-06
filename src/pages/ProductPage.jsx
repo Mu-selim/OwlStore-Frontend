@@ -4,6 +4,7 @@ import { CartIcon } from "../components/icons/cartIcon";
 import { DollarIcon } from "../components/icons/dollarIcon";
 import { ProductArray } from "../data/ProductArray";
 import { ProductCard } from "../components/ProductCard";
+import { ProductCarousel } from "../components/ProductCarousel";
 import { Footer } from "../components/Footer";
 import { RatingStars } from "../components/RatingStars";
 import { useParams} from "react-router-dom";
@@ -230,16 +231,8 @@ export function ProductPage(){
             <div>
                 <p className="text-gray-400 ml-6 w-3/4">More Like </p>
             </div>
-            <div className="more-like-container flex flex-row flex-wrap">
-                {moreLikeArr.slice(0,6).map((prod, index)=>{
-                    if(prod === product) return;
-                    else{
-                        return(
-                            <ProductCard key={index} product={prod} />
-                        )
-                    }
-                    })
-                }
+            <div className="more-like-container ">
+                <ProductCarousel items={moreLikeArr}/>
             </div>
         </div>
         <Footer/>
