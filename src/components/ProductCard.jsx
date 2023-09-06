@@ -1,22 +1,63 @@
 import { DollarIcon } from "./icons/dollarIcon";
 import { CartIcon } from "./icons/cartIcon";
 import { HeartIcon } from "./icons/heartIcon";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { useContext } from "react";
+import { CartContext } from "../contexts/cartContext";
 
 
-export function ProductCard(props){
-    const product = props.product;
+
+export function ProductCard({product}){
+    const { cart, setCart } = useContext(CartContext);
+    const Navigate = useNavigate();
+ 
+    const clickProduct = ()=>{
+        Navigate(`/product/${product.id}`)
+    }
+
+    const addToCart = ()=>{
+
+        let size = product.sizes[0];
+        let color = product.colors[0];
+        let quantity = 1;
+
+        
+        let itemIndex = NaN;
+        cart.items.filter((item , index)=>{
+            if(item.id === product.id) itemIndex = index;
+        });
+        
+        if (!isNaN(itemIndex))  return;
+
+        let cartProduct = {
+            ...product,
+            sizes: size,
+            colors: color,
+            quantity: quantity
+        }
+        cart.items.push(cartProduct);
+
+        cart.total = (cart.total + (product.price * quantity));
+        setCart({
+            ...cart,
+            cart:cart.items,
+            total : cart.total
+        })
+    }
     
     return(
         <>
-            <Link to={"/product/"+product.id} className="card-container ">
+            <div  className="card-container ">
 
-                <div className="card-image w-48 h-40">
-                    <img className=" object-cover object-top w-48 h-40 " src={product.images[0]}/>
-                </div>
+                <div className=" cursor-pointer" onClick={clickProduct}>
+                    <div className="card-image w-48 h-40">
+                        <img className=" object-cover object-top w-48 h-40 " src={product.images[0]}/>
+                    </div>
 
-                <div className="card-context m-1 h-10">
-                    <p className=" text-sm font-bold">{product.name}</p>
+                    <div className="card-context m-1 h-10">
+                        <p className=" text-sm font-bold">{product.name}</p>
+                    </div>
                 </div>
 
                 <div className="card-footer mt-2 h-8 flex mx-1 border-t-2 pt-2">
@@ -32,14 +73,15 @@ export function ProductCard(props){
                                 <HeartIcon color={"#010101"}/>
                             </div>
                         </button>
-                        <button className="bg-primary py-1 flex justify-center items-center ml-2  rounded-lg w-2/5 ">
+                        <button className="bg-primary py-1 flex justify-center items-center ml-2  rounded-lg w-2/5 "
+                        onClick={addToCart}>
                             <div className="w-6">
                                 <CartIcon color={"#f2f0ea"}/>
                             </div>
                         </button>
                     </div>
                 </div>
-            </Link>
+            </div>
         </>
     )
 }
