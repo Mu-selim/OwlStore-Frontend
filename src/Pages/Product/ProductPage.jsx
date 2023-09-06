@@ -10,9 +10,11 @@ import { RatingStars } from "../../components/RatingStars";
 import { useParams} from "react-router-dom";
 
 import { CartContext } from "../../contexts/cartContext";
+import { WishListContext } from "../../contexts/wishListContext";
 
 export function ProductPage(){
     const { cart, setCart } = useContext(CartContext);
+    const {wishList, setWishList} = useContext(WishListContext);
 
     const { id } = useParams();
     const product = ProductArray.filter((product)=>{
@@ -108,6 +110,11 @@ export function ProductPage(){
         console.log(cart)
     }
 
+    const addWish = ()=>{
+        if(wishList.includes(product)) return;
+        wishList.push(product);
+        setWishList(wishList);
+    }
     return (
         <>
         <div >
@@ -202,14 +209,15 @@ export function ProductPage(){
                                 min={1} />
                             </div>
                             <div className="flex justify-start my-5">
-                                <button className="bg-primary text-secondary rounded-lg py-3 px-5 mr-3 font-normal w-2/3 flex justify-center items-center" onClick={addCart}>
+                                <button className="bg-primary text-secondary rounded-lg py-3 px-5 mr-3 font-normal w-2/3 flex justify-center items-center" 
+                                onClick={addCart}>
                                     <div className="w-8 h-8 inline-block mr-2">
                                         <CartIcon color={"#f2f0ea"}/>
                                     </div>
-
                                     Add To Cart
                                 </button>
-                                <button className="bg-secondary text-primary rounded-lg  py-2 px-3 font-bold">
+                                <button className="bg-secondary text-primary rounded-lg  py-2 px-3 font-bold"
+                                onClick={addWish}>
                                     <div className="w-8 h-8">
                                         <HeartIcon color={"#010101"}/>
                                     </div>
