@@ -1,9 +1,10 @@
-import "../../assets/ContactUs.css";
-import { Footer } from "../../components/Footer"
 import { Input } from "../../components/txtInput";
 import { InputArea } from "../../components/textarea";
 import { useEffect, useState } from "react";
-
+import { WhatsAppIcon } from "../../components/icons/whatsAppIcon";
+import { FaceBookIcon } from "../../components/icons/facebookIcon";
+import { TwitterIcon  } from "../../components/icons/twitterIcon";
+import { InstagramIcon } from "../../components/icons/instgramIcon";
 
 
 export let ContactUs=()=>{
@@ -14,6 +15,10 @@ export let ContactUs=()=>{
         Description:false,
         send: false,
     })
+    const clear=()=>{
+        document.querySelectorAll("input[type=text]").forEach((e)=>e.value="");
+        document.getElementById("Tell us about it...").value="";
+    }
     const validateEmail = (event) => {
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         let error=document.getElementById(`warn${event.target.id}`);
@@ -101,13 +106,13 @@ export let ContactUs=()=>{
             }
         },[state.Name,state.Mail,state.Subject,state.Description])
     return(
-        <div className="bg-secondary">
-        <div id="main" className="borderr w-7/12 mx-auto flex overflow-hidden rounded-lg" >
+        
+        <div className="h-[calc(100vh-66px)] w-full flex flex-col lg:flex-row " >
             <img
-            className="h-full w-5/12"
+            className="h-full hidden lg:inline"
              src="../../../public/images/ContactUS.jpg" alt="" />
-             <div className="w-7/12 bg-secondary text-2xl h-full font-bold p-10 flex flex-col justify-center">
-                <h3>Leave us a message</h3>
+             <div className="w-full text-2xl h-full font-bold p-16 flex flex-col justify-center lg:w-1/2 ">
+                <h1 className=" text-4xl">Leave us a message</h1>
                 <form action="">
                 <Input name="Name"  change={validateWords} />
                 <Input name="Mail" change={validateEmail}/>
@@ -115,17 +120,48 @@ export let ContactUs=()=>{
                 <InputArea name="Tell us about it..." change={validateTextArea}/>
                 <div className=" w-full flex justify-center">
                 <button
-                type="button"
+                onClick={()=>{
+                    alert("Email Reveived");
+                    clear();}}
+                type="submit"
                  disabled={!state.send} className="bg-yellow-light hover:bg-amber-300
-                 text-white font-bold mt-2 py-2 px-4 rounded-md w-3/6 disabled:bg-gray-300">
+                 text-white font-bold mt-2 py-2 px-4 rounded-md w-full disabled:bg-gray-300">
                     Send
                 </button>
                 </div>
                 </form>
-                
-             </div>
         </div>
-        <Footer/>
+        <div className="text-2xl w-full lg:w-3/12 h-full font-bold px-16  lg:pt-16 flex flex-col justify-start">
+                <h1 className=" text-xl mt-24">You can also connect to us on our <br /> social media accounts below.</h1>
+                <div className="social-media flex gap-3">
+                    <ul className="mt-10">
+                        <li className="flex">
+                        <div className="w-8 hover:cursor-pointer">
+                            <FaceBookIcon color={"#edcf5d"} secondaryColor={"#010101"}/>
+                        </div>
+                        <span  className="ml-2 hover:cursor-pointer">FaceBook</span>
+                        </li>
+                        <li className="mt-3 flex">
+                        <div className="w-8 hover:cursor-pointer">
+                            <TwitterIcon color={"#edcf5d"} secondaryColor={"#010101"}/>
+                        </div>
+                        <span  className="ml-2 hover:cursor-pointer">Twitter</span>
+                        </li>
+                        <li className="mt-3 flex">
+                        <div className="w-8 hover:cursor-pointer">
+                            <InstagramIcon color={"#edcf5d"} secondaryColor={"#010101"}/>
+                        </div>
+                        <span  className="ml-2 hover:cursor-pointer">Instagram</span>
+                        </li>
+                        <li className="mt-3 flex">
+                        <div className="w-8 hover:cursor-pointer">
+                            <WhatsAppIcon color={"#edcf5d"} secondaryColor={"#010101"}/>
+                        </div>
+                        <span  className="ml-2 hover:cursor-pointer">WhatsApp</span>
+                        </li>
+                    </ul>
+                    </div>
+        </div>
         </div>
     )
 }
