@@ -1,5 +1,5 @@
-import { ItemsList } from "./ListComponent";
-import { AddComponent } from "./AddComponent";
+import { ItemsList } from "./listComponent";
+import { AddComponent } from "./addComponent";
 import "../../assets/dashBoard.css";
 import { useState } from "react";
 import { ProductArray } from "../../data/ProductArray";

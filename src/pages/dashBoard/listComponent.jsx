@@ -2,8 +2,8 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-undef */
 import { useEffect, useState } from "react";
-import { ColoredWord } from "./ColoredWords";
-import { uniquecategorys } from "./categorydropdown";
+import { ColoredWord } from "./coloredWords";
+import { uniquecategorys } from "./categoryDropDown";
 import { DeleteIcon } from "../../components/icons/DeleteIcon";
 import { EditIcon } from "../../components/icons/EditIcon";
 var sort = [

@@ -1,8 +1,8 @@
 import { ProductArray } from "../../data/ProductArray"
-import { ProductCard } from "../../components/ProductCard"
-import { Footer } from "../../components/Footer"
+import { ProductCard } from "../../components/productCard"
+import { Footer } from "../../components/footer"
 import { useState} from "react"
-import { DropDownMenu } from "../../components/DropDownMenu"
+import { DropDownMenu } from "../../components/dropDownMenu"
 export function ExplorePage(){
 
     

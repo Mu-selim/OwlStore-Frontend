@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ProductCard } from "./ProductCard";
+import { ProductCard } from "./productCard";
 import { Arrow } from "./icons/Arrow";
 
 export const ProductCarousel = ({items})=>{

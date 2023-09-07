@@ -1,5 +1,5 @@
-import { Input } from "../../components/txtInput";
-import { InputArea } from "../../components/textarea";
+import { Input } from "../../components/textInput";
+import { InputArea } from "../../components/textArea";
 import { useEffect, useState } from "react";
 import { WhatsAppIcon } from "../../components/icons/whatsAppIcon";
 import { FaceBookIcon } from "../../components/icons/facebookIcon";

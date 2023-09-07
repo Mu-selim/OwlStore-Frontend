@@ -2,7 +2,7 @@ import { useContext, useReducer, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { JoinContext } from "../../contexts/joinContext";
 import { Input } from "../../components/input";
-import { ButtonFull } from "../../components/ButtonFull";
+import { ButtonFull } from "../../components/buttonFull";
 
 const INITIAL_STATE = {
   username: "",

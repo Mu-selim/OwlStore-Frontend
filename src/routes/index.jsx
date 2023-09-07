@@ -10,12 +10,12 @@ import { JoinPage } from "../pages/join";
 import { JoinContextProvider } from "../contexts/joinContext";
 import { SigninPage } from "../pages/signin";
 import { HomePage } from "../pages/home";
-import { ProductPage } from "../pages/Product/ProductPage";
-import { ExplorePage } from "../pages/Explore/ExplorePage";
-import { Dashboard } from "../Pages/DashBoard/DashBoard";
+import { ProductPage } from "../pages/product";
+import { ExplorePage } from "../pages/explore";
+import { Dashboard } from "../pages/dashBoard";
 import { AuthChecker } from "../components/authChecker";
 import { AboutPage } from "../pages/about";
-import { ContactUs } from "../Pages/ContactUs/ContactUs";
+import { ContactUs } from "../pages/contactUs";
 
 const NavLayout = () => {
   return (

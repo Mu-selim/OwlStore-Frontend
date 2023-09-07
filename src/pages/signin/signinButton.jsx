@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AlertContext } from "../../contexts/alertContext";
 import { AuthContext } from "../../contexts/authContext";
-import { ButtonFull } from "../../components/ButtonFull";
+import { ButtonFull } from "../../components/buttonFull";
 import { useMutation } from "react-query";
 import { users } from "../../data/users";
 

@@ -3,12 +3,12 @@
 import { useState } from "react";
 import {OwlIcon} from "../../components/icons/owlIcon"
 import { Link } from "react-router-dom";
-import { uniquecategorys } from "./categorydropdown";
-import { CheckBox } from "./ColorsInput";
-import { TxtInput } from "./TxtInput";
-import { RadioButton } from "./RadioButton";
+import { uniquecategorys } from "./categoryDropDown";
+import { CheckBox } from "./colorsInput";
+import { TxtInput } from "./txtInput";
+import { RadioButton } from "./radioButton";
 import { Product } from "../../data/Product";
-import {UniqueColors} from "./UniqueColors"
+import {UniqueColors} from "./uniqueColors"
 import { useEffect } from "react";
 const clothesSize = ['xs', 's','m','l','xl'];
 const trouserMen = [34, 36, 38, 40, 42, 44, 46, 48];
