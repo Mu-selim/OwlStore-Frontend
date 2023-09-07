@@ -44,6 +44,7 @@ export function ProductCard({product}){
             cart:cart.items,
             total : cart.total
         })
+        localStorage.setItem("cart", JSON.stringify(cart));
     }
    
     return(

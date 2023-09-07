@@ -104,7 +104,7 @@ export function ProductPage() {
       cart: cart.items,
       total: cart.total,
     });
-    console.log(cart);
+    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   return (
