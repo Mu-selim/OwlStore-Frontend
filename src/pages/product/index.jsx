@@ -4,6 +4,7 @@ import { CartIcon } from "../../components/icons/cartIcon";
 import { DollarIcon } from "../../components/icons/dollarIcon";
 import { ProductArray } from "../../data/ProductArray";
 import { ProductCard } from "../../components/productCard";
+import { WishBtn } from "../../components/wishBtn";
 import { ProductCarousel } from "../../components/productCarousel";
 import { Footer } from "../../components/footer";
 import { RatingStars } from "../../components/ratingStars";
@@ -242,14 +243,9 @@ export function ProductPage() {
                     </div>
                     Add To Cart
                   </button>
-                  <button
-                    className="bg-secondary rounded-lg  py-2 px-3 transition-transform hover:scale-95"
-                    onClick={addWish}
-                  >
-                    <div className="w-8 h-8">
-                      <HeartIcon color={"#010101"} />
-                    </div>
-                  </button>
+                  
+                  <WishBtn product={product} iconSize={8} py={2} px={3}/>
+                  
                 </div>
               </div>
               <div className="my-5">
