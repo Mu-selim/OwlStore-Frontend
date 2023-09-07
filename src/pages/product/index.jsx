@@ -107,11 +107,6 @@ export function ProductPage() {
     console.log(cart);
   };
 
-  const addWish = () => {
-    if (wishList.includes(product)) return;
-    wishList.push(product);
-    setWishList(wishList);
-  };
   return (
     <>
       <div>
