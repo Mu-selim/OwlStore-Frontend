@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { Product } from "../data/Product"
 
 export const WishListContext = createContext();
 
@@ -7,15 +8,15 @@ export const WishListProvider = ({ children }) => {
 
   useEffect(()=>{
     const getWish = localStorage.getItem("wishList");
-    if (getWish) {
-      setWishList((prev) => ({
-        ...prev,
-        ...JSON.parse(getWish),
-      }));
+  
+    if (getWish !== null) {
+      setWishList((prev) => (
+        JSON.parse(getWish)
+      ));
     } else {
       localStorage.setItem("wishList", JSON.stringify(wishList));
     }
-  },[wishList])
+  },[setWishList])
 
   return (
     <WishListContext.Provider value={{ wishList, setWishList }}>

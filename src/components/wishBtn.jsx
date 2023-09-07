@@ -7,21 +7,30 @@ export const WishBtn = ({product, width, py, px, iconSize})=>{
 
     const [wished, setWished] = useState(false);
 
+    const checkExist = (prod)=>{
+        let flag = false;
+        wishList.forEach((wish)=>{
+            if (wish.id === prod.id) flag = true; 
+        })
+        return flag ;
+    }
+
     useEffect(()=>{
-        if(wishList.includes(product)) setWished(true);
+        if(checkExist(product)) setWished(true);
         else setWished(false)
 
     },[wishList, product])
+    
     const addWish = ()=>{
-        if(wishList.includes(product)){
+        if(checkExist(product)){
             wishList.splice(wishList.indexOf(product),1);
-            setWishList(wishList)
             setWished(false);
-            return;
+        }else{
+            wishList.push(product);
+            setWished(true);
         }
-        wishList.push(product);
-        setWished(true);
         setWishList(wishList);
+        localStorage.setItem("wishList",JSON.stringify(wishList))
     }
     return(
         <>
