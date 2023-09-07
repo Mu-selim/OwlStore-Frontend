@@ -27,7 +27,7 @@ body::-webkit-scrollbar-track {
   }
 
   .carousel {
-    @apply w-full h-80 flex items-center overflow-x-auto overflow-y-hidden relative my-5 p-5;
+    @apply w-full h-80 flex items-center overflow-x-auto overflow-y-hidden relative mb-5 p-5;
     /* Hide scrollbar for IE, Edge and Firefox */
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
