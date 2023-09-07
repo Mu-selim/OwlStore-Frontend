@@ -2,7 +2,7 @@ import { HeartIcon } from "./icons/heartIcon";
 import { useContext, useEffect, useState } from "react";
 import { WishListContext } from "../contexts/wishListContext";
 
-export const WishBtn = ({product})=>{
+export const WishBtn = ({product, width, py, px, iconSize})=>{
     let { wishList, setWishList } = useContext(WishListContext);
 
     const [wished, setWished] = useState(false);
@@ -25,9 +25,9 @@ export const WishBtn = ({product})=>{
     }
     return(
         <>
-            <button className="bg-secondary rounded-lg w-2/5 py-1 flex justify-center items-center transition-transform hover:scale-95"
+            <button className={`bg-secondary rounded-lg w-${width} py-${py} px-${px} flex justify-center items-center transition-transform hover:scale-95`}
             onClick={addWish}>
-                <div className="w-6">
+                <div className={`w-${iconSize}`}>
                     <HeartIcon color={ wished ?"#edcf5d":"#010101"}/>
                 </div>
             </button>

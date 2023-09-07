@@ -66,7 +66,7 @@ export function ProductCard({product}){
                         <p className=" text-lg font-bold">{product.price}</p> 
                     </div>
                     <div className="card-buttons w-2/3 flex justify-center items-center">
-                        <WishBtn product={product}/>
+                        <WishBtn product={product} width={"2/5"} py={1} iconSize={6}/>
                         <button className="bg-primary py-1 flex justify-center items-center ml-2  rounded-lg w-2/5 transition-transform hover:scale-95"
                         onClick={addToCart}>
                             <div className="w-6">

@@ -1,20 +1,17 @@
 import { useState, useEffect, useContext } from "react";
-import { HeartIcon } from "../../components/icons/heartIcon";
 import { CartIcon } from "../../components/icons/cartIcon";
 import { DollarIcon } from "../../components/icons/dollarIcon";
 import { ProductArray } from "../../data/ProductArray";
-import { ProductCard } from "../../components/ProductCard";
 import { ProductCarousel } from "../../components/ProductCarousel";
+import { WishBtn } from "../../components/wishBtn";
 import { Footer } from "../../components/Footer";
 import { RatingStars } from "../../components/RatingStars";
 import { useParams} from "react-router-dom";
 
 import { CartContext } from "../../contexts/cartContext";
-import { WishListContext } from "../../contexts/wishListContext";
 
 export function ProductPage(){
     const { cart, setCart } = useContext(CartContext);
-    const {wishList, setWishList} = useContext(WishListContext);
 
     const { id } = useParams();
     const product = ProductArray.filter((product)=>{
@@ -110,11 +107,6 @@ export function ProductPage(){
         console.log(cart)
     }
 
-    const addWish = ()=>{
-        if(wishList.includes(product)) return;
-        wishList.push(product);
-        setWishList(wishList);
-    }
     return (
         <>
         <div >
@@ -215,14 +207,10 @@ export function ProductPage(){
                                         <CartIcon color={"#f2f0ea"}/>
                                     </div>
                                     Add To Cart
-                                </button>
-                                <button className="bg-secondary rounded-lg  py-2 px-3 transition-transform hover:scale-95"
-                                onClick={addWish}>
-                                    <div className="w-8 h-8">
-                                        <HeartIcon color={"#010101"}/>
-                                    </div>
+                                </button>                    
 
-                                </button>
+                                <WishBtn product={product} py={2} px={3} iconSize={8}/>                
+                    
                             </div>
                         </div>
                         <div className="my-5">
