@@ -1,17 +1,15 @@
 import { DollarIcon } from "./icons/dollarIcon";
 import { CartIcon } from "./icons/cartIcon";
-import { HeartIcon } from "./icons/heartIcon";
+import { WishBtn } from "./wishBtn";
 import { useNavigate } from "react-router-dom";
 
 import { useContext } from "react";
 import { CartContext } from "../contexts/cartContext";
-import { WishListContext } from "../contexts/wishListContext";
 
 
 
 export function ProductCard({product}){
     const { cart, setCart } = useContext(CartContext);
-    const { wishList, setWishList } = useContext(WishListContext);
     const Navigate = useNavigate();
  
     const clickProduct = ()=>{
@@ -47,12 +45,7 @@ export function ProductCard({product}){
             total : cart.total
         })
     }
-    const addWish = ()=>{
-        if(wishList.includes(product)) return;
-        wishList.push(product);
-        setWishList(wishList);
-    }
-    
+   
     return(
         <>
             <div  className="card-container ">
@@ -74,13 +67,10 @@ export function ProductCard({product}){
                         </div>
                         <p className=" text-lg font-bold">{product.price}</p> 
                     </div>
-                    <div className="card-buttons w-2/3 flex justify-center items-center"
-                    onClick={addWish}>
-                        <button className="bg-secondary rounded-lg w-2/5  py-1 flex justify-center items-center transition-transform hover:scale-95">
-                            <div className="w-6">
-                                <HeartIcon color={"#010101"}/>
-                            </div>
-                        </button>
+                    <div className="card-buttons w-2/3 flex justify-center items-center">
+
+                        <WishBtn product={product} py={1} width={'2/5'} iconSize={6}/>
+                        
                         <button className="bg-primary py-1 flex justify-center items-center ml-2  rounded-lg w-2/5 transition-transform hover:scale-95"
                         onClick={addToCart}>
                             <div className="w-6">
