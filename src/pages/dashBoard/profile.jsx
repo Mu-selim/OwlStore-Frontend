@@ -22,7 +22,7 @@ export let Profile=(props)=>{
               {props.userAuth.email}
             </div>
             <div className="mb-2 text-blueGray-600 font-bold">
-                {props.userAuth.phone}
+                +{props.userAuth.phone}
             </div>
           </div>
               <div className="flex md:flex-col justify-center flex-row">

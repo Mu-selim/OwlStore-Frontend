@@ -6,8 +6,8 @@ import { ProductArray } from "../../data/ProductArray";
 import { AuthContext } from "../../contexts/authContext";
 import { Profile } from "./Profile";
 import { AuthChecker } from "../../components/authChecker";
+import { Navigate } from "react-router-dom";
  export let Dashboard = ()=>{ 
-    AuthChecker();
     const {userAuth, setUserAuth}=useContext(AuthContext);
     const [ShownArr, setShownArr] = useState(ProductArray);
     const [emptyProduct, setemptyProduct]=useState(null);
@@ -45,8 +45,13 @@ import { AuthChecker } from "../../components/authChecker";
             </div>
             
         )
-    else
+    else if(userAuth.isAuth)
     return(
         <Profile userAuth={userAuth}/>
     )
+    else
+    {
+        return(
+        <Navigate to="../signin" replace={true}/>)
+    }
 }
