@@ -3,12 +3,12 @@
 import { useState } from "react";
 import {OwlIcon} from "../../components/icons/owlIcon"
 import { Link } from "react-router-dom";
-import { uniquecategorys } from "./categoryDropDown";
-import { CheckBox } from "./colorsInput";
-import { TxtInput } from "./txtInput";
-import { RadioButton } from "./radioButton";
+import { uniquecategorys } from "./categorydropdown";
+import { CheckBox } from "./ColorsInput";
+import { TxtInput } from "./TxtInput";
+import { RadioButton } from "./RadioButton";
 import { Product } from "../../data/Product";
-import {UniqueColors} from "./uniqueColors"
+import {UniqueColors} from "./UniqueColors"
 import { useEffect } from "react";
 const clothesSize = ['xs', 's','m','l','xl'];
 const trouserMen = [34, 36, 38, 40, 42, 44, 46, 48];
@@ -23,7 +23,7 @@ export let AddComponent=(props)=>{
         Category:'',
         Price:'',
         Gender:'',
-        Addbtntxt:"ADD Item",
+        Addbtntxt:"Add Item",
         Resetbtntxt:"Reset",
         Nameflag:null,
         Brandflag:null,
@@ -55,7 +55,21 @@ export let AddComponent=(props)=>{
             })
         }    
     }
-
+    let clearCatWarn=()=>{
+        document.getElementById("categorywarn").innerText="";
+    }
+    let clearColorwarn=()=>{
+        let counter=0;
+        checkboxes.forEach((e)=>{
+            if(e.checked==true)
+            counter++;
+        })
+        if(counter>0)
+        document.getElementById("colorswarn").innerText="";
+    }
+    let clearGenderWarn=()=>{
+        document.getElementById("genderwarn").innerText="";
+    }
     let ValidateNumber=(e)=>{
         var numberRegex = /^\d+$/;
         if(e.target.value=="")
@@ -111,11 +125,12 @@ export let AddComponent=(props)=>{
             Category:'',
             Price:'',
             Gender:"male",
-            Addbtntxt:"ADD Item",
+            Addbtntxt:"Add Item",
             Resetbtntxt:"Reset"
         })
     }
     let SavingAdd = () => {
+        console.log(AddObjectTxt.Category);
     let flag=true;
     let colorsArr=[];
     checkboxes.forEach((e)=>{
@@ -143,16 +158,16 @@ export let AddComponent=(props)=>{
     }
     else
     document.getElementById("genderwarn").innerText="";
-    if(AddObjectTxt.Brand==""&&AddObjectTxt.Addbtntxt=="ADD Item")
+    if(AddObjectTxt.Brand==""&&AddObjectTxt.Addbtntxt=="Add Item")
     {
         flag=false;
         document.getElementById("warnBrand").innerText="Brand cannot be empty";
     }
-    if(AddObjectTxt.Name==""&&AddObjectTxt.Addbtntxt=="ADD Item")
+    if(AddObjectTxt.Name==""&&AddObjectTxt.Addbtntxt=="Add Item")
     {document.getElementById("warnName").innerText="Name cannot be empty";
         flag=false;
     }
-    if(AddObjectTxt.Price==""&&AddObjectTxt.Addbtntxt=="ADD Item")
+    if(AddObjectTxt.Price==""&&AddObjectTxt.Addbtntxt=="Add Item")
     {document.getElementById("warnPrice").innerText="Price cannot be empty";
         flag=false;}
     if(AddObjectTxt.Nameflag==false||AddObjectTxt.Priceflag==false||AddObjectTxt.Brandflag==false)
@@ -161,10 +176,10 @@ export let AddComponent=(props)=>{
     }
     if(flag)
     {
-        if(AddObjectTxt.Addbtntxt=="ADD Item")
+        if(AddObjectTxt.Addbtntxt=="Add Item")
     {   
         let sizes=[];
-        if(AddObjectTxt.Category=="T-shirt"||AddObjectTxt.Category=="Jacket"||AddObjectTxt.Category=="Shirt")
+        if(AddObjectTxt.Category=="T-shirt"||AddObjectTxt.Category=="Hoodie"||AddObjectTxt.Category=="Jacket"||AddObjectTxt.Category=="Shirt")
             sizes=clothesSize;
         else if(AddObjectTxt.Category=="Shoes")
             sizes=shoeSize;
@@ -223,16 +238,17 @@ return (
         <Link id="icon" to="/">
             <OwlIcon />
           </Link>
-        <h2 id="addhead"className="">Item: </h2>
         <TxtInput value={AddObjectTxt.Name} name={"Name"} change={changeinputvlaue} validate={ValidateString}/>
         <TxtInput value={AddObjectTxt.Brand} name={"Brand"} change={changeinputvlaue} validate={ValidateString}/>
         <div>
             <label htmlFor="Category" >Category</label>
             <select
-          className="block w-full h-9 rounded text-gray-400"
+          className="block px-1 w-full h-9 rounded text-gray-400"
           name="Category"
           id="Category"
-          onChange={changeinputvlaue}
+          onChange={(e)=>{changeinputvlaue(e);
+                    clearCatWarn();
+            }}
           value={AddObjectTxt.Category}
         >
           <option  value="" disabled selected>Pick a category</option>
@@ -245,15 +261,18 @@ return (
         <TxtInput value={AddObjectTxt.Price} name={"Price"} change={changeinputvlaue} validate={ValidateNumber}/>
         <span>Gender</span>
         <div className="flex flex-row flex-wrap">
-            <RadioButton name={"Male"} change={changeinputvlaue} checked={(AddObjectTxt.Gender=="male")?true:false}/>
-            <RadioButton name={"Female"} change={changeinputvlaue} checked={(AddObjectTxt.Gender=="female")?true:false} />
-            <RadioButton name={"Uni"} change={changeinputvlaue} checked={(AddObjectTxt.Gender=="uni")?true:false}/>
+            <RadioButton name={"Male"} change={(e)=>{changeinputvlaue(e);
+                    clearGenderWarn();}} checked={(AddObjectTxt.Gender=="male")?true:false}/>
+            <RadioButton name={"Female"} change={(e)=>{changeinputvlaue(e);
+                    clearGenderWarn();}} checked={(AddObjectTxt.Gender=="female")?true:false} />
+            <RadioButton name={"Uni"} change={(e)=>{changeinputvlaue(e);
+                    clearGenderWarn();}} checked={(AddObjectTxt.Gender=="uni")?true:false}/>
             <span className="spann warning text-xs text-red-600" id="genderwarn"></span>
         </div>
         <span >Colors</span>
         <div className="flex flex-wrap">
         {UniqueColors.map(e=>{
-            return (<CheckBox color={`${e}`}/>);
+            return (<CheckBox color={`${e}`} change={clearColorwarn}/>);
         })}
         </div>
         <span className="spann warning text-xs text-red-600" id="colorswarn"></span>

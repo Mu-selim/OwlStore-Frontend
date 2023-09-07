@@ -1,5 +1,6 @@
 import { SelimRole } from "./selimRole";
 import { KareemRole } from "./kareemRule";
+import { ZahranRole } from "./ZahranRole";
 import i01 from "/images/about/_01.webp";
 import i02 from "/images/about/_02.webp";
 import i03 from "/images/about/_03.webp";
@@ -45,6 +46,7 @@ export const TeamSection = () => {
         <div className="basis-1/2 flex flex-col gap-6">
           <SelimRole />
           <KareemRole/>
+          <ZahranRole/>
         </div>
         <ImagesSide />
       </div>

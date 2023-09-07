@@ -1,9 +1,14 @@
-import { ItemsList } from "./listComponent";
+import { ItemsList } from "./ListComponent";
 import { AddComponent } from "./addComponent";
 import "../../assets/dashBoard.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ProductArray } from "../../data/ProductArray";
+import { AuthContext } from "../../contexts/authContext";
+import { Profile } from "./Profile";
  export let Dashboard = ()=>{ 
+    const {userAuth, setUserAuth}=useContext(AuthContext);
+    console.log(AuthContext);
+    console.log(userAuth.isAuth, userAuth.userType);
     const [ShownArr, setShownArr] = useState(ProductArray);
     const [emptyProduct, setemptyProduct]=useState(null);
     const [triggerEdit,setTriggerEdit]=useState(false);
@@ -28,6 +33,7 @@ import { ProductArray } from "../../data/ProductArray";
             }
         setShownArr(newArr);
     }
+    if(userAuth.isAuth&&userAuth.userType==='admin')
         return(
             <div className="flex  flex-col md:flex-row">
                 <div className=" md:sticky md:top-0 md:h-screen md:w-1/6">
@@ -39,4 +45,8 @@ import { ProductArray } from "../../data/ProductArray";
             </div>
             
         )
+    else
+    return(
+        <Profile userAuth={userAuth}/>
+    )
 }
