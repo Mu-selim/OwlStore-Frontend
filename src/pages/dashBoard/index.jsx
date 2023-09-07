@@ -1,14 +1,23 @@
 import { ItemsList } from "./ListComponent";
 import { AddComponent } from "./addComponent";
 import "../../assets/dashBoard.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductArray } from "../../data/ProductArray";
 import { AuthContext } from "../../contexts/authContext";
 import { Profile } from "./Profile";
-import { AuthChecker } from "../../components/authChecker";
 import { Navigate } from "react-router-dom";
  export let Dashboard = ()=>{ 
     const {userAuth, setUserAuth}=useContext(AuthContext);
+    useEffect(()=>{
+        if(localStorage.getItem('user'))
+        {
+            let user=JSON.parse(localStorage.getItem('user'));
+            setUserAuth((prev) => ({
+                ...prev,
+                ...user
+                }));
+        }
+    },[setUserAuth]);
     const [ShownArr, setShownArr] = useState(ProductArray);
     const [emptyProduct, setemptyProduct]=useState(null);
     const [triggerEdit,setTriggerEdit]=useState(false);
