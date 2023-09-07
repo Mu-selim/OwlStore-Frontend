@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 export let RadioButton=(props)=>{
     return(
-        <div className=" flex items-center mb-2 ml-2">
+        <div className=" flex items-center  mr-2 my-1">
             <input checked={props.checked} 
             onChange={props.change} 
             id={props.name} type="radio"
