@@ -1,9 +1,7 @@
 import { useState, useEffect, useContext } from "react";
-import { HeartIcon } from "../../components/icons/heartIcon";
 import { CartIcon } from "../../components/icons/cartIcon";
 import { DollarIcon } from "../../components/icons/dollarIcon";
 import { ProductArray } from "../../data/ProductArray";
-import { ProductCard } from "../../components/productCard";
 import { WishBtn } from "../../components/wishBtn";
 import { ProductCarousel } from "../../components/productCarousel";
 import { Footer } from "../../components/footer";
@@ -23,7 +21,7 @@ export function ProductPage() {
   })[0];
 
   const moreLikeArr = ProductArray.filter((prod) => {
-    return prod.category === product.category && prod.gender === product.gender;
+    return prod.category === product.category && prod.gender === product.gender && prod!== product
   });
 
   const [productData, setProduct] = useState({
