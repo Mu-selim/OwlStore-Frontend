@@ -6,7 +6,7 @@ const TEAM_MEMBER = {
       {
         title: "Admin Dashboard",
         description:
-          "Built the Dashboard with full CRUD operations, filters, search, sorting, full validation on the inputs and restricted access to the admin of the website.",
+          "Built the Dashboard with full CRUD operations (Create, Read, Update, Delete), filters, search, sorting, full validation on the inputs and restricted access to the admin of the website.",
       },
       {
         title: "Profile Page",

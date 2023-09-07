@@ -5,10 +5,10 @@ import { useContext, useState } from "react";
 import { ProductArray } from "../../data/ProductArray";
 import { AuthContext } from "../../contexts/authContext";
 import { Profile } from "./Profile";
+import { AuthChecker } from "../../components/authChecker";
  export let Dashboard = ()=>{ 
+    AuthChecker();
     const {userAuth, setUserAuth}=useContext(AuthContext);
-    console.log(AuthContext);
-    console.log(userAuth.isAuth, userAuth.userType);
     const [ShownArr, setShownArr] = useState(ProductArray);
     const [emptyProduct, setemptyProduct]=useState(null);
     const [triggerEdit,setTriggerEdit]=useState(false);
