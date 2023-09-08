@@ -1,5 +1,5 @@
 import { SelimRole } from "./selimRole";
-import { KareemRole } from "./kareemRule";
+import { KareemRole } from "./kareemRole";
 import { ZahranRole } from "./zahranRole";
 import i01 from "/images/about/_01.webp";
 import i02 from "/images/about/_02.webp";

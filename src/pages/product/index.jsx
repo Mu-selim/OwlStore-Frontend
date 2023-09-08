@@ -9,11 +9,9 @@ import { RatingStars } from "../../components/ratingStars";
 import { useParams } from "react-router-dom";
 
 import { CartContext } from "../../contexts/cartContext";
-import { WishListContext } from "../../contexts/wishListContext";
 
 export function ProductPage() {
   const { cart, setCart } = useContext(CartContext);
-  const { wishList, setWishList } = useContext(WishListContext);
 
   const { id } = useParams();
   const product = ProductArray.filter((product) => {

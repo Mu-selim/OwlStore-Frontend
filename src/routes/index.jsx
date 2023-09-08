@@ -16,6 +16,7 @@ import { Dashboard } from "../pages/dashBoard";
 import { AuthChecker } from "../components/authChecker";
 import { AboutPage } from "../pages/about";
 import { ContactUs } from "../pages/contactUs";
+import { CheckOut } from "../pages/checkOut";
 
 const NavLayout = () => {
   return (
@@ -37,6 +38,7 @@ export const MainRouter = () => {
           <Route path="explore" element={<ExplorePage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="contact" element={<ContactUs />} />
+          <Route path="checkOut" element={<CheckOut />} />
         </Route>
         <Route
           path="/join"
