@@ -3,7 +3,7 @@ import { CartContext } from "../../contexts/cartContext";
 import { XIcon } from "../../components/icons/xIcon";
 import { Address } from "./address";
 import { Payment } from "./payment";
-import { json } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const CheckOut = ()=>{
     const [stage, setStage] = useState(1);
@@ -58,7 +58,7 @@ export const CheckOut = ()=>{
                         return(
                             <div key={index} className="cart-item bg-secondary my-2 rounded-lg p-2">
                                 <div className="float-left">
-                                    <h1 className="font-bold">{product.name}</h1>
+                                    <Link to={`/product/${product.id}`} className="font-bold hover:opacity-80">{product.name}</Link>
                                     <div className="flex gap-7">
                                         <p>Price: ${product.price}</p>
                                         <p>Quantity: {product.quantity}</p>
