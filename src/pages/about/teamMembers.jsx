@@ -1,6 +1,6 @@
 import { SelimRole } from "./selimRole";
 import { KareemRole } from "./kareemRule";
-import { ZahranRole } from "./ZahranRole";
+import { ZahranRole } from "./zahranRole";
 import i01 from "/images/about/_01.webp";
 import i02 from "/images/about/_02.webp";
 import i03 from "/images/about/_03.webp";

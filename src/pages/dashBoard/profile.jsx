@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Navbar } from "../../components/navbar"
-import { ProductCarousel } from "../../components/ProductCarousel";
+import { ProductCarousel } from "../../components/productCarousel";
 import { WishListContext } from "../../contexts/wishListContext";
 import { useContext } from "react";
 export let Profile=(props)=>{
