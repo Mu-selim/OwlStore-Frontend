@@ -108,7 +108,7 @@ export let ItemsList=(props)=>{
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
           </svg>
       </div>
-      <input style={{border:"2px solid black"}} type="text" id="search" className="w-full py-2.5 pl-7  text-sm border-3  rounded-2xl" placeholder="Search by Name"
+      <input style={{border:"2px solid black"}} type="text" id="search" className="w-full py-2.5 pl-7 text-sm border-3  rounded-xl" placeholder="Search by Name"
       onChange={Searchfun}/>
   </div>
 </form>
@@ -234,11 +234,11 @@ export let ItemsList=(props)=>{
               <td className="p-3 text-sm  font-bold text-gray-700 whitespace-nowrap">{item.price+"$"}</td>
               <td>
                 <div className="flex">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 w-1/2 px-1.5 flex justify-center rounded-xl"
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold  w-1/2 p-1.5 flex justify-center rounded-xl"
                 onClick={()=>EditFun(i,item)}>
                 <EditIcon/>
               </button>
-                <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 w-1/2 ml-2  mr-1 px-1.5 flex justify-center rounded-xl"
+                <button className="bg-red-600 hover:bg-red-700 text-white font-bold w-1/2 ml-2  mr-1 p-1.5 flex justify-center rounded-xl"
               onClick={()=>deletefun(i)}>
                 <DeleteIcon/>
               </button>
