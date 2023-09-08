@@ -137,35 +137,35 @@ export const Payment = ({pervStage, checkOutFunction})=>{
     return(
         <>
             
-            <div className="card-info  lg:px-10 lg:flex lg:flex-col lg:items-center lg:mt-5">
+            <div className="card-info   lg:flex lg:flex-col lg:items-center lg:mt-5">
                     <p className=" font-semibold mt-1">Card Information:</p>
-                    <form className="px-3 lg:flex lg:gap-4 lg:flex-wrap lg:justify-center">
+                    <form className="px-3 lg:flex lg:gap-4 lg:flex-wrap lg:justify-center w-full">
 
-                        <div className="lg:w-2/3">
+                        <div className="lg:w-1/2">
                             <Input name={"Name on card"} change={nameChange}/>
                             <span className={cardInfo.errorCardName==="" ? "":"text-xs ml-1 font-bold"}>
                             {cardInfo.errorCardName}</span>
                         </div>
 
-                        <div className="lg:w-1/3 lg:mr-3">
+                        <div className="lg:w-1/3 lg:mx-3">
                             <Input name={"Card Number"} change={numberChange}/>
                             <span className={cardInfo.errorCardNumber==="" ? "hidden":"text-xs ml-1 font-bold"}>
                             {cardInfo.errorCardNumber}</span>
                         </div>
 
-                        <div className="lg:w-1/3 lg:ml-3">
+                        <div className="lg:w-1/5 lg:ml-3">
                             <Input name={"CVC"} change={cvvChange}/>
                             <span className={cardInfo.errorCvv==="" ? "hidden":"text-xs ml-1 font-bold"}>
                             {cardInfo.errorCvv}</span>
                         </div>
 
-                        <div className="lg:w-1/3 lg:mr-3">
+                        <div className="lg:w-1/5 lg:mx-20">
                             <Input name={"Zip code"} change={zipChange}/>
                             <span className={cardInfo.errorZip==="" ? "hidden":"text-xs ml-1 font-bold"}>
                             {cardInfo.errorZip}</span>
                         </div>
 
-                        <div className="lg:w-1/3 lg:ml-3">
+                        <div className="lg:w-1/5 lg:mr-3">
                             <Input name={"Expire date"} change={dateChange}/>
                             <span className={cardInfo.errorDate ==="" ? "hidden":"text-xs ml-1 font-bold"}>
                             {cardInfo.errorDate}</span>
