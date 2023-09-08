@@ -1,7 +1,7 @@
 import { Input } from "../../components/textInput"
 
 import { useState } from 'react'
-export const Payment = ({pervStage, chekOutFunction})=>{
+export const Payment = ({pervStage, checkOutFunction})=>{
 
     const [cardInfo, setCardInfo] = useState({
         cardName : "",
@@ -108,7 +108,7 @@ export const Payment = ({pervStage, chekOutFunction})=>{
         }
     }
 
-    const chekOut = ()=>{
+    const checkOut = ()=>{
         if(cardInfo.cardName === "" || cardInfo.cardNumber === "" || cardInfo.cvv === "" || cardInfo.zipCode === "" || cardInfo.expireDate === ""){
             setCardInfo({
                 ...cardInfo,
@@ -131,53 +131,64 @@ export const Payment = ({pervStage, chekOutFunction})=>{
             expireDate : cardInfo.expireDate,
         }
         console.log(card)
-        chekOutFunction(card);
+        checkOutFunction(card);
     }
 
     return(
         <>
-            <div className="card-info px-7">
+            
+            <div className="card-info  lg:px-10 lg:flex lg:flex-col lg:items-center lg:mt-5">
                     <p className=" font-semibold mt-1">Card Information:</p>
-                    <form className="px-3">
-                        
-                        <Input name={"Name on card"} change={nameChange}/>
-                        <span className={cardInfo.errorCardName==="" ? "":"text-xs ml-1 font-bold"}>
-                        {cardInfo.errorCardName}</span>
+                    <form className="px-3 lg:flex lg:gap-4 lg:flex-wrap lg:justify-center">
 
-                        <Input name={"Card Number"} change={numberChange}/>
-                        <span className={cardInfo.errorCardNumber==="" ? "hidden":"text-xs ml-1 font-bold"}>
-                        {cardInfo.errorCardNumber}</span>
+                        <div className="lg:w-2/3">
+                            <Input name={"Name on card"} change={nameChange}/>
+                            <span className={cardInfo.errorCardName==="" ? "":"text-xs ml-1 font-bold"}>
+                            {cardInfo.errorCardName}</span>
+                        </div>
 
-                        <Input name={"CVC"} change={cvvChange}/>
-                        <span className={cardInfo.errorCvv==="" ? "hidden":"text-xs ml-1 font-bold"}>
-                        {cardInfo.errorCvv}</span>
+                        <div className="lg:w-1/3 lg:mr-3">
+                            <Input name={"Card Number"} change={numberChange}/>
+                            <span className={cardInfo.errorCardNumber==="" ? "hidden":"text-xs ml-1 font-bold"}>
+                            {cardInfo.errorCardNumber}</span>
+                        </div>
 
-                        <Input name={"Zip code"} change={zipChange}/>
-                        <span className={cardInfo.errorZip==="" ? "hidden":"text-xs ml-1 font-bold"}>
-                        {cardInfo.errorZip}</span>
+                        <div className="lg:w-1/3 lg:ml-3">
+                            <Input name={"CVC"} change={cvvChange}/>
+                            <span className={cardInfo.errorCvv==="" ? "hidden":"text-xs ml-1 font-bold"}>
+                            {cardInfo.errorCvv}</span>
+                        </div>
 
-                        <Input name={"Expire date"} change={dateChange}/>
-                        <span className={cardInfo.errorDate ==="" ? "hidden":"text-xs ml-1 font-bold"}>
-                        {cardInfo.errorDate}</span>
+                        <div className="lg:w-1/3 lg:mr-3">
+                            <Input name={"Zip code"} change={zipChange}/>
+                            <span className={cardInfo.errorZip==="" ? "hidden":"text-xs ml-1 font-bold"}>
+                            {cardInfo.errorZip}</span>
+                        </div>
+
+                        <div className="lg:w-1/3 lg:ml-3">
+                            <Input name={"Expire date"} change={dateChange}/>
+                            <span className={cardInfo.errorDate ==="" ? "hidden":"text-xs ml-1 font-bold"}>
+                            {cardInfo.errorDate}</span>
+                        </div>
 
                     </form>
-            </div>
-            <div className="flex justify-center mt-5 px-7">
-                    <span className={cardInfo.error ? "hidden":"text-sm text-red-700 ml-1 font-bold"}>
-                        Not valid inputs
-                    </span>
-            </div>
-            <div className="flex justify-between px-7 my-5">
-                <input type="button" 
-                    className={"bg-gray-400 p-2 w-2/6 rounded-lg font-bold hover:cursor-pointer hover:scale-95 transition-transform "}
-                    value={"Perv"}
-                    onClick={pervStage}
-                />
-                <input type="button" 
-                    className="bg-yellow-light p-2 w-2/6 rounded-lg font-bold hover:cursor-pointer hover:scale-95 transition-transform" 
-                    value={"CheckOut"}
-                    onClick={chekOut}
-                />
+                    <div className="flex justify-center mt-5 px-7">
+                            <span className={cardInfo.error ? "hidden":"text-sm text-red-700 ml-1 font-bold"}>
+                                Not valid inputs
+                            </span>
+                    </div>
+                    <div className="flex justify-between lg:w-3/4 px-7 my-5">
+                        <input type="button" 
+                            className={"bg-gray-400 p-2 w-2/6 rounded-lg font-bold hover:cursor-pointer hover:scale-95 transition-transform  md:w-1/3"}
+                            value={"Perv"}
+                            onClick={pervStage}
+                        />
+                        <input type="button" 
+                            className="bg-yellow-light p-2 w-2/6 rounded-lg font-bold hover:cursor-pointer hover:scale-95 transition-transform md:w-1/3" 
+                            value={"CheckOut"}
+                            onClick={checkOut}
+                        />
+                    </div>
             </div>
         </>
     )

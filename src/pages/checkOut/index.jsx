@@ -27,20 +27,20 @@ export const CheckOut = ()=>{
     }
     return(
         <>
-            <div className="flex flex-col p-5">
-                <div className="check-out flex-col justify-center items-center">
-                    <h1 className=" text-2xl font-bold border-b-4 inline-block self-center">Check Out</h1>
-                    <div className="steps flex justify-evenly">
+            <div className="flex flex-col p-5 md:flex-row md:h-[calc(100vh-66px)] ">
+                <div className="check-out flex-col justify-center items-center flex-grow md:p-10  md:w-2/3">
+                    <h1 className=" text-2xl font-bold border-b-4 inline-block self-center md:text-4xl md:border-b-0 md:mb-5">Check Out</h1>
+                    <div className="steps flex justify-evenly md:justify-center">
                         <h1 className="m-5 font-bold text-xl"> <span className={(stage ===1 ? "bg-yellow-light":"bg-secondary")+" p-2 px-4 rounded-full mr-2"}>1</span> Address</h1>
                         <h1 className="m-5 font-bold text-xl"> <span className={(stage ===2 ? "bg-yellow-light":"bg-secondary")+" p-2 px-4 rounded-full mr-2"}>2</span> Payment</h1>
                     </div>
 
-                    {stage === 1? <Address changeStage={changeStage}/>: <Payment pervStage={pervStage} chekOutFunction={Checkout}/>}
+                    {stage === 1? <Address changeStage={changeStage}/>: <Payment pervStage={pervStage} checkOutFunction={Checkout}/>}
                     
                     
                     
                 </div>
-                <div className="my-cart border-t-2 py-2 flex flex-col">
+                <div className="my-cart border-t-2 py-2 flex flex-col md:border-l-2 md:border-t-0 px-5 md:w-1/3 rounded-lg shadow-md">
                     <h1 className="font-extrabold text-xl mb-5">My Cart</h1>
                     {cart.items.map((product, index)=>{
                         return(
