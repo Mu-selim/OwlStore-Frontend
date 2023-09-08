@@ -28,13 +28,14 @@ export const CheckOut = ()=>{
     }
 
     const deleteItem = (index)=>{
-        let newTotal = cart.total - (cart.items[index].price * cart.items[index].quantity)
+        cart.total = cart.total - (cart.items[index].price * cart.items[index].quantity)
         cart.items.splice(index,1);
         setCart({
             ...cart,
             items: cart.items,
-            total: newTotal
+            total: cart.total
         })
+        console.log(cart)
         localStorage.setItem("cart", JSON.stringify(cart));
     }
     return(
