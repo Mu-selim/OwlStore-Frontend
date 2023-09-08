@@ -14,6 +14,11 @@ const TEAM_MEMBER = {
         "Implemented dynamic page for exploring available products and filter them according to \n gender and category.",
     },
     {
+      title: "CheckOut Page",
+      description:
+        "Implemented dynamic page for collect user's address and credit card info before buying the items in the cart.",
+    },
+    {
       title: "Footer",
       description:
         "Built the Footer component with our social links and copy rights claims.",
