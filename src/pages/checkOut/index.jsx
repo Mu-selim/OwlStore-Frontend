@@ -4,6 +4,7 @@ import { XIcon } from "../../components/icons/xIcon";
 import { Address } from "./address";
 import { Payment } from "./payment";
 import { Link } from "react-router-dom";
+import emailjs from '@emailjs/browser';
 
 export const CheckOut = ()=>{
     const [stage, setStage] = useState(1);
@@ -21,10 +22,43 @@ export const CheckOut = ()=>{
         if(stage === 2) setStage(1);
     }
 
+    const sendEmail = (emailTemplate) => {
+        
+        emailjs.send('service_taq14kj', 'template_hr6hram', emailTemplate, 'WtKR9EeJOp1BnzwIz')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+    };
+
+    const orderInString = (products)=>{
+        let string = "\n";
+
+        products.map((product)=>{
+            string += `${product.name}  ,color:${product.colors}  ,size:${product.sizes}  ,quantity:${product.quantity} \n`;
+        })
+
+        return string;
+    }
     const Checkout = (cardInfo)=>{
+
+        
+
         setCard(cardInfo)
-        console.log(card)
-        console.log(address)
+        const emailTemplate = {
+            user_name : "kareem",
+            email : "kooooookokhalaf11@gmail.com",
+            card_name: card.cardName,
+            card_number : card.cardNumber.substring(0,4) + "**** **** ****",
+            order_id : Math.floor(Math.random()*10000),
+            address : `Apartment ${address.apartment}, building ${address.building}, ${address.street}, ${address.city}`,
+            total : '$'+ cart.total,
+            order : orderInString(cart.items)
+        }
+        
+        sendEmail(emailTemplate)
+        
     }
 
     const deleteItem = (index)=>{
