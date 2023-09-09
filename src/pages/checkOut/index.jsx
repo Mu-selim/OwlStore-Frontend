@@ -61,15 +61,15 @@ export const CheckOut = ()=>{
 
         return string;
     }
-    const Checkout = (address)=>{
+    const Checkout = (cardInfo)=>{
         const user = JSON.parse(localStorage.getItem("user"));
         
-        setCard(address)
+        setCard(cardInfo)
         const emailTemplate = {
             user_name : user.username,
             email : user.email,
-            card_name: address.cardName,
-            card_number : address.cardNumber.substring(0,4) + " **** **** ****",
+            card_name: cardInfo.cardName,
+            card_number : cardInfo.cardNumber.substring(0,4) + " **** **** ****",
             order_id : Math.floor(Math.random()*10000),
             address : `Apartment ${address.apartment}, building ${address.building}, ${address.street}, ${address.city}`,
             total : '$'+ cart.total,
