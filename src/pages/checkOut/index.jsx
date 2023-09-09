@@ -12,7 +12,7 @@ export const CheckOut = ()=>{
 
     const [stage, setStage] = useState(1);
     const [address,setAddress] = useState({})
-    const [setCard] = useState({});
+    const [card, setCard] = useState({});
 
     const navigate = useNavigate();
     const { cart, setCart } = useContext(CartContext);
