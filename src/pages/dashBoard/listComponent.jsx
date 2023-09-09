@@ -6,6 +6,7 @@ import { ColoredWord } from "./coloredWords";
 import { uniquecategorys } from "./categoryDropDown";
 import { DeleteIcon } from "../../components/icons/DeleteIcon";
 import { EditIcon } from "../../components/icons/EditIcon";
+import { useNavigate } from "react-router-dom";
 var sort = [
   { name: "name", dsc: 0 },
   { name: "brand", dsc: 0 },
@@ -13,6 +14,10 @@ var sort = [
   { name: "price", dsc: 0 },
 ];
 export let ItemsList=(props)=>{
+  const Navigate = useNavigate();
+  const clickProduct = (item)=>{
+    Navigate(`/product/${item.id}`)
+  }
   let {itemsArrRef}=props;
   let [ShownArr, setShownArr] = useState(itemsArrRef);
   let uniquebrands=[];
@@ -195,10 +200,10 @@ export let ItemsList=(props)=>{
                   <span className="-translate-y-1">▾</span>
                 </span>
             </div></th>
-        <th className="p-3 text-sm font-semibold tracking-wide text-left cursor-pointer">Sizes</th>
+        <th className="p-3 text-sm font-semibold tracking-wide text-left">Sizes</th>
         <th className="p-3 text-sm font-semibold  tracking-wide text-left" 
           onClick={()=>sortByColumn("price",3)}>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between cursor-pointer">
             <span>Price</span> 
                 <span className=" flex flex-col text-xs">
                   <span className="translate-y-1">▴</span>
@@ -214,7 +219,8 @@ export let ItemsList=(props)=>{
               <tr className="bg-white hover:bg-gray-100">
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                 
-          <a href="#" className="font-bold text-blue-500 hover:underline">{item.id}</a>
+          <span className="font-bold text-blue-500 hover:underline cursor-pointer text-sm"
+          onClick={()=>clickProduct(item)}>{item.id}</span>
         </td>
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
         <img style={{width:"40px", height:"40px"}}  src={item.images[0]} alt="" />

@@ -190,7 +190,7 @@ export let AddComponent = (props) => {
         let newObject = new Product(
           AddObjectTxt.Name.toString(),
           parseInt(AddObjectTxt.Price),
-          ["public/images/DashBoard/imagePlaceholder.png"],
+          ["/images/DashBoard/imagePlaceholder.png"],
           AddObjectTxt.Gender,
           AddObjectTxt.Category,
           sizes,

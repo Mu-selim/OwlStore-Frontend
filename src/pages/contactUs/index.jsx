@@ -73,7 +73,14 @@ export let ContactUs=()=>{
     }
     const validateTextArea=(event)=>{
         let error=document.getElementById(`warn${event.target.id}`);
-        if (event.target.value.length<100) {
+        if (event.target.value=="") {
+            error.innerText=`Description can't be empty`;
+            Setstate({
+                ...state,
+                Description:false
+            })
+        }
+        else if (event.target.value.length<100) {
             error.innerText=`Description has to be at least 100 characters`;
             Setstate({
                 ...state,
@@ -123,7 +130,7 @@ export let ContactUs=()=>{
                 onClick={()=>{
                     alert("Email Reveived");
                     clear();}}
-                type="submit"
+                type="button"
                  disabled={!state.send} className="bg-yellow-light hover:bg-amber-300
                  text-white font-bold mt-2 py-2 px-4 rounded-md w-full disabled:bg-gray-300">
                     Send
