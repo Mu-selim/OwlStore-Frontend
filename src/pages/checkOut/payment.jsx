@@ -130,7 +130,6 @@ export const Payment = ({pervStage, checkOutFunction})=>{
             zipCode : cardInfo.zipCode,
             expireDate : cardInfo.expireDate,
         }
-        console.log(card)
         checkOutFunction(card);
     }
 

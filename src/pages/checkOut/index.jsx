@@ -12,7 +12,7 @@ export const CheckOut = ()=>{
 
     const [stage, setStage] = useState(1);
     const [address,setAddress] = useState({})
-    const [card, setCard] = useState({});
+    const [setCard] = useState({});
 
     const navigate = useNavigate();
     const { cart, setCart } = useContext(CartContext);
@@ -61,15 +61,15 @@ export const CheckOut = ()=>{
 
         return string;
     }
-    const Checkout = (cardInfo)=>{
+    const Checkout = (address)=>{
         const user = JSON.parse(localStorage.getItem("user"));
         
-        setCard(cardInfo)
+        setCard(address)
         const emailTemplate = {
             user_name : user.username,
             email : user.email,
-            card_name: cardInfo.cardName,
-            card_number : cardInfo.cardNumber.substring(0,4) + " **** **** ****",
+            card_name: address.cardName,
+            card_number : address.cardNumber.substring(0,4) + " **** **** ****",
             order_id : Math.floor(Math.random()*10000),
             address : `Apartment ${address.apartment}, building ${address.building}, ${address.street}, ${address.city}`,
             total : '$'+ cart.total,
