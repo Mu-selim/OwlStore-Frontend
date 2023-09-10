@@ -28,8 +28,8 @@ export const users = [
     "user"
   ),
   createUser(
-    "Karim Khalaf",
-    "karimkhalaf@owlstore.com",
+    "Kareem Khalaf",
+    "kareemkhalaf1722@gmail.com",
     "201554211531",
     "0258456",
     "user"

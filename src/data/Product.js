@@ -1,8 +1,8 @@
-const description = "It debuted in basketball and was transformed by subcultures around the globe. The adidas Campus trainer has made an impact everywhere, from stages to skate parks to city streets. Now, in collaboration with Footpatrol."
+const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id justo pharetra, commodo nibh a, volutpat arcu. Nulla mi est, tempor quis tincidunt vitae, hendrerit ac arcu. Proin eget metus sit amet lacus ultricies rhoncus ac at elit. Suspendisse id."
 export class Product{
     static counter = 1;
 
-    constructor(name, price, images, gender, category, sizes, colors, rating, brand){
+    constructor(name, price, images, gender, category, sizes = 3, colors, rating, brand){
         this.id = Product.counter;
         this.name = name;
         this.price = price;

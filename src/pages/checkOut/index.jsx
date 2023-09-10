@@ -1,15 +1,36 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CartContext } from "../../contexts/cartContext";
+import { AuthContext } from "../../contexts/authContext";
 import { XIcon } from "../../components/icons/xIcon";
 import { Address } from "./address";
 import { Payment } from "./payment";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import emailjs from '@emailjs/browser';
+
 
 export const CheckOut = ()=>{
+
     const [stage, setStage] = useState(1);
     const [address,setAddress] = useState({})
     const [card, setCard] = useState({});
+
+    const navigate = useNavigate();
     const { cart, setCart } = useContext(CartContext);
+    const {setUserAuth } = useContext(AuthContext);
+
+
+    useEffect(() => {
+        const user = localStorage.getItem("user");
+        if (user) {
+          setUserAuth((prev) => ({
+            ...prev,
+            ...JSON.parse(user),
+          }));
+        } else {
+          navigate("/signin");
+        }
+        
+      }, []);
 
     const changeStage = (address)=>{
         setAddress({
@@ -21,10 +42,48 @@ export const CheckOut = ()=>{
         if(stage === 2) setStage(1);
     }
 
+    const sendEmail = (emailTemplate) => {
+        
+        emailjs.send('service_taq14kj', 'template_hr6hram', emailTemplate, 'WtKR9EeJOp1BnzwIz')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+    };
+
+    const orderInString = (products)=>{
+        let string = "\n";
+
+        products.map((product)=>{
+            string += `${product.name}  ,Color : ${product.colors}  ,Size : ${product.sizes}  ,Quantity : ${product.quantity} \n`;
+        })
+
+        return string;
+    }
     const Checkout = (cardInfo)=>{
+        const user = JSON.parse(localStorage.getItem("user"));
+        
         setCard(cardInfo)
-        console.log(card)
-        console.log(address)
+        const emailTemplate = {
+            user_name : user.username,
+            email : user.email,
+            card_name: cardInfo.cardName,
+            card_number : cardInfo.cardNumber.substring(0,4) + " **** **** ****",
+            order_id : Math.floor(Math.random()*10000),
+            address : `Apartment ${address.apartment}, building ${address.building}, ${address.street}, ${address.city}`,
+            total : '$'+ cart.total,
+            order : orderInString(cart.items)
+        }
+        
+        sendEmail(emailTemplate)
+        
+        setCart({
+            items: [],
+            total:0
+        })
+        navigate("/");
+        
     }
 
     const deleteItem = (index)=>{
