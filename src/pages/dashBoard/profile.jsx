@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Navbar } from "../../components/navbar"
-import { ProductCarousel } from "../../components/productCarousel";
+import { ProductCard } from "../../components/productCard";
 import { WishListContext } from "../../contexts/wishListContext";
 import { useContext } from "react";
 export let Profile=(props)=>{
@@ -8,12 +8,12 @@ export let Profile=(props)=>{
     return(
         <div>
             <Navbar />
-      <div className="flex flex-col bg-white w-full pt-8 md:h-[calc(100vh-66px)] lg:overflow-hidden">
+      <div className="flex flex-col bg-white w-full mt-2 md:h-[calc(100vh-66px)] ">
           <div className="flex justify-center flex-col md:flex-row">
             <div className="md:mr-6 self-center">
-                <img alt="" src="./images/profilePic.png" className="h-56 shadow-xl rounded-full"/>
+                <img alt="" src="./images/profilePic.png" className="h-52 shadow-xl rounded-full"/>
             </div>
-            <div className="text-center mt-10 md:mr-6">
+            <div className="text-center mt-4 md:mt-14 md:mr-6">
             <h3 className="text-4xl font-semibold leading-normal text-blueGray-700 mb-2">
               {props.userAuth.username}
             </h3>
@@ -42,7 +42,15 @@ export let Profile=(props)=>{
           </div>
           <div className="mt-4">
             <span className="ml-8 text-2xl font-bold border-b-4 border-black rounded-sm ">Wishlist:</span>
-                <ProductCarousel items={wishList}/>
+            <div className="flex flex-row justify-center pt-5 mb-4">
+                    <div className="flex flex-wrap justify-evenly w-10/12">   
+                        {wishList.map((product)=>{
+                            return(
+                                <ProductCard key={product.id} product={product}/>
+                            )
+                        })}
+                    </div>
+                </div>
           </div>
       </div>
         </div>

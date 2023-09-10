@@ -54,7 +54,7 @@ export let ItemsList=(props)=>{
       })
       setShownArr(filteredArr);
   }
-  let filterEmployees=()=>{
+  let filterItems=()=>{
       let filteredArr =itemsArrRef.filter(function (item) {
       var _brand = document.getElementById("Brand-filter").value;
       var category = document.getElementById("Category-filter").value;
@@ -123,36 +123,36 @@ export let ItemsList=(props)=>{
           className="filters"
           name="Brand-filter"
           id="Brand-filter"
-          onChange={filterEmployees}
+          onChange={filterItems}
         >
-          <option value="" selected>Filter by Brand</option>
-          {uniquebrands.map((item)=>{
-            return (<option value={item}>{item}</option>)
+          <option value="" key={""}>Filter by Brand</option>
+          {uniquebrands.map((item,i)=>{
+            return (<option value={item} key={i}>{item}</option>)
           })}
         </select>
         <select
           className="filters  "
           name="Category-filter"
           id="Category-filter"
-          onChange={filterEmployees}
+          onChange={filterItems}
         >
-          <option value="" selected>Filter by Category</option>
-          {uniquecategorys.map((item)=>{
-            return (<option value={item}>{item}</option>)
+          <option value="" >Filter by Category</option>
+          {uniquecategorys.map((item,i)=>{
+            return (<option value={item} key={i}>{item}</option>)
           })}
         </select>
         <select
           className="filters "
           name="Price-filter"
           id="Price-filter"
-          onChange={filterEmployees}
+          onChange={filterItems}
         >
-          <option value="" selected>Filter by Price</option>
-          <option value="0,50">0 - 50</option>
-          <option value="50,100">50 - 100</option>
-          <option value="100,150">100 - 150</option>
-          <option value="200,250">200 - 250</option>
-          <option value="250,90000">250 - &infin;</option>
+          <option value="" key={1}>Filter by Price</option>
+          <option value="0,50" key={2}>0 - 50</option>
+          <option value="50,100" key={3}>50 - 100</option>
+          <option value="100,150" key={4}>100 - 150</option>
+          <option value="200,250" key={5}>200 - 250</option>
+          <option value="250,90000" key={6}>250 - &infin;</option>
         </select>
       </div >
       <div className="p-2 md:w-1/4">
@@ -215,7 +215,7 @@ export let ItemsList=(props)=>{
       <tbody className=" divide-gray-100">
       {ShownArr.map((item,i)=>{
           return(
-              <tr className="bg-white hover:bg-gray-100">
+              <tr className="bg-white hover:bg-gray-100" key={i}>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                 
           <span className="font-bold text-blue-500 hover:underline cursor-pointer text-sm"
@@ -228,9 +228,9 @@ export let ItemsList=(props)=>{
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
           <ColoredWord word={item.gender}/>
         </td>
-        <td className="p-3 text-sm text-gray-700 whitespace-nowrap flex flex-wrap w-28">{item.colors.map((item)=>{
+        <td className="p-3 text-sm text-gray-700 whitespace-nowrap flex flex-wrap w-28">{item.colors.map((item,j)=>{
           return(
-            <div className="mx-px mt-2.5"
+            <div className="mx-px mt-2.5" key={j}
             style={{borderRadius:"100%", border:"1px solid black", backgroundColor:`${item}`, width:"20px", height:"20px"}}></div>)
         })} </td>
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap">{item.brand}</td>

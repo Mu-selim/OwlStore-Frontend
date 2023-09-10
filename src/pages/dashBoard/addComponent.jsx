@@ -264,12 +264,12 @@ export let AddComponent = (props) => {
           }}
           value={AddObjectTxt.Category}
         >
-          <option value="" disabled selected>
+          <option key={uniquecategorys.length+1} value="" disabled>
             Pick a category
           </option>
           {uniquecategorys.map((item) => {
             return (
-              <option className="text-black" value={item}>
+              <option key={uniquecategorys.indexOf(item)} className="text-black" value={item}>
                 {item}
               </option>
             );
@@ -320,7 +320,7 @@ export let AddComponent = (props) => {
       <span>Colors</span>
       <div className="flex flex-wrap">
         {UniqueColors.map((e) => {
-          return <CheckBox color={`${e}`} change={clearColorwarn} />;
+          return <CheckBox color={`${e}`} change={clearColorwarn} key={UniqueColors.indexOf(e)}/>;
         })}
       </div>
       <span
