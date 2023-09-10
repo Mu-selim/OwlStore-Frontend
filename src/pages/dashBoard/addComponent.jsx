@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-key */
 import { useState } from "react";
 import { OwlIcon } from "../../components/icons/owlIcon";
 import { Link } from "react-router-dom";
@@ -214,7 +212,6 @@ export let AddComponent = (props) => {
       }
       Resetinput();
     }
-    // eslint-disable-next-line react/prop-types
   };
   useEffect(() => {
     setAddObjectTxts({
@@ -264,12 +261,12 @@ export let AddComponent = (props) => {
           }}
           value={AddObjectTxt.Category}
         >
-          <option key={uniquecategorys.length+1} value="" disabled>
+          <option value="" disabled>
             Pick a category
           </option>
-          {uniquecategorys.map((item) => {
+          {uniquecategorys.map((item,i) => {
             return (
-              <option key={uniquecategorys.indexOf(item)} className="text-black" value={item}>
+              <option key={i} className="text-black" value={item}>
                 {item}
               </option>
             );
@@ -319,8 +316,8 @@ export let AddComponent = (props) => {
       </div>
       <span>Colors</span>
       <div className="flex flex-wrap">
-        {UniqueColors.map((e) => {
-          return <CheckBox color={`${e}`} change={clearColorwarn} key={UniqueColors.indexOf(e)}/>;
+        {UniqueColors.map((e,i) => {
+          return <CheckBox color={`${e}`} change={clearColorwarn} key={i}/>;
         })}
       </div>
       <span

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Navbar } from "../../components/navbar"
 import { ProductCard } from "../../components/productCard";
 import { WishListContext } from "../../contexts/wishListContext";
@@ -44,9 +43,9 @@ export let Profile=(props)=>{
             <span className="ml-8 text-2xl font-bold border-b-4 border-black rounded-sm ">Wishlist:</span>
             <div className="flex flex-row justify-center pt-5 mb-4">
                     <div className="flex flex-wrap justify-evenly w-10/12">   
-                        {wishList.map((product)=>{
+                        {wishList.map((product,i)=>{
                             return(
-                                <ProductCard key={product.id} product={product}/>
+                                <ProductCard key={i} product={product}/>
                             )
                         })}
                     </div>

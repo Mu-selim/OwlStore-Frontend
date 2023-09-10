@@ -1,6 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-undef */
 import { useEffect, useState } from "react";
 import { ColoredWord } from "./coloredWords";
 import { uniquecategorys } from "./categoryDropDown";
@@ -125,7 +122,7 @@ export let ItemsList=(props)=>{
           id="Brand-filter"
           onChange={filterItems}
         >
-          <option value="" key={""}>Filter by Brand</option>
+          <option value="">Filter by Brand</option>
           {uniquebrands.map((item,i)=>{
             return (<option value={item} key={i}>{item}</option>)
           })}
@@ -147,12 +144,12 @@ export let ItemsList=(props)=>{
           id="Price-filter"
           onChange={filterItems}
         >
-          <option value="" key={1}>Filter by Price</option>
-          <option value="0,50" key={2}>0 - 50</option>
-          <option value="50,100" key={3}>50 - 100</option>
-          <option value="100,150" key={4}>100 - 150</option>
-          <option value="200,250" key={5}>200 - 250</option>
-          <option value="250,90000" key={6}>250 - &infin;</option>
+          <option value="">Filter by Price</option>
+          <option value="0,50">0 - 50</option>
+          <option value="50,100">50 - 100</option>
+          <option value="100,150">100 - 150</option>
+          <option value="200,250">200 - 250</option>
+          <option value="250,90000">250 - &infin;</option>
         </select>
       </div >
       <div className="p-2 md:w-1/4">
