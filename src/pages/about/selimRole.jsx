@@ -32,6 +32,16 @@ const TEAM_MEMBER = {
       description:
         "Handled the routing and the conflicts in the project using Git and Github.",
     },
+    {
+      title: "SEO Optimization",
+      description:
+        "Optimized the project for search engines using React Helmet.",
+    },
+    {
+      title: "README",
+      description:
+        "Wrote the README file to explain the project and how to run it.",
+    },
   ],
 };
 
