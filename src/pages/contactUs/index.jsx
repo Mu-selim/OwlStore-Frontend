@@ -18,6 +18,10 @@ export let ContactUs=()=>{
     const clear=()=>{
         document.querySelectorAll("input[type=text]").forEach((e)=>e.value="");
         document.getElementById("Tell us about it...").value="";
+        Setstate({
+            ...state,
+            send:false
+        })
     }
     const validateEmail = (event) => {
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -103,6 +107,7 @@ export let ContactUs=()=>{
         }
         emailjs.send('service_taq14kj', 'template_4umap5i', emailTemplate, 'WtKR9EeJOp1BnzwIz')
           clear();
+        alert("Email received");
     }; 
 
     useEffect(()=>{
@@ -136,6 +141,7 @@ export let ContactUs=()=>{
                 <InputArea name="Tell us about it..." change={validateTextArea}/>
                 <div className=" w-full flex justify-center">
                 <button
+                id="sendbtn"
                 onClick={sendEmail}
                 type="button"
                  disabled={!state.send} className="bg-yellow-light hover:bg-amber-300
