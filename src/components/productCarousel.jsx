@@ -3,18 +3,30 @@ import { ProductCard } from "./productCard";
 import { Arrow } from "./icons/Arrow";
 
 export const ProductCarousel = ({items})=>{
-    const [offset, setOffset] = useState(0)
+    const [offset, setOffset] = useState(0);
+    const [array, setArray] = useState({
+        arr : items
+    });
     
     const scrollRight = ()=>{
         let productsPerRow =  Math.floor(window.innerWidth/(16*16)) + 1 ;
-        if(offset < ((items.length-productsPerRow)*-16)) return;
+        if(offset < ((array.arr.length-productsPerRow)*-16)) return;
         let newOffset = offset - 16;
         setOffset(newOffset)
     }
+
     const scrollLeft = ()=>{
         if(offset === 0) return;
         let newOffset = offset + 16;
         setOffset(newOffset)
+    }
+
+    const updateCarousel = ()=>{
+       
+        setArray((perv)=>({
+            ...perv,
+            arr:items
+        }));
     }
     return(
         <>
@@ -29,10 +41,10 @@ export const ProductCarousel = ({items})=>{
                 </div>
                 <div className="carousel-items flex h-full items-center transition-all delay-125"
                     style={{transform:`translateX(${offset-1.55}rem)` }}>
-                    {items.map((prod, index)=>{
+                    {array.arr.map((prod, index)=>{
                             return(
                                 <div key={index} className= {`min-w-fit`}>
-                                    <ProductCard key={index} product={prod} />
+                                    <ProductCard key={index} product={prod} updateCarousel={updateCarousel} />
                                 </div>
                             )
                         

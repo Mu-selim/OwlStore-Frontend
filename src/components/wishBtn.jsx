@@ -2,7 +2,7 @@ import { HeartIcon } from "./icons/heartIcon";
 import { useContext, useEffect, useState } from "react";
 import { WishListContext } from "../contexts/wishListContext";
 
-export const WishBtn = ({product, width, py, px, iconSize})=>{
+export const WishBtn = ({product, width, py, px, iconSize, updateCarousel})=>{
     let { wishList, setWishList } = useContext(WishListContext);
 
     const [wished, setWished] = useState(false);
@@ -31,6 +31,7 @@ export const WishBtn = ({product, width, py, px, iconSize})=>{
         }
         setWishList(wishList);
         localStorage.setItem("wishList",JSON.stringify(wishList))
+        if(updateCarousel) updateCarousel();
     }
     return(
         <>
