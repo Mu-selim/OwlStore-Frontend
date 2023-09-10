@@ -82,7 +82,7 @@ export const CheckOut = ()=>{
             items: [],
             total:0
         })
-        navigate("/");
+        navigate("/delivering");
         
     }
 
