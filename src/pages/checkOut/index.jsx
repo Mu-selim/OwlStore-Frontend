@@ -7,9 +7,7 @@ import { Payment } from "./payment";
 import { Link, useNavigate } from "react-router-dom";
 import emailjs from '@emailjs/browser';
 
-
-export const CheckOut = ()=>{
-
+export const CheckOut = ()=> {
     const [stage, setStage] = useState(1);
     const [address,setAddress] = useState({})
     const [card, setCard] = useState({});
