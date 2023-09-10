@@ -28,6 +28,7 @@ export let Dashboard = () => {
 
   let saveAdd = (_Object) => {
     setShownArr([...ShownArr, _Object]);
+    ProductArray.push(_Object);
   };
   let setEditObj = (_Object) => {
     setTriggerEdit(!triggerEdit);

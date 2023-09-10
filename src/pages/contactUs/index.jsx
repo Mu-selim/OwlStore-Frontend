@@ -5,7 +5,7 @@ import { WhatsAppIcon } from "../../components/icons/whatsAppIcon";
 import { FaceBookIcon } from "../../components/icons/facebookIcon";
 import { TwitterIcon  } from "../../components/icons/twitterIcon";
 import { InstagramIcon } from "../../components/icons/instgramIcon";
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 
 export let ContactUs=()=>{
     let [state,Setstate]=useState({
@@ -96,14 +96,14 @@ export let ContactUs=()=>{
             })
         }
     }
-    const sendEmail = () => {
+    /* const sendEmail = () => {
         let emailTemplate={
             name:document.getElementById("Name").value,
             email:document.getElementById("Mail").value
         }
         emailjs.send('service_taq14kj', 'template_4umap5i', emailTemplate, 'WtKR9EeJOp1BnzwIz')
           clear();
-    };
+    }; */
 
     useEffect(()=>{
             if(state.Name&&state.Mail&&state.Subject&&state.Description)
