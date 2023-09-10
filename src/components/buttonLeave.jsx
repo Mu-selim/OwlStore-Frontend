@@ -23,10 +23,7 @@ export const ButtonLeave = ({ handleShowSideMenu }) => {
       items: [],
       total: 0,
     }));
-    setWishList((prev) => ({
-      ...prev,
-      items: [],
-    }));
+    setWishList([]);
     localStorage.removeItem("user");
     localStorage.removeItem("cart");
     localStorage.removeItem("wishList");
