@@ -20,7 +20,11 @@ export let ContactUs=()=>{
         document.getElementById("Tell us about it...").value="";
         Setstate({
             ...state,
-            send:false
+            Name:false,
+            Mail:false,
+            Subject: false,
+            Description:false,
+            send: false,
         })
     }
     const validateEmail = (event) => {
