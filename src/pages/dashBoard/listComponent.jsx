@@ -84,7 +84,6 @@ export let ItemsList=(props)=>{
   }
   let EditFun=(i,item)=>{
     document.querySelectorAll(".spann").forEach((item)=>item.innerText="");
-    console.log(document.querySelectorAll(".spann"));
     document.querySelectorAll("input[type=checkbox]").forEach((e)=>{
       e.checked=false;
     })

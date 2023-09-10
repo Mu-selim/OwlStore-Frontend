@@ -128,7 +128,6 @@ export let AddComponent = (props) => {
     });
   };
   let SavingAdd = () => {
-    console.log(AddObjectTxt.Category);
     let flag = true;
     let colorsArr = [];
     checkboxes.forEach((e) => {

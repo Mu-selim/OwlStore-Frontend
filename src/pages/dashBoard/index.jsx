@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { ProductArray } from "../../data/ProductArray";
 import { AuthContext } from "../../contexts/authContext";
 import { Profile } from "./profile";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export let Dashboard = () => {
   const navigate = useNavigate();
   const { userAuth, setUserAuth } = useContext(AuthContext);
@@ -20,7 +20,6 @@ export let Dashboard = () => {
     } else {
       navigate("/signin");
     }
-    console.log(userAuth);
   }, []);
 
   const [ShownArr, setShownArr] = useState(ProductArray);
@@ -56,7 +55,7 @@ export let Dashboard = () => {
     <>
       {userAuth.isAuth && userAuth.userType === "admin" ? (
         <div className="flex  flex-col md:flex-row">
-          <div className=" md:sticky md:top-0 md:h-screen md:w-1/6">
+          <div className="md:sticky md:top-0 md:h-screen md:w-1/6">
             <AddComponent
               triggerEdit={triggerEdit}
               SaveEditHandlerRef={SaveEditHandler}
@@ -65,7 +64,7 @@ export let Dashboard = () => {
               SaveAddHRef={saveAdd}
             />
           </div>
-          <div className="md:w-5/6 max-w-full">
+          <div className="md:w-5/6">
             <ItemsList
               itemsArrRef={ShownArr}
               setEditObjRef={setEditObj}
