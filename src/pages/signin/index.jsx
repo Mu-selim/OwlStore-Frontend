@@ -5,6 +5,7 @@ import { Input } from "../../components/input";
 import { OwlIcon } from "../../components/icons/owlIcon";
 import { SigninButton } from "./signinButton";
 import { AuthAlert } from "../../components/authAlert";
+import { SEO } from "../../components/SEO";
 
 const INITIAL_STATE = {
   email: "",
@@ -82,6 +83,7 @@ export const SigninPage = () => {
 
   return (
     <FormContainer>
+      <SEO title="Signin to OwlStore" description="Signin to OwlStore" />
       <AuthAlert />
       <div className="w-12 mb-3">
         <Link to="/">

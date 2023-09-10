@@ -9,6 +9,7 @@ import { RatingStars } from "../../components/ratingStars";
 import { useParams } from "react-router-dom";
 
 import { CartContext } from "../../contexts/cartContext";
+import { SEO } from "../../components/SEO";
 
 export function ProductPage() {
   const { cart, setCart } = useContext(CartContext);
@@ -19,7 +20,11 @@ export function ProductPage() {
   })[0];
 
   const moreLikeArr = ProductArray.filter((prod) => {
-    return prod.category === product.category && prod.gender === product.gender && prod!== product
+    return (
+      prod.category === product.category &&
+      prod.gender === product.gender &&
+      prod !== product
+    );
   });
 
   const [productData, setProduct] = useState({
@@ -107,6 +112,7 @@ export function ProductPage() {
 
   return (
     <>
+      <SEO title={`OwlStore - ${product.name}`} description={product.description} />
       <div>
         <div className="product-path">
           <p className="text-gray-400 ml-6 w-3/4 capitalize">{`Product > ${product.gender} > ${product.category}`}</p>
@@ -234,9 +240,8 @@ export function ProductPage() {
                     </div>
                     Add To Cart
                   </button>
-                  
-                  <WishBtn product={product} iconSize={8} py={2} px={3}/>
-                  
+
+                  <WishBtn product={product} iconSize={8} py={2} px={3} />
                 </div>
               </div>
               <div className="my-5">

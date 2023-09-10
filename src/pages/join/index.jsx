@@ -6,6 +6,7 @@ import { OwlIcon } from "../../components/icons/owlIcon";
 import { StepOne } from "./stepOne";
 import { StepTwo } from "./stepTwo";
 import { AuthAlert } from "../../components/authAlert";
+import { SEO } from "../../components/SEO";
 
 export const JoinPage = () => {
   const { registerData, setRegisterData } = useContext(JoinContext);
@@ -21,6 +22,7 @@ export const JoinPage = () => {
   }, []);
   return (
     <FormContainer>
+      <SEO title="Join OwlStore" description="Join OwlStore" />
       <AuthAlert />
       <div className="w-12 mb-3">
         <Link to="/">
