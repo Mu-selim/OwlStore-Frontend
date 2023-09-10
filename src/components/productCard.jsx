@@ -8,7 +8,7 @@ import { CartContext } from "../contexts/cartContext";
 
 
 
-export function ProductCard({product}){
+export function ProductCard({product, updateCarousel}){
     const { cart, setCart } = useContext(CartContext);
     const Navigate = useNavigate();
  
@@ -70,7 +70,7 @@ export function ProductCard({product}){
                     </div>
                     <div className="card-buttons w-2/3 flex justify-center items-center">
 
-                        <WishBtn product={product} py={1} width={'2/5'} iconSize={6}/>
+                        <WishBtn product={product} py={1} width={'2/5'} iconSize={6} updateCarousel={updateCarousel}/>
                         
                         <button className="bg-primary py-1 flex justify-center items-center ml-2  rounded-lg w-2/5 transition-transform hover:scale-95"
                         onClick={addToCart}>
