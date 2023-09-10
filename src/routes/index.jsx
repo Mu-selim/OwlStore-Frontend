@@ -18,6 +18,8 @@ import { AboutPage } from "../pages/about";
 import { ContactUs } from "../pages/contactUs";
 import { CheckOut } from "../pages/checkOut";
 
+import { Delivering } from "../pages/delivering";
+
 const NavLayout = () => {
   return (
     <div className="h-screen w-full max-w-screen-2xl mx-auto">
@@ -39,6 +41,7 @@ export const MainRouter = () => {
           <Route path="about" element={<AboutPage />} />
           <Route path="contact" element={<ContactUs />} />
           <Route path="checkOut" element={<CheckOut />} />
+          <Route path="delivering" element={<Delivering />} />
         </Route>
         <Route
           path="/join"

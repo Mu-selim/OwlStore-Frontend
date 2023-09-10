@@ -16,7 +16,12 @@ const TEAM_MEMBER = {
     {
       title: "CheckOut Page",
       description:
-        "Implemented dynamic page for collect user's address and credit card info before buying the items in the cart.",
+        "Implemented dynamic page for collect user's address and credit card info before buying the items in the cart and send him email contains the details of the order.",
+    },
+    {
+      title: "Delivering Page",
+      description:
+        "Implemented page to be displayed to user after buying to inform him about the order mail that has been sent to him.",
     },
     {
       title: "Footer",
