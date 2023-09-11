@@ -2,9 +2,24 @@ import { Navbar } from "../../components/navbar"
 import { SEO } from "../../components/SEO";
 import { ProductCard } from "../../components/productCard";
 import { WishListContext } from "../../contexts/wishListContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 export let Profile=(props)=>{
   const {wishList, setWishList} = useContext(WishListContext);
+  const [array, setArray] = useState({
+    arr : wishList
+    });
+  let updateWishList=()=>{
+    setArray((perv)=>({
+      ...perv,
+      arr:wishList
+  }));
+  }
+  useEffect(()=>{
+    setArray((perv)=>({
+      ...perv,
+      arr:wishList
+  })
+  )})
     return(
       <>
       <SEO
@@ -47,9 +62,10 @@ export let Profile=(props)=>{
             <span className="ml-8 text-2xl font-bold border-b-4 border-black rounded-sm ">Wishlist:</span>
             <div className="flex flex-row justify-center pt-5 mb-4">
                     <div className="flex flex-wrap justify-evenly w-10/12">   
-                        {wishList.map((product,i)=>{
+                        {array.arr.map((product,i)=>{
+                          console.log(array.arr);
                             return(
-                                <ProductCard key={i} product={product}/>
+                                <ProductCard key={i} product={product} updateCarousel={updateWishList}/>
                             )
                         })}
                     </div>
