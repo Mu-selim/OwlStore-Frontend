@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 export let RadioButton=(props)=>{
     return(
         <div className=" flex items-center  mr-2 my-1">

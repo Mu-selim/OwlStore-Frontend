@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-key */
 import { useState } from "react";
 import { OwlIcon } from "../../components/icons/owlIcon";
 import { Link } from "react-router-dom";
@@ -14,6 +12,9 @@ const clothesSize = ["xs", "s", "m", "l", "xl"];
 const trouserMen = [34, 36, 38, 40, 42, 44, 46, 48];
 const trouserWomen = [26, 28, 30, 32, 34, 36, 38, 40, 42, 44];
 const shoeSize = [41, 42, 43, 44, 45];
+const images =["/images/DashBoard/default1.jpg",
+"/images/DashBoard/default2.png",
+"/images/DashBoard/default3.jpg"]
 export let AddComponent = (props) => {
   let checkboxes = document.querySelectorAll("input[type=checkbox]");
   let [AddObjectTxt, setAddObjectTxts] = useState({
@@ -128,7 +129,6 @@ export let AddComponent = (props) => {
     });
   };
   let SavingAdd = () => {
-    console.log(AddObjectTxt.Category);
     let flag = true;
     let colorsArr = [];
     checkboxes.forEach((e) => {
@@ -190,7 +190,7 @@ export let AddComponent = (props) => {
         let newObject = new Product(
           AddObjectTxt.Name.toString(),
           parseInt(AddObjectTxt.Price),
-          ["public/images/DashBoard/imagePlaceholder.png"],
+          images,
           AddObjectTxt.Gender,
           AddObjectTxt.Category,
           sizes,
@@ -215,7 +215,6 @@ export let AddComponent = (props) => {
       }
       Resetinput();
     }
-    // eslint-disable-next-line react/prop-types
   };
   useEffect(() => {
     setAddObjectTxts({
@@ -265,12 +264,12 @@ export let AddComponent = (props) => {
           }}
           value={AddObjectTxt.Category}
         >
-          <option value="" disabled selected>
+          <option value="" disabled>
             Pick a category
           </option>
-          {uniquecategorys.map((item) => {
+          {uniquecategorys.map((item,i) => {
             return (
-              <option className="text-black" value={item}>
+              <option key={i} className="text-black" value={item}>
                 {item}
               </option>
             );
@@ -320,8 +319,8 @@ export let AddComponent = (props) => {
       </div>
       <span>Colors</span>
       <div className="flex flex-wrap">
-        {UniqueColors.map((e) => {
-          return <CheckBox color={`${e}`} change={clearColorwarn} />;
+        {UniqueColors.map((e,i) => {
+          return <CheckBox color={`${e}`} change={clearColorwarn} key={i}/>;
         })}
       </div>
       <span

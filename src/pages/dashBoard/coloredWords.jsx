@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 export let ColoredWord=(props)=>{
     if(props.word=="male")
     return (<span

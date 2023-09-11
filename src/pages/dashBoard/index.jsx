@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { ProductArray } from "../../data/ProductArray";
 import { AuthContext } from "../../contexts/authContext";
 import { Profile } from "./profile";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { SEO } from "../../components/SEO";
 export let Dashboard = () => {
   const navigate = useNavigate();
@@ -29,6 +29,7 @@ export let Dashboard = () => {
 
   let saveAdd = (_Object) => {
     setShownArr([...ShownArr, _Object]);
+    ProductArray.push(_Object);
   };
   let setEditObj = (_Object) => {
     setTriggerEdit(!triggerEdit);
@@ -60,7 +61,7 @@ export let Dashboard = () => {
             title={`OwlStore - ${userAuth.username}`}
             description={`${userAuth.username} dashboard`}
           />
-          <div className=" md:sticky md:top-0 md:h-screen md:w-1/6">
+          <div className="md:sticky md:top-0 md:h-screen md:w-1/6">
             <AddComponent
               triggerEdit={triggerEdit}
               SaveEditHandlerRef={SaveEditHandler}
@@ -69,7 +70,7 @@ export let Dashboard = () => {
               SaveAddHRef={saveAdd}
             />
           </div>
-          <div className="md:w-5/6 max-w-full">
+          <div className="md:w-5/6">
             <ItemsList
               itemsArrRef={ShownArr}
               setEditObjRef={setEditObj}

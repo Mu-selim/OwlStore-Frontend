@@ -1,11 +1,9 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-undef */
 import { useEffect, useState } from "react";
 import { ColoredWord } from "./coloredWords";
 import { uniquecategorys } from "./categoryDropDown";
 import { DeleteIcon } from "../../components/icons/DeleteIcon";
 import { EditIcon } from "../../components/icons/EditIcon";
+import { useNavigate } from "react-router-dom";
 var sort = [
   { name: "name", dsc: 0 },
   { name: "brand", dsc: 0 },
@@ -13,6 +11,10 @@ var sort = [
   { name: "price", dsc: 0 },
 ];
 export let ItemsList=(props)=>{
+  const Navigate = useNavigate();
+  const clickProduct = (item)=>{
+    Navigate(`/product/${item.id}`)
+  }
   let {itemsArrRef}=props;
   let [ShownArr, setShownArr] = useState(itemsArrRef);
   let uniquebrands=[];
@@ -49,7 +51,7 @@ export let ItemsList=(props)=>{
       })
       setShownArr(filteredArr);
   }
-  let filterEmployees=()=>{
+  let filterItems=()=>{
       let filteredArr =itemsArrRef.filter(function (item) {
       var _brand = document.getElementById("Brand-filter").value;
       var category = document.getElementById("Category-filter").value;
@@ -79,7 +81,6 @@ export let ItemsList=(props)=>{
   }
   let EditFun=(i,item)=>{
     document.querySelectorAll(".spann").forEach((item)=>item.innerText="");
-    console.log(document.querySelectorAll(".spann"));
     document.querySelectorAll("input[type=checkbox]").forEach((e)=>{
       e.checked=false;
     })
@@ -119,31 +120,31 @@ export let ItemsList=(props)=>{
           className="filters"
           name="Brand-filter"
           id="Brand-filter"
-          onChange={filterEmployees}
+          onChange={filterItems}
         >
-          <option value="" selected>Filter by Brand</option>
-          {uniquebrands.map((item)=>{
-            return (<option value={item}>{item}</option>)
+          <option value="">Filter by Brand</option>
+          {uniquebrands.map((item,i)=>{
+            return (<option value={item} key={i}>{item}</option>)
           })}
         </select>
         <select
           className="filters  "
           name="Category-filter"
           id="Category-filter"
-          onChange={filterEmployees}
+          onChange={filterItems}
         >
-          <option value="" selected>Filter by Category</option>
-          {uniquecategorys.map((item)=>{
-            return (<option value={item}>{item}</option>)
+          <option value="" >Filter by Category</option>
+          {uniquecategorys.map((item,i)=>{
+            return (<option value={item} key={i}>{item}</option>)
           })}
         </select>
         <select
           className="filters "
           name="Price-filter"
           id="Price-filter"
-          onChange={filterEmployees}
+          onChange={filterItems}
         >
-          <option value="" selected>Filter by Price</option>
+          <option value="">Filter by Price</option>
           <option value="0,50">0 - 50</option>
           <option value="50,100">50 - 100</option>
           <option value="100,150">100 - 150</option>
@@ -195,10 +196,10 @@ export let ItemsList=(props)=>{
                   <span className="-translate-y-1">▾</span>
                 </span>
             </div></th>
-        <th className="p-3 text-sm font-semibold tracking-wide text-left cursor-pointer">Sizes</th>
+        <th className="p-3 text-sm font-semibold tracking-wide text-left">Sizes</th>
         <th className="p-3 text-sm font-semibold  tracking-wide text-left" 
           onClick={()=>sortByColumn("price",3)}>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between cursor-pointer">
             <span>Price</span> 
                 <span className=" flex flex-col text-xs">
                   <span className="translate-y-1">▴</span>
@@ -211,10 +212,11 @@ export let ItemsList=(props)=>{
       <tbody className=" divide-gray-100">
       {ShownArr.map((item,i)=>{
           return(
-              <tr className="bg-white hover:bg-gray-100">
+              <tr className="bg-white hover:bg-gray-100" key={i}>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                 
-          <a href="#" className="font-bold text-blue-500 hover:underline">{item.id}</a>
+          <span className="font-bold text-blue-500 hover:underline cursor-pointer text-sm"
+          onClick={()=>clickProduct(item)}>{item.id}</span>
         </td>
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
         <img style={{width:"40px", height:"40px"}}  src={item.images[0]} alt="" />
@@ -223,9 +225,9 @@ export let ItemsList=(props)=>{
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
           <ColoredWord word={item.gender}/>
         </td>
-        <td className="p-3 text-sm text-gray-700 whitespace-nowrap flex flex-wrap w-28">{item.colors.map((item)=>{
+        <td className="p-3 text-sm text-gray-700 whitespace-nowrap flex flex-wrap w-28">{item.colors.map((item,j)=>{
           return(
-            <div className="mx-px mt-2.5"
+            <div className="mx-px mt-2.5" key={j}
             style={{borderRadius:"100%", border:"1px solid black", backgroundColor:`${item}`, width:"20px", height:"20px"}}></div>)
         })} </td>
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap">{item.brand}</td>
