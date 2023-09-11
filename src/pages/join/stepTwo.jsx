@@ -56,7 +56,7 @@ const reducer = (state, action) => {
           ...state.errors,
           confirmPassword: validateConfirmPassword(
             state.password,
-            action.payload
+            action.payload,
           ),
         },
       };
@@ -89,7 +89,7 @@ export const StepTwo = () => {
     setRegisterData((prev) => ({ ...prev, password: e.target.value }));
     localStorage.setItem(
       "userRegisterData",
-      JSON.stringify({ ...registerData, password: e.target.value })
+      JSON.stringify({ ...registerData, password: e.target.value }),
     );
     dispatch({ type: "SET_CONTINUE" });
   };

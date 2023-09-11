@@ -1,38 +1,37 @@
-#addcomp{
-    background-color:#f2f0ea ;
-    height: 100vh;
-    font-weight: bold;
+#addcomp {
+  background-color: #f2f0ea;
+  height: 100vh;
+  font-weight: bold;
 }
-#icon{
-    width: 60px;
-    height: 40px;
-    margin-bottom: 5px;
+#icon {
+  width: 60px;
+  height: 40px;
+  margin-bottom: 5px;
 }
-#addhead{
-    font-size: 20px;
+#addhead {
+  font-size: 20px;
 }
 
-
-.filters{
-    color: darkgoldenrod;
-    border: none;
-    font-size: 17px;
-    width: 135px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 20px;
-    margin-right:20px;
-    padding:2px;
-    font-weight: bold;
-    outline: 0px;
+.filters {
+  color: darkgoldenrod;
+  border: none;
+  font-size: 17px;
+  width: 135px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 2px;
+  font-weight: bold;
+  outline: 0px;
 }
-#Category-filter{
-    width: 160px;
+#Category-filter {
+  width: 160px;
 }
-#clearfilters{
-    background-color: #edcf5d;
-    font-weight: bold;
+#clearfilters {
+  background-color: #edcf5d;
+  font-weight: bold;
 }
-#clearfilters:hover{
-    background-color: rgb(249, 222, 112);
+#clearfilters:hover {
+  background-color: rgb(249, 222, 112);
 }

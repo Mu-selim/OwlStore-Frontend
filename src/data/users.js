@@ -18,20 +18,20 @@ export const users = [
     "muhammadselim@owlstore.com",
     "01554211531",
     "12345678",
-    "admin"
+    "admin",
   ),
   createUser(
     "Ahmad Zahran",
     "ahmedzhran876@gmail.com",
     "201554211531",
     "987654321",
-    "user"
+    "user",
   ),
   createUser(
     "Kareem Khalaf",
     "kareemkhalaf1722@gmail.com",
     "201554211531",
     "0258456",
-    "user"
+    "user",
   ),
 ];

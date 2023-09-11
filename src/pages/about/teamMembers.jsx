@@ -45,8 +45,8 @@ export const TeamSection = () => {
       <div className="mt-6 flex w-full">
         <div className="basis-1/2 flex flex-col gap-6">
           <SelimRole />
-          <KareemRole/>
-          <ZahranRole/>
+          <KareemRole />
+          <ZahranRole />
         </div>
         <ImagesSide />
       </div>

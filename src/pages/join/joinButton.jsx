@@ -46,6 +46,7 @@ export const JoinButton = ({ enabled }) => {
           show: false,
           message: "",
         }));
+        clearTimeout(timer);
       }, 3000);
       // set step to 1
       setRegisterData({
@@ -59,7 +60,7 @@ export const JoinButton = ({ enabled }) => {
           registerData.email,
           registerData.phoneNumber,
           registerData.password,
-          "user"
+          "user",
         ),
       };
       users.push(newUser);

@@ -124,7 +124,7 @@ export const StepOne = () => {
     setRegisterData((prev) => ({ ...prev, [key]: value }));
     localStorage.setItem(
       "userRegisterData",
-      JSON.stringify({ ...registerData, [key]: value })
+      JSON.stringify({ ...registerData, [key]: value }),
     );
     dispatch({ type: "SET_CONTINUE" });
   };
@@ -148,7 +148,7 @@ export const StepOne = () => {
     setRegisterData((prev) => ({ ...prev, step: 2 }));
     localStorage.setItem(
       "userRegisterData",
-      JSON.stringify({ ...registerData, step: 2 })
+      JSON.stringify({ ...registerData, step: 2 }),
     );
   };
 

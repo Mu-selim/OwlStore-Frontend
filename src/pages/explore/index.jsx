@@ -16,7 +16,7 @@ export function ExplorePage() {
     ...new Set(
       ProductArray.map((product) => {
         return product.category;
-      })
+      }),
     ),
   ];
 
@@ -24,7 +24,7 @@ export function ExplorePage() {
     ...new Set(
       ProductArray.map((product) => {
         return product.gender;
-      })
+      }),
     ),
   ];
 
@@ -32,7 +32,7 @@ export function ExplorePage() {
     var escapeRegex = (str) =>
       str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
     return new RegExp(
-      "^" + rule.split("*").map(escapeRegex).join(".*") + "$"
+      "^" + rule.split("*").map(escapeRegex).join(".*") + "$",
     ).test(str);
   };
 
@@ -41,7 +41,7 @@ export function ExplorePage() {
     let SearchArr = ProductArray.filter((product) => {
       return matchRule(
         product.name.toLowerCase(),
-        "*" + exploreObject.searchTxt.toLowerCase() + "*"
+        "*" + exploreObject.searchTxt.toLowerCase() + "*",
       );
     });
 

@@ -17,7 +17,6 @@ import { AuthChecker } from "../components/authChecker";
 import { AboutPage } from "../pages/about";
 import { ContactUs } from "../pages/contactUs";
 import { CheckOut } from "../pages/checkOut";
-
 import { Delivering } from "../pages/delivering";
 
 const NavLayout = () => {

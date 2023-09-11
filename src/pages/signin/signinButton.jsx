@@ -11,7 +11,8 @@ const useJoin = (data) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         const isUserExist = users.find(
-          (user) => user.email === data.email && user.password === data.password
+          (user) =>
+            user.email === data.email && user.password === data.password,
         );
         if (isUserExist) {
           resolve({

@@ -12,9 +12,11 @@ const clothesSize = ["xs", "s", "m", "l", "xl"];
 const trouserMen = [34, 36, 38, 40, 42, 44, 46, 48];
 const trouserWomen = [26, 28, 30, 32, 34, 36, 38, 40, 42, 44];
 const shoeSize = [41, 42, 43, 44, 45];
-const images =["/images/DashBoard/default1.jpg",
-"/images/DashBoard/default2.png",
-"/images/DashBoard/default3.jpg"]
+const images = [
+  "/images/DashBoard/default1.jpg",
+  "/images/DashBoard/default2.png",
+  "/images/DashBoard/default3.jpg",
+];
 export let AddComponent = (props) => {
   let checkboxes = document.querySelectorAll("input[type=checkbox]");
   let [AddObjectTxt, setAddObjectTxts] = useState({
@@ -33,7 +35,7 @@ export let AddComponent = (props) => {
   let ValidateString = (e) => {
     if (e.target.value == "") {
       document.getElementById(
-        `warn${e.target.name}`
+        `warn${e.target.name}`,
       ).innerText = `${e.target.name} cannot be empty`;
       setAddObjectTxts({
         ...AddObjectTxt,
@@ -41,7 +43,7 @@ export let AddComponent = (props) => {
       });
     } else if (e.target.value.length < 3 || e.target.value.length > 60) {
       document.getElementById(
-        `warn${e.target.name}`
+        `warn${e.target.name}`,
       ).innerText = `${e.target.name} Must be between 3 and 60 chars`;
       setAddObjectTxts({
         ...AddObjectTxt,
@@ -72,7 +74,7 @@ export let AddComponent = (props) => {
     var numberRegex = /^\d+$/;
     if (e.target.value == "") {
       document.getElementById(
-        `warn${e.target.name}`
+        `warn${e.target.name}`,
       ).innerText = `${e.target.name} cannot be empty.`;
       setAddObjectTxts({
         ...AddObjectTxt,
@@ -80,7 +82,7 @@ export let AddComponent = (props) => {
       });
     } else if (!numberRegex.test(e.target.value)) {
       document.getElementById(
-        `warn${e.target.name}`
+        `warn${e.target.name}`,
       ).innerText = `${e.target.name} can only contain numbers`;
       setAddObjectTxts({
         ...AddObjectTxt,
@@ -91,7 +93,7 @@ export let AddComponent = (props) => {
       parseInt(e.target.value) <= 0
     ) {
       document.getElementById(
-        `warn${e.target.name}`
+        `warn${e.target.name}`,
       ).innerText = `${e.target.name} can only contain numbers from 1 to 500`;
       setAddObjectTxts({
         ...AddObjectTxt,
@@ -196,7 +198,7 @@ export let AddComponent = (props) => {
           sizes,
           colorsArr,
           "",
-          AddObjectTxt.Brand
+          AddObjectTxt.Brand,
         );
         props.SaveAddHRef(newObject);
       } else {
@@ -267,7 +269,7 @@ export let AddComponent = (props) => {
           <option value="" disabled>
             Pick a category
           </option>
-          {uniquecategorys.map((item,i) => {
+          {uniquecategorys.map((item, i) => {
             return (
               <option key={i} className="text-black" value={item}>
                 {item}
@@ -319,8 +321,8 @@ export let AddComponent = (props) => {
       </div>
       <span>Colors</span>
       <div className="flex flex-wrap">
-        {UniqueColors.map((e,i) => {
-          return <CheckBox color={`${e}`} change={clearColorwarn} key={i}/>;
+        {UniqueColors.map((e, i) => {
+          return <CheckBox color={`${e}`} change={clearColorwarn} key={i} />;
         })}
       </div>
       <span

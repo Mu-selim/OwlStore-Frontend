@@ -112,7 +112,10 @@ export function ProductPage() {
 
   return (
     <>
-      <SEO title={`OwlStore - ${product.name}`} description={product.description} />
+      <SEO
+        title={`OwlStore - ${product.name}`}
+        description={product.description}
+      />
       <div>
         <div className="product-path">
           <p className="text-gray-400 ml-6 w-3/4 capitalize">{`Product > ${product.gender} > ${product.category}`}</p>
