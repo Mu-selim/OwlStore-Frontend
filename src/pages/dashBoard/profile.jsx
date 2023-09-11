@@ -41,35 +41,9 @@ export let Profile=(props)=>{
                   <span className="text-2xl font-bold block uppercase tracking-wide text-blueGray-600">89</span><span className="text-sm text-blueGray-400">Comments</span>
                 </div>
               </div>
-              <div className="mb-2 text-blueGray-600 font-bold">
-                +{props.userAuth.phone}
-              </div>
             </div>
-            <div className="flex md:flex-col justify-center flex-row">
-              <div className="p-3 text-center">
-                <span className="text-2xl font-bold block uppercase tracking-wide text-blueGray-600">
-                  22
-                </span>
-                <span className="text-sm text-blueGray-400">
-                  Items Purchased
-                </span>
-              </div>
-              <div className="p-3 text-center">
-                <span className="text-2xl font-bold block uppercase tracking-wide text-blueGray-600">
-                  {wishList.length}
-                </span>
-                <span className="text-sm text-blueGray-400">WishList</span>
-              </div>
-              <div className="p-3 text-center">
-                <span className="text-2xl font-bold block uppercase tracking-wide text-blueGray-600">
-                  89
-                </span>
-                <span className="text-sm text-blueGray-400">Comments</span>
-              </div>
-            </div>
-          </div>
-          <div className="mt-4 w-9/12 border-secondary self-center border-2">
-          <div className="mt-4">
+            <div className="mt-4 w-9/12 border-secondary self-center border-2"></div>
+            <div className="mt-4">
             <span className="ml-8 text-2xl font-bold border-b-4 border-black rounded-sm ">Wishlist:</span>
             <div className="flex flex-row justify-center pt-5 mb-4">
                     <div className="flex flex-wrap justify-evenly w-10/12">   
@@ -81,7 +55,7 @@ export let Profile=(props)=>{
                     </div>
                 </div>
           </div>
-        </div>
+          </div>
       </div>
     </>
   );
