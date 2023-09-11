@@ -5,6 +5,7 @@ import { WhatsAppIcon } from "../../components/icons/whatsAppIcon";
 import { FaceBookIcon } from "../../components/icons/facebookIcon";
 import { TwitterIcon  } from "../../components/icons/twitterIcon";
 import { InstagramIcon } from "../../components/icons/instgramIcon";
+import { SEO } from "../../components/SEO";
 import emailjs from '@emailjs/browser';
 
 export let ContactUs=()=>{
@@ -131,7 +132,8 @@ export let ContactUs=()=>{
             }
         },[state.Name,state.Mail,state.Subject,state.Description])
     return(
-        
+        <>
+        <SEO title="OwlStore - Contact Us" description="Contact OwlStore" />
         <div className="h-[calc(100vh-66px)] w-full flex flex-col lg:flex-row " >
             <img
             className="h-full hidden lg:inline"
@@ -187,5 +189,6 @@ export let ContactUs=()=>{
                     </div>
         </div>
         </div>
+        </> 
     )
 }

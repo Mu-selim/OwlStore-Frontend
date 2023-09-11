@@ -6,6 +6,7 @@ import { ProductArray } from "../../data/ProductArray";
 import { AuthContext } from "../../contexts/authContext";
 import { Profile } from "./profile";
 import { useNavigate } from "react-router-dom";
+import { SEO } from "../../components/SEO";
 export let Dashboard = () => {
   const navigate = useNavigate();
   const { userAuth, setUserAuth } = useContext(AuthContext);
@@ -56,6 +57,10 @@ export let Dashboard = () => {
     <>
       {userAuth.isAuth && userAuth.userType === "admin" ? (
         <div className="flex  flex-col md:flex-row">
+          <SEO
+            title={`OwlStore - ${userAuth.username}`}
+            description={`${userAuth.username} dashboard`}
+          />
           <div className="md:sticky md:top-0 md:h-screen md:w-1/6">
             <AddComponent
               triggerEdit={triggerEdit}

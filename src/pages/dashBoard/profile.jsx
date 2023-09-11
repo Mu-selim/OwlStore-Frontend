@@ -1,11 +1,17 @@
 import { Navbar } from "../../components/navbar"
+import { SEO } from "../../components/SEO";
 import { ProductCard } from "../../components/productCard";
 import { WishListContext } from "../../contexts/wishListContext";
 import { useContext } from "react";
 export let Profile=(props)=>{
   const {wishList, setWishList} = useContext(WishListContext);
     return(
-        <div>
+      <>
+      <SEO
+        title={`OwlStore - ${props.userAuth.username}`}
+        description={`${props.userAuth.username} profile`}
+      />
+      <div>
             <Navbar />
       <div className="flex flex-col bg-white w-full mt-2 md:h-[calc(100vh-66px)] ">
           <div className="flex justify-center flex-col md:flex-row">
@@ -53,6 +59,6 @@ export let Profile=(props)=>{
           </div>
       </div>
         </div>
-        
+      </>
     )
 }
