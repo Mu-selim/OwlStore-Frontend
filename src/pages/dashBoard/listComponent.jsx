@@ -75,8 +75,8 @@ export let ItemsList = (props) => {
     document.getElementById("Price-filter").value = "";
     setShownArr(itemsArrRef);
   };
-  let deletefun = (index) => {
-    props.RemoveHandlerRef(index);
+  let deletefun = (item) => {
+    props.RemoveHandlerRef(item);
   };
   let EditFun = (i, item) => {
     document
@@ -261,7 +261,8 @@ export let ItemsList = (props) => {
             </tr>
           </thead>
           <tbody className=" divide-gray-100">
-            {ShownArr.map((item, i) => {
+            {ShownArr.length<1?<tr><td colSpan={10} id="noitem">No Products available</td></tr>:
+            ShownArr.map((item, i) => {
               return (
                 <tr className="bg-white hover:bg-gray-100" key={i}>
                   <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
@@ -324,7 +325,7 @@ export let ItemsList = (props) => {
                       </button>
                       <button
                         className="bg-red-600 hover:bg-red-700 text-white font-bold w-1/2 ml-2  mr-1 p-1.5 flex justify-center rounded-xl"
-                        onClick={() => deletefun(i)}
+                        onClick={() => deletefun(item)}
                       >
                         <DeleteIcon />
                       </button>
