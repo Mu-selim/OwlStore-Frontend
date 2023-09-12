@@ -63,7 +63,6 @@ export let Profile=(props)=>{
             <div className="flex flex-row justify-center pt-5 mb-4">
                     <div className="flex flex-wrap justify-evenly w-10/12">   
                         {array.arr.map((product,i)=>{
-                          console.log(array.arr);
                             return(
                                 <ProductCard key={i} product={product} updateCarousel={updateWishList}/>
                             )

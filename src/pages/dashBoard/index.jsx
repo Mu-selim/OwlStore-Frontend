@@ -35,11 +35,14 @@ export let Dashboard = () => {
     setTriggerEdit(!triggerEdit);
     setemptyProduct(_Object);
   };
-  let RemoveHandler = (index) => {
+  let RemoveHandler = (_Object) => {
     let newArr = ShownArr.filter(() => {
       return true;
     });
-    newArr.splice(index, 1);
+    for (let i = 0; i < newArr.length; i++)
+      if (newArr[i].id == _Object.id) {
+        newArr.splice(i, 1);
+      }
     setShownArr(newArr);
   };
   let SaveEditHandler = (_Object) => {

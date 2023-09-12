@@ -76,8 +76,8 @@ export let ItemsList=(props)=>{
     document.getElementById("Price-filter").value="";
     setShownArr(itemsArrRef);
   }
-  let deletefun=(index)=>{
-      props.RemoveHandlerRef(index);
+  let deletefun=(item)=>{
+      props.RemoveHandlerRef(item);
   }
   let EditFun=(i,item)=>{
     document.querySelectorAll(".spann").forEach((item)=>item.innerText="");
@@ -241,7 +241,7 @@ export let ItemsList=(props)=>{
                 <EditIcon/>
               </button>
                 <button className="bg-red-600 hover:bg-red-700 text-white font-bold w-1/2 ml-2  mr-1 p-1.5 flex justify-center rounded-xl"
-              onClick={()=>deletefun(i)}>
+              onClick={()=>deletefun(item)}>
                 <DeleteIcon/>
               </button>
                 </div>
